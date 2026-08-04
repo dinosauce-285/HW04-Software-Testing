@@ -26,8 +26,8 @@ Cập nhật lần cuối: 04/08/2026 — **Task 1 hoàn tất**.
 | Test case không automate được | 0 |
 | Số lượt chạy browser | **9 / 9** ✅ |
 | Số bug báo cáo | **18** — đã tạo đủ 18 GitHub Issue kèm ảnh |
-| Video demo Task 2 | ☐ |
-| Video demo Agent Skill | ☐ |
+| Video demo Task 2 | ☐ chờ quay |
+| Video demo Agent Skill | ☐ chờ quay |
 
 ## Trạng thái hạng mục
 
@@ -43,11 +43,11 @@ Cập nhật lần cuối: 04/08/2026 — **Task 1 hoàn tất**.
 | 8 | Bug report + GitHub Issues | R6 | ✅ 18 bug · 18 issue · 16 ảnh bug + 4 ảnh trang Issues |
 | 9 | Test case không automate được | R7 | ✅ 0 — automate được toàn bộ 50 TC |
 | 10 | Báo cáo chính | §14:149 | ✅ 10 mục, ~3.600 từ |
-| 11 | AI Audit Report | §9 | ☐ |
-| 12 | AI Critique (200–300 chữ) | §10 | ☐ |
-| 13 | Git commit log (text file) | §14:154 | ☐ |
+| 11 | AI Audit Report | §9 | ✅ 21 lượt · sinh tự động từ transcript |
+| 12 | AI Critique (200–300 chữ) | §10 | ✅ 297 chữ |
+| 13 | Git commit log (text file) | §14:154 | ✅ `git-log.txt` |
 | 14 | Video demo Task 2 (≥5 phút) | Task 2 | ☐ |
-| 15 | Agent Skill + video demo | §7 | ☐ |
+| 15 | Agent Skill + video demo | §7 | ◐ skill xong · video chờ quay |
 | 16 | Xuất PDF toàn bộ `.md` | Policies | ☐ *(người dùng tự làm)* |
 | 17 | Đóng gói `23127262_HW04_AI_Automation_<grade>.zip` | §14:145 | ☐ *(người dùng tự làm)* |
 
@@ -87,7 +87,8 @@ hw04/
 │       ├── bugs/                  screenshot đính vào GitHub Issue
 │       └── runs/                  ảnh chụp lần chạy, dùng cho báo cáo
 │
-├── .claude/skills/            Agent Skill (§7, 10 điểm)
+├── .claude/skills/            Agent Skill playwright-feature-suite (§7, 10 điểm)
+├── tools/                     extract-ai-audit.mjs — sinh AI Audit Report từ transcript
 ├── survey/                    khảo sát SUT ban đầu — không phải bài nộp
 └── sut/                       mã nguồn EShop (gitignore, không commit)
 ```

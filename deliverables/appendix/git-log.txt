@@ -1,0 +1,11 @@
+d2b15aa | 2026-08-04 12:03:51 +0700 | feat(skill): add playwright-feature-suite agent skill with templates
+b71f9bc | 2026-08-04 11:55:43 +0700 | chore(repo): remove stray tooling report folder
+3873bf8 | 2026-08-04 11:50:23 +0700 | docs(repo): mark task 1 complete in status table
+f1401ad | 2026-08-04 11:50:00 +0700 | docs(report): write main report and capture github issues evidence
+e7bad2f | 2026-08-04 11:41:20 +0700 | docs(report): link 18 bugs to github issues with screenshots
+d730728 | 2026-08-04 11:37:00 +0700 | chore(report): capture bug evidence screenshots for github issues
+0e6b103 | 2026-08-04 11:32:45 +0700 | test(featB): add 19 data-driven cases for discount coupon
+00d046f | 2026-08-04 11:21:49 +0700 | test(featA): add 16 data-driven cases for account registration
+e4d36b1 | 2026-08-04 11:09:20 +0700 | test(featC): add 15 data-driven cases for category management
+0c494d6 | 2026-08-04 11:09:20 +0700 | chore(config): add playwright config with 3 browsers and run-by stamp
+27e11fe | 2026-08-04 09:59:05 +0700 | first commit

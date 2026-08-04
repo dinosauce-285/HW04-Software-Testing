@@ -49,4 +49,4 @@ Xuất trước khi nộp:
 git log --pretty=format:'%h | %ad | %s' --date=iso > deliverables/appendix/git-log.txt
 ```
 
-⚠️ Chưa xuất.
+✅ Đã xuất: `deliverables/appendix/git-log.txt` (11 commit).
