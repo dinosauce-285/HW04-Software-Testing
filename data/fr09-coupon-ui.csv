@@ -1,0 +1,13 @@
+tc_id,loai,mo_ta,ma_giam_gia,tong_tien,expect_applied,expect_discount,expect_final,ref_bug
+TC01,positive,Mã giảm cố định 50k cho đơn đủ điều kiện,BIGBUY,600000,true,50000,550000,
+TC02,positive,Mã giảm cố định 100k cho đơn đủ điều kiện,VIP100,400000,true,100000,300000,
+TC03,positive,Mã giảm 10 phần trăm cho đơn 500k phải giảm đúng 50k,SAVE10,500000,true,50000,450000,B01
+TC04,edge,Mã 10 phần trăm tại đúng mức tối thiểu 300k,SAVE10,300000,true,30000,270000,B01 B02
+TC05,edge,Đơn đúng bằng mức tối thiểu 500k phải được áp mã BIGBUY,BIGBUY,500000,true,50000,450000,B02
+TC06,negative,Đơn dưới mức tối thiểu 1 đồng phải bị từ chối,BIGBUY,499999,false,,,
+TC07,negative,Mã đã hết hạn phải bị từ chối,EXPIRED,200000,false,,,
+TC08,negative,Mã không tồn tại phải bị từ chối,KHONGTONTAI,600000,false,,,
+TC09,negative,Mã chỉ gồm khoảng trắng phải bị từ chối,   ,600000,false,,,
+TC10,edge,Mã nhập chữ thường vẫn phải áp dụng được,save10,500000,true,50000,450000,B01
+TC11,edge,Mã có khoảng trắng thừa hai đầu vẫn phải áp dụng được,  BIGBUY  ,600000,true,50000,550000,
+TC12,edge,Đổi tổng tiền sau khi áp mã thì kết quả giảm giá phải bị huỷ,BIGBUY,600000,true,50000,550000,

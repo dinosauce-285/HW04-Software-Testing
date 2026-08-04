@@ -1,0 +1,7 @@
+tc_id,loai,mo_ta,ma_giam_gia,tong_tien,expect_status,ref_bug
+TC13,negative,Áp mã giảm giá phải yêu cầu đăng nhập,VIP100,400000,401,B03
+TC14,negative,Dùng quá số lần cho phép phải bị từ chối,SAVE10,400000,400,
+TC15,edge,Không được né giới hạn lượt dùng bằng cách bỏ user_id,SAVE10,400000,400,B04
+TC16,negative,Mã cho phép 2 lượt thì lượt thứ ba phải bị từ chối,VIP100,400000,400,
+TC17,edge,Tổng tiền do client gửi không được server tin tưởng,BIGBUY,1000,400,B05
+TC18,edge,Tổng tiền âm phải bị từ chối,BIGBUY,-100000,400,
