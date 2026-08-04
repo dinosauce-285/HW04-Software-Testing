@@ -21,6 +21,7 @@ FEATURE=fr09-coupon BROWSER=chromium npx playwright test --project=chromium
 ```
 
 Report sinh ra ở `submission/html-reports/<feature>-<browser>-<ISO-timestamp>/`.
+Chạy thử thì thêm `REPORT_ROOT=demo-runs` ở đầu lệnh để không lẫn vào bộ 9 report nộp bài.
 **Không** thêm cờ `--reporter` - nó đè cấu hình và lượt chạy sẽ không sinh report nào.
 
 ---

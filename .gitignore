@@ -19,3 +19,6 @@ README.pdf
 
 # Cấu hình máy cá nhân của Claude Code
 .claude/settings.local.json
+
+# Thu muc chay thu / quay video - khong phai bang chung nop bai
+demo-runs/

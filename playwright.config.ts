@@ -14,8 +14,11 @@ const RUN_AT = new Date().toISOString();
 const FEATURE = process.env.FEATURE ?? 'all';
 const BROWSER = process.env.BROWSER ?? 'all';
 
-// submission/html-reports/<feature>-<browser>-<ISO timestamp>/  — dấu ':' trong ISO không hợp lệ trên một số FS
-const REPORT_DIR = `submission/html-reports/${FEATURE}-${BROWSER}-${RUN_AT.replace(/[:.]/g, '-')}`;
+// <root>/<feature>-<browser>-<ISO timestamp>/  — dấu ':' trong ISO không hợp lệ trên một số FS
+// Mặc định ghi vào bộ 9 report nộp bài. Chạy thử / quay video thì đặt REPORT_ROOT=demo-runs
+// để không lẫn vào bằng chứng đã chốt.
+const REPORT_ROOT = process.env.REPORT_ROOT ?? 'submission/html-reports';
+const REPORT_DIR = `${REPORT_ROOT}/${FEATURE}-${BROWSER}-${RUN_AT.replace(/[:.]/g, '-')}`;
 
 export default defineConfig({
   testDir: './submission/tests',
