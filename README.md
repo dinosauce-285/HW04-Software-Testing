@@ -14,18 +14,18 @@
 
 ## Test Summary
 
-Cập nhật lần cuối: 04/08/2026 — mới xong FR-14.
+Cập nhật lần cuối: 04/08/2026 — xong FR-14 và FR-01.
 
 | Chỉ số | Giá trị |
 |---|---|
 | Số feature | 3 |
-| Test case đã automate | 15 (FR-14) |
-| Test case đã chạy | 15 × 3 browser = 45 |
-| Passed | 4 / lượt |
-| Failed | 11 / lượt — **tất cả đều do bug thật, không có fail do script** |
+| Test case đã automate | 31 — FR-14: 15 · FR-01: 16 |
+| Test case đã chạy | 31 × 3 browser = 93 |
+| Passed | FR-14: 4 · FR-01: 7 (mỗi browser) |
+| Failed | FR-14: 11 · FR-01: 9 — **tất cả đều do bug thật, không có fail do script** |
 | Test case không automate được | 0 |
-| Số lượt chạy browser | 3 / 9 |
-| Số bug báo cáo | 21 ứng viên (19 khảo sát + C08, C09 phát hiện khi viết test) |
+| Số lượt chạy browser | 6 / 9 |
+| Số bug báo cáo | 21 ứng viên · 20 đã có test case chỉ vào |
 | Video demo Task 2 | ☐ |
 | Video demo Agent Skill | ☐ |
 
@@ -35,11 +35,11 @@ Cập nhật lần cuối: 04/08/2026 — mới xong FR-14.
 |---|---|---|---|
 | 1 | Khảo sát SUT | `survey/Survey-Report.md` | ✅ 04/08/2026 |
 | 2 | `playwright.config.ts` + stamp `Run by: 23127262` | R5 | ✅ đã kiểm bằng ảnh chụp report |
-| 3 | FR-01 — ≥12 TC + data file | Task 1 | ☐ |
+| 3 | FR-01 — ≥12 TC + data file | Task 1 | ✅ 16 TC · 3 CSV · 5 assertion pattern · 3 browser |
 | 4 | FR-09 — ≥12 TC + data file | Task 1 | ☐ |
 | 5 | FR-14 — ≥12 TC + data file | Task 1 | ✅ 15 TC · 2 CSV · 5 assertion pattern · 3 browser |
-| 6 | 9 HTML report (3 feature × 3 browser) | §6:83 | ◐ 3/9 (xong FR-14) |
-| 7 | Nhật ký review & fix AI | R4 | ◐ 2 mục + 4 mục khảo sát |
+| 6 | 9 HTML report (3 feature × 3 browser) | §6:83 | ◐ 6/9 (còn FR-09) |
+| 7 | Nhật ký review & fix AI | R4 | ◐ 3 mục + 4 mục khảo sát |
 | 8 | Bug report + GitHub Issues | R6 | ☐ |
 | 9 | Test case không automate được | R7 | ☐ |
 | 10 | Báo cáo chính | §14:149 | ☐ |

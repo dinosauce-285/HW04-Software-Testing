@@ -1,0 +1,5 @@
+tc_id,loai,mo_ta,ho_ten,email,mat_khau,expect_status,ref_bug
+TC13,negative,Đăng ký trùng email phải bị từ chối,Nguyen Van M,__UNIQUE__,Test 1234,409,A04
+TC14,negative,API phải từ chối email sai định dạng và mật khẩu yếu,Nguyen Van N,khong-phai-email,1,400,A03
+TC15,edge,Mật khẩu không được lưu và trả về dạng plaintext,Nguyen Van O,__UNIQUE__,Test 1234,200,A06
+TC16,edge,Đăng ký trùng email qua giao diện phải hiện thông báo lỗi,Nguyen Van P,__UNIQUE__,Test 1234,409,A04

@@ -1,0 +1,5 @@
+tc_id,loai,mo_ta,ho_ten,email,mat_khau,expect_accepted,ref_bug
+TC09,negative,Email thiếu ký tự @ phải bị từ chối,Nguyen Van I,khongcoa.com,Test 1234,false,A02
+TC10,negative,Email thiếu tên miền phải bị từ chối,Nguyen Van J,abc@,Test 1234,false,A02
+TC11,negative,Bỏ trống họ tên phải bị chặn,,__UNIQUE__,Test 1234,false,
+TC12,negative,Bỏ trống email phải bị chặn,Nguyen Van L,,Test 1234,false,

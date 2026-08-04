@@ -17,9 +17,14 @@ export function readCsv<T = Record<string, string>>(fileName: string): T[] {
   }) as T[];
 }
 
-/** CSV không biểu diễn được chuỗi 500 ký tự → dùng placeholder rồi giãn ra ở đây. */
-export function expand(value: string): string {
+/**
+ * Giãn placeholder trong CSV thành giá trị thật.
+ *   __LONG_500__ — chuỗi 500 ký tự, CSV không biểu diễn trực tiếp được
+ *   __UNIQUE__   — email duy nhất cho mỗi lần chạy, tránh đụng dữ liệu giữa các lượt
+ */
+export function expand(value: string, seed = ''): string {
   if (value === '__LONG_500__') return 'X'.repeat(500);
+  if (value === '__UNIQUE__') return `hw04.${seed}.${Date.now()}@test.local`;
   return value;
 }
 

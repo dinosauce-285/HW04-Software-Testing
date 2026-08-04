@@ -60,7 +60,7 @@ Mỗi tương tác AI phải được lưu: **tên công cụ · ngày giờ · 
 ### R2 — Commit theo từng bước
 *(Policies — "Version Control Requirements":22 — "For every step within a requirement, students must create a clear and explicit Git commit message")*
 
-Xong một bước có ý nghĩa (một spec file chạy được, một lần chạy cross-browser, một lần sửa script sau review, một data file) → đề xuất commit message, commit khi người dùng đồng ý.
+Xong một bước có ý nghĩa (một spec file chạy được, một lần chạy cross-browser, một lần sửa script sau review, một data file) → **commit ngay, không hỏi**. Báo lại commit message trong câu trả lời.
 
 **Định dạng bắt buộc — Conventional Commits, viết bằng tiếng Anh:**
 ```
