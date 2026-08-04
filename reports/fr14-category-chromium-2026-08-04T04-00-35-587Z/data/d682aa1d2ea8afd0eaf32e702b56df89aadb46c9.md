@@ -1,0 +1,190 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: fr14-category/add-category.spec.ts >> FR-14 Quản lý danh mục — Thêm danh mục >> TC08 [edge] Tên có khoảng trắng thừa hai đầu phải được cắt bỏ
+- Location: tests/fr14-category/add-category.spec.ts:27:9
+
+# Error details
+
+```
+Error: TC08: tên lưu vào hệ thống chưa được cắt khoảng trắng thừa
+
+expect(received).toContain(expected) // indexOf
+
+Expected value: "Sách và Văn phòng phẩm"
+Received array: ["Điện thoại", "Laptop", "Phụ kiện", "Đồng hồ thông minh", "Điện máy & Gia dụng", "", "   ", "Laptop", "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "<img src=x onerror=alert(1)>", …]
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - heading "EShop Admin" [level=1] [ref=e5]
+    - list [ref=e6]:
+      - listitem [ref=e7] [cursor=pointer]: Dashboard
+      - listitem [ref=e8] [cursor=pointer]: Danh mục
+      - listitem [ref=e9] [cursor=pointer]: Sản phẩm
+      - listitem [ref=e10] [cursor=pointer]: Mã Giảm Giá
+      - listitem [ref=e11] [cursor=pointer]: Đơn hàng
+      - listitem [ref=e12] [cursor=pointer]: Người dùng
+      - listitem [ref=e13] [cursor=pointer]: Đăng xuất
+  - generic [ref=e15]:
+    - heading "Quản lý Danh mục" [level=2] [ref=e16]
+    - generic [ref=e17]:
+      - textbox "Tên danh mục mới" [ref=e18]
+      - button "Thêm mới" [active] [ref=e19] [cursor=pointer]
+    - table [ref=e20]:
+      - rowgroup [ref=e21]:
+        - row [ref=e22]:
+          - columnheader "ID" [ref=e23]
+          - columnheader "Tên Danh Mục" [ref=e24]
+          - columnheader "Hành động" [ref=e25]
+      - rowgroup [ref=e26]:
+        - row [ref=e27]:
+          - cell "#1" [ref=e28]
+          - cell "Điện thoại" [ref=e29]
+          - cell [ref=e30]:
+            - button "Xóa" [ref=e31] [cursor=pointer]
+        - row [ref=e32]:
+          - cell "#2" [ref=e33]
+          - cell "Laptop" [ref=e34]
+          - cell [ref=e35]:
+            - button "Xóa" [ref=e36] [cursor=pointer]
+        - row [ref=e37]:
+          - cell "#3" [ref=e38]
+          - cell "Phụ kiện" [ref=e39]
+          - cell [ref=e40]:
+            - button "Xóa" [ref=e41] [cursor=pointer]
+        - row [ref=e42]:
+          - cell "#4" [ref=e43]
+          - cell "Đồng hồ thông minh" [ref=e44]
+          - cell [ref=e45]:
+            - button "Xóa" [ref=e46] [cursor=pointer]
+        - row [ref=e47]:
+          - cell "#5" [ref=e48]
+          - cell "Điện máy & Gia dụng" [ref=e49]
+          - cell [ref=e50]:
+            - button "Xóa" [ref=e51] [cursor=pointer]
+        - row [ref=e52]:
+          - cell "#6" [ref=e53]
+          - cell [ref=e54]
+          - cell [ref=e55]:
+            - button "Xóa" [ref=e56] [cursor=pointer]
+        - row [ref=e57]:
+          - cell "#7" [ref=e58]
+          - cell [ref=e59]
+          - cell [ref=e60]:
+            - button "Xóa" [ref=e61] [cursor=pointer]
+        - row [ref=e62]:
+          - cell "#8" [ref=e63]
+          - cell "Laptop" [ref=e64]
+          - cell [ref=e65]:
+            - button "Xóa" [ref=e66] [cursor=pointer]
+        - row [ref=e67]:
+          - cell "#9" [ref=e68]
+          - cell "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" [ref=e69]
+          - cell [ref=e70]:
+            - button "Xóa" [ref=e71] [cursor=pointer]
+        - row [ref=e72]:
+          - cell "#10" [ref=e73]
+          - cell "<img src=x onerror=alert(1)>" [ref=e74]
+          - cell [ref=e75]:
+            - button "Xóa" [ref=e76] [cursor=pointer]
+        - row [ref=e77]:
+          - cell "#11" [ref=e78]
+          - cell "Sách và Văn phòng phẩm" [ref=e79]
+          - cell [ref=e80]:
+            - button "Xóa" [ref=e81] [cursor=pointer]
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect } from '@playwright/test';
+  2  | import { AdminCategoryPage } from '../pages/AdminCategoryPage';
+  3  | import { readCsv, expand, isTrue } from '../fixtures/csv';
+  4  | 
+  5  | /**
+  6  |  * FR-14 — Quản lý danh mục · phần THÊM (TC01–TC09)
+  7  |  *
+  8  |  * Assertion viết theo ĐẶC TẢ ĐÚNG, không theo hành vi hiện tại của SUT (CLAUDE.md R8).
+  9  |  * Các test có cột ref_bug được kỳ vọng sẽ FAIL — chính cái fail đó là bằng chứng bug
+  10 |  * (đề §6:85 — "wherever a failing assertion reveals a genuine defect, a bug report").
+  11 |  *
+  12 |  * Assertion pattern dùng trong file này:
+  13 |  *   P1 — đếm phần tử       expect(locator).toHaveCount()
+  14 |  *   P2 — nội dung text      expect(locator).toContainText() / toHaveText()
+  15 |  *   P3 — trạng thái hiển thị expect(locator).toBeVisible()
+  16 |  */
+  17 | 
+  18 | type AddCase = {
+  19 |   tc_id: string; loai: string; mo_ta: string;
+  20 |   input_name: string; expect_created: string; expect_message: string; ref_bug: string;
+  21 | };
+  22 | 
+  23 | const cases = readCsv<AddCase>('fr14-add-category.csv');
+  24 | 
+  25 | test.describe('FR-14 Quản lý danh mục — Thêm danh mục', () => {
+  26 |   for (const c of cases) {
+  27 |     test(`${c.tc_id} [${c.loai}] ${c.mo_ta}`, async ({ page }) => {
+  28 |       const name = expand(c.input_name);
+  29 |       const shouldCreate = isTrue(c.expect_created);
+  30 | 
+  31 |       const admin = new AdminCategoryPage(page);
+  32 |       await admin.login();
+  33 |       await admin.openCategoryTab();
+  34 | 
+  35 |       const before = await admin.count();
+  36 |       await admin.addCategory(name);
+  37 | 
+  38 |       if (shouldCreate) {
+  39 |         // P1 — bảng phải có thêm đúng 1 dòng
+  40 |         await expect(admin.rows).toHaveCount(before + 1);
+  41 | 
+  42 |         // P2 — tên lưu lại phải là tên đã cắt khoảng trắng thừa (TC08).
+  43 |         // So trên text NGUYÊN VĂN, không dùng getByRole('cell') vì nó chuẩn hóa khoảng trắng
+  44 |         // và sẽ pass ngay cả khi hệ thống không trim.
+  45 |         const expected = name.trim();
+  46 |         expect(await admin.rawNames(),
+  47 |           `${c.tc_id}: tên lưu vào hệ thống chưa được cắt khoảng trắng thừa`,
+> 48 |         ).toContain(expected);
+     |           ^ Error: TC08: tên lưu vào hệ thống chưa được cắt khoảng trắng thừa
+  49 | 
+  50 |         // P3 — ô nhập phải được xóa trắng sau khi thêm thành công
+  51 |         await expect(admin.nameInput).toHaveValue('');
+  52 |       } else {
+  53 |         // P1 — dữ liệu không hợp lệ thì số dòng phải giữ nguyên
+  54 |         await expect(admin.rows,
+  55 |           `${c.tc_id}: tên không hợp lệ ("${c.input_name.slice(0, 40)}") vẫn bị tạo — bug ${c.ref_bug}`,
+  56 |         ).toHaveCount(before);
+  57 | 
+  58 |         // P2 — phải hiện thông báo lỗi cho người dùng
+  59 |         if (c.expect_message) {
+  60 |           await expect(page.getByText(c.expect_message, { exact: false })).toBeVisible();
+  61 |         }
+  62 |       }
+  63 |     });
+  64 |   }
+  65 | 
+  66 |   test('TC09b [edge] Danh sách vẫn đọc được sau payload SQL injection', async ({ page }) => {
+  67 |     const admin = new AdminCategoryPage(page);
+  68 |     await admin.login();
+  69 |     await admin.openCategoryTab();
+  70 | 
+  71 |     await admin.addCategory("'; DROP TABLE categories;--");
+  72 |     await page.reload();
+  73 |     await admin.openCategoryTab();
+  74 | 
+  75 |     // P1 — bảng categories phải còn nguyên, 3 danh mục seed vẫn hiển thị
+  76 |     const names = await admin.listNames();
+  77 |     expect(names).toEqual(expect.arrayContaining(['Điện thoại', 'Laptop', 'Phụ kiện']));
+  78 |   });
+  79 | });
+  80 | 
+```

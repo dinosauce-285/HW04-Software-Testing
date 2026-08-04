@@ -1,0 +1,8 @@
+# SUT — mã nguồn EShop, clone từ https://github.com/ttbhanh/eshop-sut
+# Không commit vào repo nộp bài (không phải sản phẩm của mình, và có node_modules + database.sqtile)
+sut/
+
+node_modules/
+test-results/
+playwright-report/
+.env

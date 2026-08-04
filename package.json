@@ -1,0 +1,24 @@
+{
+  "name": "hw04",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dinosauce-285/HW04-Software-Testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dinosauce-285/HW04-Software-Testing/issues"
+  },
+  "homepage": "https://github.com/dinosauce-285/HW04-Software-Testing#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "csv-parse": "^7.0.2"
+  }
+}

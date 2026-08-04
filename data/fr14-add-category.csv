@@ -1,0 +1,10 @@
+tc_id,loai,mo_ta,input_name,expect_created,expect_message,ref_bug
+TC01,positive,Thêm danh mục với tên hợp lệ,Đồng hồ thông minh,true,,
+TC02,positive,Thêm danh mục tên tiếng Việt có dấu và ký tự &,Điện máy & Gia dụng,true,,
+TC03,negative,Không cho thêm danh mục với tên rỗng,,false,Tên danh mục không được để trống,C01
+TC04,negative,Không cho thêm danh mục chỉ gồm khoảng trắng,   ,false,Tên danh mục không được để trống,C01
+TC05,negative,Không cho thêm danh mục trùng tên đã tồn tại,Laptop,false,Tên danh mục đã tồn tại,C02
+TC06,edge,Không cho thêm tên vượt quá 255 ký tự,__LONG_500__,false,Tên danh mục quá dài,C03
+TC07,edge,Payload XSS phải bị từ chối hoặc escape an toàn,<img src=x onerror=alert(1)>,false,Tên danh mục chứa ký tự không hợp lệ,C03
+TC08,edge,Tên có khoảng trắng thừa hai đầu phải được cắt bỏ,  Sách và Văn phòng phẩm  ,true,,
+TC09,edge,Payload SQL injection không được phá vỡ dữ liệu,'; DROP TABLE categories;--,false,Tên danh mục chứa ký tự không hợp lệ,C03

@@ -1,0 +1,6 @@
+tc_id,loai,mo_ta,target,expect_deleted,expect_status,ref_bug
+TC10,positive,Xóa được danh mục vừa tạo và không còn trong danh sách,new,true,200,
+TC11,negative,Không được xóa danh mục đang chứa sản phẩm,in_use,false,409,C05
+TC12,edge,Phải có hộp thoại xác nhận trước khi xóa,new,false,,C04
+TC13,edge,Xóa danh mục có ID không tồn tại phải trả về 404,not_found,false,404,
+TC14,edge,Tài khoản user thường không được phép tạo hoặc xóa danh mục,as_user,false,403,C06
