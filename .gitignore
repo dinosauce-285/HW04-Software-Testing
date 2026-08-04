@@ -6,3 +6,17 @@ node_modules/
 test-results/
 playwright-report/
 .env
+
+# Artefact đóng gói nộp bài — sinh lại được, không đưa vào repo
+*.zip
+*.z[0-9][0-9]
+*.7z.*
+*.part[0-9]*
+submission/
+
+# Bản PDF "Save-As-PDF" — dựng lại từ chính file .md đã có trong repo
+deliverables/**/*.pdf
+README.pdf
+
+# Cấu hình máy cá nhân của Claude Code
+.claude/settings.local.json
