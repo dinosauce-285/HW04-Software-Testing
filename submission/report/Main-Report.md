@@ -50,7 +50,7 @@ for f in fr01-register fr09-coupon fr14-category; do
 done
 ```
 
-Tổng cộng **9 lượt chạy → 9 HTML report** trong `reports/<feature>-<browser>-<ISO timestamp>/`.
+Tổng cộng **9 lượt chạy → 9 HTML report** trong `submission/reports/<feature>-<browser>-<ISO timestamp>/`.
 
 > **Lưu ý quan trọng:** không được thêm cờ `--reporter` vào dòng lệnh — cờ này đè toàn bộ danh sách reporter khai báo trong `playwright.config.ts`, khiến lượt chạy **không sinh report nào** mà terminal vẫn báo thành công. Xem mục 7, lỗi #2.
 

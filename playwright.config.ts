@@ -14,14 +14,14 @@ const RUN_AT = new Date().toISOString();
 const FEATURE = process.env.FEATURE ?? 'all';
 const BROWSER = process.env.BROWSER ?? 'all';
 
-// reports/<feature>-<browser>-<ISO timestamp>/  — dấu ':' trong ISO không hợp lệ trên một số FS
-const REPORT_DIR = `reports/${FEATURE}-${BROWSER}-${RUN_AT.replace(/[:.]/g, '-')}`;
+// submission/reports/<feature>-<browser>-<ISO timestamp>/  — dấu ':' trong ISO không hợp lệ trên một số FS
+const REPORT_DIR = `submission/reports/${FEATURE}-${BROWSER}-${RUN_AT.replace(/[:.]/g, '-')}`;
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: './submission/tests',
   testMatch: FEATURE === 'all' ? '**/*.spec.ts' : `**/${FEATURE}/*.spec.ts`,
 
-  globalSetup: './tests/fixtures/global-setup.ts',
+  globalSetup: './submission/tests/fixtures/global-setup.ts',
 
   fullyParallel: false,   // SUT dùng chung một SQLite, chạy song song sẽ đua dữ liệu
   workers: 1,

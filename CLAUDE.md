@@ -100,7 +100,7 @@ Ghi tại thời điểm sửa, không gom cuối bài — cột "vì sao" khôn
 Playwright HTML reporter **ghi đè** `playwright-report/` mỗi lần chạy → chạy lượt sau là mất lượt trước. Vì vậy mọi lệnh chạy phải xuất ra thư mục riêng:
 
 ```
-reports/<feature>-<browser>-<ISO-timestamp>/
+submission/reports/<feature>-<browser>-<ISO-timestamp>/
 ```
 
 Và mỗi report phải mang `Run by: 23127262` + ISO timestamp — nhúng qua metadata trong `playwright.config.ts`, không sửa tay file HTML.
@@ -201,7 +201,8 @@ Không làm hộ, không tự nhắc mỗi phiên. Chỉ trả lời khi đượ
 | Yêu cầu chính thức | `docs/2026.HW04.Automation Testing_En.md` |
 | Chính sách môn học | `docs/___2026.Homework.Policies.md` |
 | SUT (source, cách chạy) | `https://github.com/ttbhanh/eshop-sut` |
-| Cấu trúc thư mục, trạng thái, self-assessment | `README.md` |
+| Cấu trúc thư mục, trạng thái, self-assessment | `submission/README.md` |
+| Đối chiếu điều khoản đề + policy → file | `submission/CHECKLIST.md` |
 | Hành vi thật của SUT, bẫy selector | `survey/Survey-Report.md` |
 | Quy ước commit + bảng đếm | `submission/appendix/Git-Commit-Log.md` |
 

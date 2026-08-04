@@ -7,7 +7,7 @@ import path from 'node:path';
  * fail sai), và danh mục rác do FR-14 tạo ra làm lệch các assertion đếm dòng.
  */
 export default function globalSetup() {
-  const backend = path.resolve(__dirname, '../../sut/backend');
+  const backend = path.resolve(__dirname, '../../../sut/backend');
   execFileSync('node', ['database.js'], { cwd: backend, stdio: 'pipe' });
   console.log('[global-setup] Đã reset dữ liệu SUT về trạng thái seed');
 }

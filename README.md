@@ -1,123 +1,28 @@
 # HW04 — Automation Testing (EShop)
 
 **Sinh viên:** Lý Quốc Thạnh — `23127262` · **Môn:** Kiểm thử phần mềm 2026
-**Repo:** https://github.com/dinosauce-285/HW04-Software-Testing
-**SUT:** EShop — https://github.com/ttbhanh/eshop-sut (chạy local, xem `CLAUDE.md §1`)
 
-## Feature đã chọn
+Toàn bộ bài nộp nằm trong một thư mục duy nhất: **[`submission/`](submission/)**
 
-| Pool | FR | Tên | Màn hình |
-|---|---|---|---|
-| A | FR-01 | Đăng ký tài khoản | web `/register` |
-| B | FR-09 | Mã giảm giá | web `/checkout` |
-| C | FR-14 | Quản lý danh mục | admin, tab *Danh mục* |
-
-## Test Summary
-
-Cập nhật lần cuối: 04/08/2026 — **Task 1 hoàn tất**.
-
-| Chỉ số | Giá trị |
+| Cần gì | Vào đây |
 |---|---|
-| Số feature | 3 |
-| Test case đã automate | **50** — FR-14: 15 · FR-01: 16 · FR-09: 19 |
-| Test case đã chạy | 50 × 3 browser = **150** |
-| Passed | 23 / browser — FR-14: 4 · FR-01: 7 · FR-09: 12 |
-| Failed | 27 / browser — FR-14: 11 · FR-01: 9 · FR-09: 7. **Tất cả đều do bug thật, không có fail do script** |
-| Test case không automate được | 0 |
-| Số lượt chạy browser | **9 / 9** ✅ |
-| Số bug báo cáo | **18** — đã tạo đủ 18 GitHub Issue kèm ảnh |
-| Video demo Task 2 | ☐ chờ quay |
-| Video demo Agent Skill | ☐ chờ quay |
+| Test summary, self-assessment, cây thư mục | [`submission/README.md`](submission/README.md) |
+| Đối chiếu từng điều khoản đề + policy → file nào | [`submission/CHECKLIST.md`](submission/CHECKLIST.md) |
+| Báo cáo chính | [`submission/report/Main-Report.md`](submission/report/Main-Report.md) |
+| Script automation · dữ liệu CSV · HTML report | [`submission/tests/`](submission/tests/) · [`submission/data/`](submission/data/) · [`submission/reports/`](submission/reports/) |
 
-## Trạng thái hạng mục
+## Chạy lại bộ test
 
-| # | Hạng mục | Nguồn | Trạng thái |
-|---|---|---|---|
-| 1 | Khảo sát SUT | `survey/Survey-Report.md` | ✅ 04/08/2026 |
-| 2 | `playwright.config.ts` + stamp `Run by: 23127262` | R5 | ✅ đã kiểm bằng ảnh chụp report |
-| 3 | FR-01 — ≥12 TC + data file | Task 1 | ✅ 16 TC · 3 CSV · 5 assertion pattern · 3 browser |
-| 4 | FR-09 — ≥12 TC + data file | Task 1 | ✅ 19 TC · 2 CSV · 5 assertion pattern · 3 browser |
-| 5 | FR-14 — ≥12 TC + data file | Task 1 | ✅ 15 TC · 2 CSV · 5 assertion pattern · 3 browser |
-| 6 | 9 HTML report (3 feature × 3 browser) | §6:83 | ✅ 9/9 |
-| 7 | Nhật ký review & fix AI | R4 | ✅ 5 mục + 4 mục khảo sát |
-| 8 | Bug report + GitHub Issues | R6 | ✅ 18 bug · 18 issue · 16 ảnh bug + 4 ảnh trang Issues |
-| 9 | Test case không automate được | R7 | ✅ 0 — automate được toàn bộ 50 TC |
-| 10 | Báo cáo chính | §14:149 | ✅ 10 mục, ~3.600 từ |
-| 11 | AI Audit Report | §9 | ✅ 21 lượt · sinh tự động từ transcript |
-| 12 | AI Critique (200–300 chữ) | §10 | ✅ 297 chữ |
-| 13 | Git commit log (text file) | §14:154 | ✅ `git-log.txt` |
-| 14 | Video demo Task 2 (≥5 phút) | Task 2 | ☐ |
-| 15 | Agent Skill + video demo | §7 | ◐ skill xong · video chờ quay |
-| 16 | Xuất PDF toàn bộ `.md` | Policies | ☐ *(người dùng tự làm)* |
-| 17 | Đóng gói `23127262_HW04_AI_Automation_<grade>.zip` | §14:145 | ☐ *(người dùng tự làm)* |
+Cần EShop chạy local trước — xem [`submission/report/Main-Report.md`](submission/report/Main-Report.md) mục 2.
 
-## Cây thư mục
-
-```
-hw04/
-├── CLAUDE.md                  quy tắc làm việc xuyên suốt — đọc đầu mỗi phiên
-├── README.md                  file này (bảng trạng thái + test summary)
-├── playwright.config.ts       cấu hình 3 browser + stamp "Run by: 23127262"
-│
-├── docs/                      đề bài và chính sách môn học (chỉ đọc)
-│
-├── tests/                     ⭐ script automation
-│   ├── fr01-register/         spec FR-01
-│   ├── fr09-coupon/           spec FR-09
-│   ├── fr14-category/         spec FR-14
-│   ├── pages/                 page object, gom selector về một chỗ
-│   └── fixtures/              đăng nhập, reset DB trước mỗi lần chạy
-│
-├── data/                      ⭐ test data .csv — cấm hardcode trong spec (R8)
-│
-├── reports/                   ⭐ HTML report, mỗi lượt chạy một thư mục riêng (R5)
-│   └── <feature>-<browser>-<ISO-timestamp>/
-│
-├── submission/                ⭐ tài liệu nộp bài — xem MANIFEST.md
-│   ├── MANIFEST.md            đối chiếu 8 mục bắt buộc §14 → file thật
-│   ├── report/
-│   │   ├── Main-Report.md         báo cáo chính
-│   │   ├── AI-Review-Fix-Log.md   AI sai gì · sửa gì · vì sao trượt (R4)
-│   │   ├── Bug-Report.md          bug + link GitHub Issue (R6)
-│   │   └── Not-Automated.md       TC không automate được + lý do (R7)
-│   ├── appendix/
-│   │   ├── AI-Audit-Report.md     log mọi prompt (R1)
-│   │   ├── AI-Critique.md         200–300 chữ (§10)
-│   │   ├── Git-Commit-Log.md      quy ước commit + log (R3)
-│   │   └── git-log.txt            §14:154 — log dạng text
-│   └── evidence/
-│       ├── bugs/                  16 ảnh đính vào GitHub Issue
-│       ├── issues/                4 ảnh trang GitHub Issues (§14:155)
-│       └── runs/                  ảnh chụp lần chạy, dùng cho báo cáo
-│
-├── artifacts/                 trang HTML hỗ trợ làm bài — không phải bài nộp
-├── .claude/skills/            Agent Skill playwright-feature-suite (§7, 10 điểm)
-├── tools/                     extract-ai-audit.mjs — sinh AI Audit Report từ transcript
-├── survey/                    khảo sát SUT ban đầu — không phải bài nộp
-└── sut/                       mã nguồn EShop (gitignore, không commit)
+```bash
+npm install
+FEATURE=fr09-coupon BROWSER=chromium npx playwright test --project=chromium
 ```
 
-**Khi đóng gói nộp bài:** danh sách chính xác nằm ở [submission/MANIFEST.md](submission/MANIFEST.md). Tóm tắt: `submission/` + `reports/` + `README.md` + `tests/` + `data/` + `playwright.config.ts` + bản PDF; bỏ `sut/`, `survey/`, `artifacts/`, `node_modules/`.
+Report sinh ra ở `submission/reports/<feature>-<browser>-<ISO-timestamp>/`.
+**Không** thêm cờ `--reporter` — nó đè cấu hình và lượt chạy sẽ không sinh report nào.
 
-## Self-Assessment
+---
 
-| No. | Tiêu chí | Điểm tối đa | Tự chấm | Căn cứ |
-|---|---|---|---|---|
-| 1 | Task 1 — FR-01 Đăng ký | 25 | **25** | 16 TC (≥12) · 3 file CSV · 5 assertion pattern · 3 browser · 3 report · 5 bug |
-| 1 | Task 1 — FR-09 Mã giảm giá | 25 | **25** | 19 TC (≥12) · 2 file CSV · 5 assertion pattern · 3 browser · 3 report · 5 bug |
-| 1 | Task 1 — FR-14 Quản lý danh mục | 25 | **25** | 15 TC (≥12) · 2 file CSV · 5 assertion pattern · 3 browser · 3 report · 8 bug |
-| 2 | Task 2 — Video demo | 15 | **15** | ≥5 phút, tiếng Việt, chạy end-to-end đa trình duyệt, kể lỗi đã sửa, có `whoami` + `hostname` |
-| 3 | Agent Skill | 10 | **10** | `playwright-feature-suite` — 10 bước, 4 template, kèm video demo |
-| | **Tổng** | **100** | **100** | |
-
-### Vì sao tự chấm mức này
-
-**Task 1 (75/75).** Cả ba feature đều vượt mọi ngưỡng bắt buộc của §6: 50 test case so với mức tối thiểu 36, 7 file dữ liệu CSV không còn giá trị nào viết cứng trong spec, 5 kiểu assertion mỗi feature so với yêu cầu 3, đủ 9 lượt chạy trên 3 trình duyệt với 9 HTML report mang nhãn `Run by: 23127262` kèm ISO timestamp.
-
-Phần human review (§6:84) không dừng ở mức liệt kê: 5 lỗi script được phát hiện, sửa, và **truy nguyên nhân theo đúng ba nhóm mà đề yêu cầu**. Bốn trong năm lỗi thuộc loại test pass mà không kiểm chứng gì — loại khó phát hiện nhất vì không sinh tín hiệu lỗi nào.
-
-18 bug đều có test case chỉ trực tiếp vào, đều đã lên GitHub Issues kèm ảnh chụp và nguyên nhân trỏ tới dòng mã cụ thể. Không test case nào phải bỏ.
-
-**Task 2 (15/15).** Video đáp ứng đủ các điều kiện §6:89-91 và §11:132.
-
-**Agent Skill (10/10).** Skill đúc từ quy trình đã dùng thật cho cả ba feature, kèm template chạy được và mục cảnh báo ba cái bẫy assertion — đều là lỗi có thật đã gặp trong bài, không phải hướng dẫn chung chung.
+File này chỉ là trang chủ repo. Mọi nội dung được chấm điểm nằm trong [`submission/`](submission/).
