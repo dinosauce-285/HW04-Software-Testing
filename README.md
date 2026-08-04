@@ -25,7 +25,7 @@ Cập nhật lần cuối: 04/08/2026 — **xong Task 1 phần script cho cả 3
 | Failed | 27 / browser — FR-14: 11 · FR-01: 9 · FR-09: 7. **Tất cả đều do bug thật, không có fail do script** |
 | Test case không automate được | 0 |
 | Số lượt chạy browser | **9 / 9** ✅ |
-| Số bug báo cáo | 21 ứng viên · 27 test case fail chỉ vào chúng |
+| Số bug báo cáo | **18** — đã tạo đủ 18 GitHub Issue kèm ảnh |
 | Video demo Task 2 | ☐ |
 | Video demo Agent Skill | ☐ |
 
@@ -40,8 +40,8 @@ Cập nhật lần cuối: 04/08/2026 — **xong Task 1 phần script cho cả 3
 | 5 | FR-14 — ≥12 TC + data file | Task 1 | ✅ 15 TC · 2 CSV · 5 assertion pattern · 3 browser |
 | 6 | 9 HTML report (3 feature × 3 browser) | §6:83 | ✅ 9/9 |
 | 7 | Nhật ký review & fix AI | R4 | ✅ 5 mục + 4 mục khảo sát |
-| 8 | Bug report + GitHub Issues | R6 | ☐ |
-| 9 | Test case không automate được | R7 | ☐ |
+| 8 | Bug report + GitHub Issues | R6 | ✅ 18 bug · 18 issue · 16 ảnh |
+| 9 | Test case không automate được | R7 | ✅ 0 — automate được toàn bộ 50 TC |
 | 10 | Báo cáo chính | §14:149 | ☐ |
 | 11 | AI Audit Report | §9 | ☐ |
 | 12 | AI Critique (200–300 chữ) | §10 | ☐ |
