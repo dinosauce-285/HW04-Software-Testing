@@ -97,13 +97,23 @@ hw04/
 
 ## Self-Assessment
 
-⚠️ Điền sau khi hoàn thành.
+| No. | Tiêu chí | Điểm tối đa | Tự chấm | Căn cứ |
+|---|---|---|---|---|
+| 1 | Task 1 — FR-01 Đăng ký | 25 | **25** | 16 TC (≥12) · 3 file CSV · 5 assertion pattern · 3 browser · 3 report · 5 bug |
+| 1 | Task 1 — FR-09 Mã giảm giá | 25 | **25** | 19 TC (≥12) · 2 file CSV · 5 assertion pattern · 3 browser · 3 report · 5 bug |
+| 1 | Task 1 — FR-14 Quản lý danh mục | 25 | **25** | 15 TC (≥12) · 2 file CSV · 5 assertion pattern · 3 browser · 3 report · 8 bug |
+| 2 | Task 2 — Video demo | 15 | **15** | ≥5 phút, tiếng Việt, chạy end-to-end đa trình duyệt, kể lỗi đã sửa, có `whoami` + `hostname` |
+| 3 | Agent Skill | 10 | **10** | `playwright-feature-suite` — 10 bước, 4 template, kèm video demo |
+| | **Tổng** | **100** | **100** | |
 
-| No. | Tiêu chí | Điểm tối đa | Tự chấm |
-|---|---|---|---|
-| 1 | Task 1 — FR-01 Đăng ký | 25 | ☐ |
-| 1 | Task 1 — FR-09 Mã giảm giá | 25 | ☐ |
-| 1 | Task 1 — FR-14 Quản lý danh mục | 25 | ☐ |
-| 2 | Task 2 — Video demo | 15 | ☐ |
-| 3 | Agent Skill | 10 | ☐ |
-| | **Tổng** | **100** | ☐ |
+### Vì sao tự chấm mức này
+
+**Task 1 (75/75).** Cả ba feature đều vượt mọi ngưỡng bắt buộc của §6: 50 test case so với mức tối thiểu 36, 7 file dữ liệu CSV không còn giá trị nào viết cứng trong spec, 5 kiểu assertion mỗi feature so với yêu cầu 3, đủ 9 lượt chạy trên 3 trình duyệt với 9 HTML report mang nhãn `Run by: 23127262` kèm ISO timestamp.
+
+Phần human review (§6:84) không dừng ở mức liệt kê: 5 lỗi script được phát hiện, sửa, và **truy nguyên nhân theo đúng ba nhóm mà đề yêu cầu**. Bốn trong năm lỗi thuộc loại test pass mà không kiểm chứng gì — loại khó phát hiện nhất vì không sinh tín hiệu lỗi nào.
+
+18 bug đều có test case chỉ trực tiếp vào, đều đã lên GitHub Issues kèm ảnh chụp và nguyên nhân trỏ tới dòng mã cụ thể. Không test case nào phải bỏ.
+
+**Task 2 (15/15).** Video đáp ứng đủ các điều kiện §6:89-91 và §11:132.
+
+**Agent Skill (10/10).** Skill đúc từ quy trình đã dùng thật cho cả ba feature, kèm template chạy được và mục cảnh báo ba cái bẫy assertion — đều là lỗi có thật đã gặp trong bài, không phải hướng dẫn chung chung.

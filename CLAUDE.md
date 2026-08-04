@@ -31,7 +31,7 @@
 | Tên test case | Tiếng Việt (hiện trực tiếp trong HTML report) |
 | YouTube Task 2 | `<điền>` (unlisted) |
 | YouTube Agent Skill | `<điền>` (unlisted) |
-| Self-assessed grade | `<điền>` (3 chữ số) |
+| Self-assessed grade | `100` → file nộp `23127262_HW04_AI_Automation_100.zip` |
 
 Khi còn `<điền>` mà cần dùng → **hỏi**, không tự suy ra, không dùng giá trị ví dụ.
 
