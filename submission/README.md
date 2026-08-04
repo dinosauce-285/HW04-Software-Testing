@@ -97,7 +97,7 @@ hw04/
 ```
 
 
-**Khi đóng gói nộp bài:** nén nguyên thư mục `submission/`, thêm `playwright.config.ts` và `package.json` ở gốc. Đối chiếu đầy đủ ở [CHECKLIST.md](CHECKLIST.md).
+**Khi đóng gói nộp bài:** nén nguyên thư mục `submission/`, thêm 4 thứ ở gốc — `.claude/skills/` (Agent Skill, §7:96), `tools/`, `playwright.config.ts`, `package.json`. Bốn thứ này phải ở gốc mới chạy được, xem lý do ở [CHECKLIST.md](CHECKLIST.md) mục E.
 
 ## Self-Assessment
 

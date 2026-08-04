@@ -183,11 +183,20 @@ Có link → điền vào **4 chỗ**: file này · [`README.md`](README.md) · 
 ```
 23127262_HW04_AI_Automation_100/
 ├── submission/           nguyên thư mục này, kèm 8 file .pdf
+├── .claude/skills/       Agent Skill — §7:96 bắt nộp, 10 điểm
+├── tools/                extract-ai-audit.mjs — §9:119
 ├── playwright.config.ts  cấu hình 3 browser + stamp "Run by"
 └── package.json          khai dependency để chạy lại được
 ```
 
-Hai file ở gốc **không** chuyển vào `submission/` vì Playwright phân giải `testDir` và `outputFolder` theo vị trí config — dời đi là 9 report hiện có lệch đường dẫn. Đây là ngoại lệ kỹ thuật có chủ đích, không phải bỏ sót.
+**Bốn thứ ở gốc không chuyển vào `submission/` — đều là ngoại lệ kỹ thuật có chủ đích, không phải bỏ sót:**
+
+| Ở gốc | Vì sao không dời | Vẫn phải vào zip |
+|---|---|---|
+| `.claude/skills/` | Claude Code chỉ nạp skill từ đúng đường dẫn này; dời đi là skill hết hoạt động, video demo không quay được | ✅ §7:96 |
+| `tools/` | script sinh AI Audit, chạy từ gốc repo | ✅ §9:119 |
+| `playwright.config.ts` | Playwright phân giải `testDir` và `outputFolder` theo vị trí config; dời đi là 9 report lệch đường dẫn | ✅ |
+| `package.json` | npm cần nó ở gốc để `npm install` chạy được | ✅ |
 
 Không đưa vào zip: `sut/` (mã nguồn SUT, không phải sản phẩm của mình) · `survey/` (khảo sát nội bộ) · `artifacts/` (trang hỗ trợ làm bài) · `docs/` (đề bài gốc) · `node_modules/`.
 
