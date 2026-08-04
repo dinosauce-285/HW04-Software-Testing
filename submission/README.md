@@ -70,7 +70,8 @@ hw04/
 |   |   |-- Bug-Report.md          bug + link GitHub Issue (§6:85)
 |   |   \-- Not-Automated.md       TC không automate được + lý do (§6:85)
 |   |-- appendix/
-|   |   |-- AI-Audit-Report.md     log mọi prompt (§9)
+|   |   |-- AI-Audit-Report.md     bảng audit theo mẫu của Khoa (§9)
+|   |   |-- AI-Prompt-Log.md       21 lượt prompt nguyên văn (§9:114-117)
 |   |   |-- AI-Critique.md         200-300 chữ (§10)
 |   |   |-- Git-Commit-Log.md      quy ước commit + bảng đếm
 |   |   \-- git-log.txt            commit log dạng text (§14:154)

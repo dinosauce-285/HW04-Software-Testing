@@ -51,7 +51,7 @@ Chọn Playwright vì đề khuyến nghị (`2026.HW04.Automation Testing_En.md
 Mỗi tương tác AI phải được lưu: **tên công cụ · ngày giờ · prompt nguyên văn · output**.
 
 **Không ghi tay từng lượt.** Transcript đầy đủ đã nằm ở `~/.claude/projects/-home-qt-projects-hw04/*.jsonl`. Cơ chế:
-- **Chính** — Stop hook tự trích xuất khi kết thúc phiên, append vào `submission/appendix/AI-Audit-Report.md`.
+- **Chính** — Stop hook tự trích xuất khi kết thúc phiên, append vào `submission/appendix/AI-Prompt-Log.md` (nhật ký nguyên văn theo lượt); bảng audit theo mẫu của Khoa nằm ở `submission/appendix/AI-Audit-Report.md`, cập nhật tay.
 - **Dự phòng** — skill `/log-ai`, gọi tay khi phiên bị ngắt đột ngột hoặc cần lọc lại.
 
 Đề bài khuyến khích đúng cách này: *"you are encouraged to create a skill or rule that extracts the information above automatically after an AI session"* (§9:119).

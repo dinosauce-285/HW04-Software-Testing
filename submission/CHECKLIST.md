@@ -72,8 +72,8 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 
 | Mã | Điều khoản | File / bằng chứng | TT |
 |---|---|---|---|
-| A9.1 | §9:113 - câu khai báo *"I use AI tools for the following tasks"* | [`appendix/AI-Audit-Report.md`](appendix/AI-Audit-Report.md) mục "Khai báo" - có cả bản tiếng Anh | [x] |
-| A9.2 | §9:114-117 - mỗi lượt: **tên công cụ / ngày giờ / prompt nguyên văn / output** | cùng file - 21 lượt, đủ 4 trường | [~] chưa gồm phiên hiện tại |
+| A9.1 | §9:113 - khai báo có dùng AI | [`appendix/AI-Audit-Report.md`](appendix/AI-Audit-Report.md) mục 1 (checkbox Có) + mục 6 Mandatory Disclosure dán nguyên văn theo mẫu của Khoa | [x] |
+| A9.2 | §9:114-117 - mỗi lượt: **tên công cụ / ngày giờ / prompt nguyên văn / output** | [`appendix/AI-Prompt-Log.md`](appendix/AI-Prompt-Log.md) - 21 lượt, đủ 4 trường. Tách khỏi AI-Audit-Report vì mẫu của Khoa tổ chức theo artifact, không theo lượt | [~] chưa gồm phiên hiện tại |
 | A9.3 | §9:119 - *(khuyến khích)* skill/rule tự trích xuất sau phiên | `../tools/extract-ai-audit.mjs` | [x] |
 
 ### §10 AI Critique
@@ -145,9 +145,9 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 
 ---
 
-## C. Tám file cần xuất PDF
+## C. Chín file cần xuất PDF
 
-Đề (§14:149, §14:153) gọi tên ba file đầu. Năm file còn lại theo Policies P4 - *"those files"* = mọi file Markdown nộp kèm. Xuất thiếu là rủi ro §17:182.
+Đề (§14:149, §14:153) gọi tên ba file đầu. Sáu file còn lại theo Policies P4 - *"those files"* = mọi file Markdown nộp kèm. Xuất thiếu là rủi ro §17:182.
 
 | # | File | Bắt buộc bởi |
 |---|---|---|
@@ -158,7 +158,8 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | 5 | `report/AI-Review-Fix-Log.md` | P4 |
 | 6 | `report/Not-Automated.md` | P4 |
 | 7 | `appendix/Git-Commit-Log.md` | P4 |
-| 8 | `README.md` | P4 |
+| 8 | `appendix/AI-Prompt-Log.md` | P4 |
+| 9 | `README.md` | P4 |
 
 File này (`CHECKLIST.md`) là công cụ đối chiếu nội bộ, không nằm trong danh sách bắt buộc - xuất PDF cũng được, không xuất cũng không sao.
 
@@ -182,7 +183,7 @@ Có link -> điền vào **4 chỗ**: file này / [`README.md`](README.md) / `..
 
 ```
 23127262_HW04_AI_Automation_100/
-|-- submission/           nguyên thư mục này, kèm 8 file .pdf
+|-- submission/           nguyên thư mục này, kèm 9 file .pdf
 |-- .claude/skills/       Agent Skill - §7:96 bắt nộp, 10 điểm
 |-- tools/                extract-ai-audit.mjs - §9:119
 |-- playwright.config.ts  cấu hình 3 browser + stamp "Run by"
