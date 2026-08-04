@@ -46,7 +46,7 @@ test(featC): cover empty and duplicate category name
 
 Xuất trước khi nộp:
 ```bash
-git log --pretty=format:'%h | %ad | %s' --date=iso > deliverables/appendix/git-log.txt
+git log --pretty=format:'%h | %ad | %s' --date=iso > submission/appendix/git-log.txt
 ```
 
-✅ Đã xuất: `deliverables/appendix/git-log.txt`
+✅ Đã xuất: `submission/appendix/git-log.txt`

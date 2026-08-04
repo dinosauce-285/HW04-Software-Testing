@@ -11,7 +11,7 @@
  *   node tools/extract-ai-audit.mjs [đường-dẫn-thư-mục-transcript]
  *
  * Mặc định đọc ~/.claude/projects/<slug-thư-mục-dự-án>/*.jsonl và ghi đè
- * deliverables/appendix/AI-Audit-Report.md
+ * submission/appendix/AI-Audit-Report.md
  */
 
 import fs from 'node:fs';
@@ -22,7 +22,7 @@ const PROJECT = process.cwd();
 const SLUG = PROJECT.replace(/\//g, '-');
 const DEFAULT_DIR = path.join(os.homedir(), '.claude', 'projects', SLUG);
 const SRC_DIR = process.argv[2] ?? DEFAULT_DIR;
-const OUT = path.join(PROJECT, 'deliverables', 'appendix', 'AI-Audit-Report.md');
+const OUT = path.join(PROJECT, 'submission', 'appendix', 'AI-Audit-Report.md');
 
 /** Bỏ các khối do hệ thống chèn, chỉ giữ chữ người dùng thật sự gõ. */
 function cleanPrompt(text) {

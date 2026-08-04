@@ -51,7 +51,7 @@ Chọn Playwright vì đề khuyến nghị (`2026.HW04.Automation Testing_En.md
 Mỗi tương tác AI phải được lưu: **tên công cụ · ngày giờ · prompt nguyên văn · output**.
 
 **Không ghi tay từng lượt.** Transcript đầy đủ đã nằm ở `~/.claude/projects/-home-qt-projects-hw04/*.jsonl`. Cơ chế:
-- **Chính** — Stop hook tự trích xuất khi kết thúc phiên, append vào `deliverables/appendix/AI-Audit-Report.md`.
+- **Chính** — Stop hook tự trích xuất khi kết thúc phiên, append vào `submission/appendix/AI-Audit-Report.md`.
 - **Dự phòng** — skill `/log-ai`, gọi tay khi phiên bị ngắt đột ngột hoặc cần lọc lại.
 
 Đề bài khuyến khích đúng cách này: *"you are encouraged to create a skill or rule that extracts the information above automatically after an AI session"* (§9:119).
@@ -76,7 +76,7 @@ Xong một bước có ý nghĩa (một spec file chạy được, một lần c
 *(HW04 §14:154 — "Git commit log (text file)")*
 
 ```bash
-git log --pretty=format:'%h | %ad | %s' --date=iso > deliverables/appendix/git-log.txt
+git log --pretty=format:'%h | %ad | %s' --date=iso > submission/appendix/git-log.txt
 ```
 
 *Người dùng đã quyết **không** theo dõi ràng buộc "8 commit trải 4 ngày" của §12:136 — không nhắc lại, không đếm ngày.*
@@ -86,7 +86,7 @@ git log --pretty=format:'%h | %ad | %s' --date=iso > deliverables/appendix/git-l
 
 *"Report what the AI got wrong or missed — fragile selectors, weak or missing assertions, missing edge cases, or flaky waits — and explain **why** it missed them (prompt quality, model limitations, or characteristics of the feature)."*
 
-**Mỗi lần sửa code do AI sinh ra** → thêm ngay một dòng vào `deliverables/report/AI-Review-Fix-Log.md`:
+**Mỗi lần sửa code do AI sinh ra** → thêm ngay một dòng vào `submission/report/AI-Review-Fix-Log.md`:
 
 | Feature | File:dòng | AI sinh gì | Sai chỗ nào | Mình sửa thành | **Vì sao AI trượt** |
 
@@ -114,7 +114,7 @@ Và mỗi report phải mang `Run by: 23127262` + ISO timestamp — nhúng qua m
 *"Log such bugs both in the Markdown report and on your GitHub Issues page, attaching a screenshot to each issue."*
 
 Assertion fail lộ ra lỗi thật (không phải script sai) → làm đủ 3 việc, ngay lúc phát hiện:
-1. Thêm dòng vào `deliverables/report/Bug-Report.md`
+1. Thêm dòng vào `submission/report/Bug-Report.md`
 2. Tạo GitHub Issue trên repo bài làm
 3. Đính screenshot vào issue — **chụp ngay lúc thấy**, đừng chờ dựng lại *(quy tắc vận hành, đề chỉ đòi có screenshot)*
 
@@ -123,7 +123,7 @@ Số bug trong Markdown phải **khớp** số issue trên GitHub.
 ### R7 — Test case không automate được → ghi lý do ngay
 *(HW04 §6:85 — "Document any test cases you could not automate and explain why")*
 
-Bỏ qua / `test.skip` / không viết được case nào → ghi ngay vào `deliverables/report/Not-Automated.md` kèm lý do kỹ thuật. Không để trống rồi giải thích sau.
+Bỏ qua / `test.skip` / không viết được case nào → ghi ngay vào `submission/report/Not-Automated.md` kèm lý do kỹ thuật. Không để trống rồi giải thích sau.
 
 ### R8 — Bất biến khi viết hoặc sửa script
 *(HW04 §6:81-82)*
@@ -203,6 +203,6 @@ Không làm hộ, không tự nhắc mỗi phiên. Chỉ trả lời khi đượ
 | SUT (source, cách chạy) | `https://github.com/ttbhanh/eshop-sut` |
 | Cấu trúc thư mục, trạng thái, self-assessment | `README.md` |
 | Hành vi thật của SUT, bẫy selector | `survey/Survey-Report.md` |
-| Quy ước commit + bảng đếm | `deliverables/appendix/Git-Commit-Log.md` |
+| Quy ước commit + bảng đếm | `submission/appendix/Git-Commit-Log.md` |
 
 **Repo bài làm:** `https://github.com/dinosauce-285/HW04-Software-Testing` (public, remote `origin`, branch `main`)

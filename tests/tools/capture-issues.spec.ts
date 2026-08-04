@@ -7,7 +7,7 @@ import fs from 'node:fs';
  * Chạy: FEATURE=tools npx playwright test --project=chromium -g "issues"
  */
 
-const OUT = 'deliverables/evidence/issues';
+const OUT = 'submission/evidence/issues';
 const REPO = 'https://github.com/dinosauce-285/HW04-Software-Testing';
 
 test.beforeAll(() => fs.mkdirSync(OUT, { recursive: true }));

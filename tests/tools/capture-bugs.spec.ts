@@ -14,7 +14,7 @@ import path from 'node:path';
  * Bug chỉ ở tầng API → chụp phần test fail tương ứng trong HTML report.
  */
 
-const OUT = 'deliverables/evidence/bugs';
+const OUT = 'submission/evidence/bugs';
 const API = 'http://localhost:3000/api';
 
 test.beforeAll(() => fs.mkdirSync(OUT, { recursive: true }));

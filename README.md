@@ -73,7 +73,8 @@ hw04/
 ├── reports/                   ⭐ HTML report, mỗi lượt chạy một thư mục riêng (R5)
 │   └── <feature>-<browser>-<ISO-timestamp>/
 │
-├── deliverables/              ⭐ tài liệu nộp bài
+├── submission/                ⭐ tài liệu nộp bài — xem MANIFEST.md
+│   ├── MANIFEST.md            đối chiếu 8 mục bắt buộc §14 → file thật
 │   ├── report/
 │   │   ├── Main-Report.md         báo cáo chính
 │   │   ├── AI-Review-Fix-Log.md   AI sai gì · sửa gì · vì sao trượt (R4)
@@ -82,18 +83,21 @@ hw04/
 │   ├── appendix/
 │   │   ├── AI-Audit-Report.md     log mọi prompt (R1)
 │   │   ├── AI-Critique.md         200–300 chữ (§10)
-│   │   └── Git-Commit-Log.md      quy ước commit + log (R3)
+│   │   ├── Git-Commit-Log.md      quy ước commit + log (R3)
+│   │   └── git-log.txt            §14:154 — log dạng text
 │   └── evidence/
-│       ├── bugs/                  screenshot đính vào GitHub Issue
+│       ├── bugs/                  16 ảnh đính vào GitHub Issue
+│       ├── issues/                4 ảnh trang GitHub Issues (§14:155)
 │       └── runs/                  ảnh chụp lần chạy, dùng cho báo cáo
 │
+├── artifacts/                 trang HTML hỗ trợ làm bài — không phải bài nộp
 ├── .claude/skills/            Agent Skill playwright-feature-suite (§7, 10 điểm)
 ├── tools/                     extract-ai-audit.mjs — sinh AI Audit Report từ transcript
 ├── survey/                    khảo sát SUT ban đầu — không phải bài nộp
 └── sut/                       mã nguồn EShop (gitignore, không commit)
 ```
 
-**Khi đóng gói nộp bài** (làm sau, không làm bây giờ): lấy `deliverables/` + `reports/` + `README.md` + `tests/` + `data/` + bản PDF; bỏ `sut/`, `survey/`, `node_modules/`.
+**Khi đóng gói nộp bài:** danh sách chính xác nằm ở [submission/MANIFEST.md](submission/MANIFEST.md). Tóm tắt: `submission/` + `reports/` + `README.md` + `tests/` + `data/` + `playwright.config.ts` + bản PDF; bỏ `sut/`, `survey/`, `artifacts/`, `node_modules/`.
 
 ## Self-Assessment
 
