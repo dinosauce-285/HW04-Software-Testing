@@ -1,192 +1,202 @@
 ---
 name: playwright-feature-suite
-description: Dựng bộ automation test Playwright data-driven cho MỘT feature web, chạy đa trình duyệt và sinh HTML report có gắn nhãn tác giả. Dùng khi cần automate một chức năng (đăng ký, thanh toán, CRUD quản trị...) từ đầu tới lúc có report và bug report. Kích hoạt bởi các yêu cầu như "automate feature X", "viết test Playwright cho màn hình Y", "dựng suite data-driven", "chạy test trên 3 browser".
+description: Build a data-driven Playwright suite for ONE web feature, run it across browsers, and produce an HTML report stamped with the author's ID. Use when automating a feature (registration, checkout, admin CRUD...) end to end, through to the report and the bug report. Triggered by requests like "automate feature X", "write Playwright tests for screen Y", "build a data-driven suite", "run the tests on 3 browsers".
 ---
 
-# Dựng bộ test Playwright cho một feature
+# Build a Playwright suite for one feature
 
-Skill này đóng gói quy trình đã dùng để automate 3 feature của EShop trong HW04, cho ra
-50 test case, 9 HTML report và 18 bug được xác nhận.
+This skill packages the process used to automate three EShop features in HW04, which produced
+50 test cases, 9 HTML reports and 18 confirmed bugs.
 
-Nguyên tắc bao trùm: **không sinh script từ mô tả chức năng**. Mọi selector và mọi kỳ vọng
-phải bắt nguồn từ mã nguồn thật hoặc từ hành vi quan sát được khi chạy.
+Overriding rule: **never generate a script from a description of the feature.** Every selector
+and every expectation must come from real source code or from behaviour observed at runtime.
 
-## Bước 0 — Khảo sát trước, đừng đoán
+## Step 0 - Survey first, never guess
 
-Trước khi viết dòng test đầu tiên, chạy một script khảo sát dùng một lần để xác minh hành vi thật.
+Before writing the first line of test code, run a throwaway survey script to verify real behaviour.
 
-1. Đọc mã nguồn của màn hình (component, route, handler API, lược đồ CSDL).
-2. Viết script Playwright thăm dò, in ra: nhãn nút thật, `type` của các ô nhập, số phần tử
-   khớp mỗi selector dự định dùng, mã trạng thái HTTP của các endpoint liên quan.
-3. Ghi kết quả vào một file khảo sát — nó là căn cứ để viết assertion về sau.
+1. Read the screen's source (component, route, API handler, database schema).
+2. Write a probe Playwright script that prints: real button labels, the `type` of each input,
+   how many elements each intended selector matches, HTTP status codes of the related endpoints.
+3. Write the findings to a survey file - it is the evidence assertions are later written against.
 
-**Bốn thứ luôn phải kiểm ở bước này**, vì đây là những chỗ suy đoán hay sai nhất:
+**Four things to always check here**, because these are where guessing goes wrong most often:
 
-| Kiểm gì | Vì sao |
+| Check | Why |
 |---|---|
-| Nhãn nút và tiêu đề thật | UI tiếng Việt vẫn hay lẫn nút tiếng Anh (`Sign In`, `Login`) |
-| `type` của ô mật khẩu | Nhiều app khai `type="text"` → `input[type=password]` không khớp |
-| Số phần tử khớp mỗi selector CSS | Khớp 2 phần tử là strict mode violation |
-| Trạng thái sống qua reload được không | Dữ liệu trong context React mất khi `page.goto` |
+| Real button labels and headings | A Vietnamese UI often still ships English buttons (`Sign In`, `Login`) |
+| The `type` of the password field | Many apps declare `type="text"` -> `input[type=password]` never matches |
+| How many elements each CSS selector matches | Matching 2 elements is a strict mode violation |
+| Whether state survives a reload | Data held in React context is lost on `page.goto` |
 
-## Bước 1 — Liệt kê test case trước khi viết mã
+## Step 1 - List test cases before writing code
 
-Áp dụng phân vùng tương đương và phân tích giá trị biên. Với mỗi ràng buộc, sinh ít nhất
-ba trường hợp: **dưới biên · đúng biên · trên biên**. Lỗi `>` thay vì `>=` chỉ lộ ra ở ca "đúng biên".
+Apply equivalence partitioning and boundary value analysis. For every constraint, produce at
+least three cases: **below the boundary / on the boundary / above the boundary**. An off-by-one
+`>` instead of `>=` only shows up in the on-the-boundary case.
 
-Mục tiêu tối thiểu 12 test case mỗi feature, chia thành ba nhóm positive / negative / edge.
+Target at least 12 test cases per feature, split across positive / negative / edge.
 
-## Bước 2 — Tách dữ liệu ra file CSV
+## Step 2 - Move the data into a CSV file
 
-Một dòng là một test case. Các cột nên có:
+One row is one test case. Suggested columns:
 
 ```csv
-tc_id,loai,mo_ta,<các cột dữ liệu>,expect_*,ref_bug
+tc_id,type,description,<input columns>,expect_*,ref_bug
 ```
 
-- `expect_*` mã hoá kỳ vọng, để spec không chứa giá trị nào viết cứng.
-- `ref_bug` liên kết test case với mã bug, dùng cho thông báo lỗi và cho bug report.
-- Giá trị CSV không biểu diễn được (chuỗi 500 ký tự, email cần duy nhất mỗi lần chạy)
-  thì dùng placeholder `__LONG_500__`, `__UNIQUE__` rồi giãn ra trong helper đọc CSV.
+- `expect_*` encodes the expectation so the spec holds no literal values.
+- `ref_bug` links a case to a bug ID, used in failure messages and in the bug report.
+- For values CSV cannot express (a 500-character string, an email that must be unique per run)
+  use placeholders such as `__LONG_500__`, `__UNIQUE__` and expand them in the CSV helper.
 
-Đọc bằng `csv-parse/sync` với `trim: false` — nếu để `true` thì các test kiểm chính khoảng trắng
-sẽ mất dữ liệu đầu vào.
+Parse with `csv-parse/sync` and `trim: false` - with `true`, the cases that specifically test
+whitespace handling silently lose their input.
 
-## Bước 3 — Page Object dựng từ mã nguồn thật
+## Step 3 - Page Object built from real source
 
-Gom toàn bộ selector vào một lớp. Ghi chú ngay trong file mọi cái bẫy đã phát hiện ở bước 0,
-kèm số dòng mã nguồn — đó là thứ giúp người sau hiểu vì sao selector lại kỳ lạ như vậy.
+Collect every selector into one class. Document, in the file itself, each trap found in step 0
+along with the source line number - that is what tells the next reader why a selector looks odd.
 
-Page Object cung cấp hai loại phương thức:
-- **Hành động** — không assert, để test tự quyết định kỳ vọng.
-- **Đọc trạng thái** — trả về giá trị thô (số, chuỗi, boolean), không diễn giải.
+A Page Object exposes two kinds of method:
+- **Actions** - never assert; let the test decide what to expect.
+- **State readers** - return raw values (number, string, boolean), never an interpretation.
 
-## Bước 4 — Spec chạy vòng qua dữ liệu
+## Step 4 - A spec that loops over the data
 
 ```ts
 const cases = readCsv<Case>('feature.csv');
 for (const c of cases) {
-  test(`${c.tc_id} [${c.loai}] ${c.mo_ta}`, async ({ page }) => { /* ... */ });
+  test(`${c.tc_id} [${c.type}] ${c.description}`, async ({ page }) => { /* ... */ });
 }
 ```
 
-Tên test lấy từ CSV nên hiện trực tiếp trong HTML report, đọc là hiểu ngay đang kiểm gì.
+Test names come from the CSV, so they appear verbatim in the HTML report - a reader sees at a
+glance what each case checks.
 
-## Bước 5 — Assertion theo đặc tả đúng, không theo hành vi hiện tại
+## Step 5 - Assert against the correct specification, not current behaviour
 
-Đây là bước quyết định giá trị của cả bộ test.
+This is the step that decides whether the suite is worth anything.
 
-Nếu hệ thống trả 5.000.000 ₫ trong khi đặc tả nói 450.000 ₫ thì assertion viết **450.000**.
-Test sẽ fail, và chính cái fail đó là bằng chứng bug. Viết theo hành vi hiện tại thì
-report toàn màu xanh mà không phát hiện được gì.
+If the system returns 5,000,000 where the specification says 450,000, the assertion says
+**450,000**. The test fails, and that failure is the bug evidence. Written against current
+behaviour instead, the report is all green and finds nothing.
 
-Dùng ít nhất 3 kiểu assertion **khác nhau về bản chất**:
+Use at least 3 assertion patterns that differ **in kind**:
 
-| Kiểu | Ví dụ |
+| Pattern | Example |
 |---|---|
-| Đếm phần tử | `expect(rows).toHaveCount(n)` |
-| Nội dung text | `expect(el).toContainText('...')` |
-| Điều hướng | `expect(page).toHaveURL(/...$/)` |
-| Trạng thái control | `toBeDisabled` · `toHaveValue` · `toBeVisible` |
-| Tầng API | `expect(res.status()).toBe(400)` |
-| Bất biến nghiệp vụ | `expect(final).toBeGreaterThanOrEqual(0)` |
+| Element count | `expect(rows).toHaveCount(n)` |
+| Text content | `expect(el).toContainText('...')` |
+| Navigation | `expect(page).toHaveURL(/...$/)` |
+| Control state | `toBeDisabled` / `toHaveValue` / `toBeVisible` |
+| API layer | `expect(res.status()).toBe(400)` |
+| Business invariant | `expect(final).toBeGreaterThanOrEqual(0)` |
 
-Kèm thông báo lỗi mô tả **hệ quả nghiệp vụ**, không chỉ nói giá trị lệch:
+Attach a failure message describing the **business consequence**, not just the numeric delta:
 
 ```ts
-expect(discount, `${c.tc_id}: số tiền giảm sai — bug ${c.ref_bug}`).toBe(Number(c.expect_discount));
+expect(discount, `${c.tc_id}: wrong discount amount - bug ${c.ref_bug}`).toBe(Number(c.expect_discount));
 ```
 
-### Ba cái bẫy khiến assertion pass mà không kiểm gì
+### Three traps that make an assertion pass while checking nothing
 
-Đây là phần quan trọng nhất của skill này. Cả ba đều đã thực sự xảy ra.
+This is the most valuable part of the skill. All three actually happened.
 
-**1. `getByRole` chuẩn hoá khoảng trắng.** Chuẩn accessible name tự gộp khoảng trắng, nên
-`getByRole('cell', { name: 'Tên' })` vẫn khớp `'  Tên  '`. Muốn kiểm việc trim thì phải so
-trên `allTextContents()` nguyên văn.
+**1. `getByRole` normalises whitespace.** The accessible-name standard collapses whitespace, so
+`getByRole('cell', { name: 'Name' })` still matches `'  Name  '`. To test trimming you must
+compare against raw `allTextContents()`.
 
-**2. Matcher polling pass ở lần thử đầu.** `expect(page).toHaveURL(/\/register$/)` để kiểm
-"phải ở lại trang" luôn đúng, vì lần poll đầu diễn ra trước khi ứng dụng kịp điều hướng.
-Phải chờ trạng thái ổn định trước:
+**2. A polling matcher passes on its first attempt.** `expect(page).toHaveURL(/\/register$/)`
+used to assert "must stay on this page" is always true, because the first poll happens before
+the app has navigated. Wait for a settled state first:
 
 ```ts
 const navigated = await page.waitForURL('**/login', { timeout: 3000 }).then(() => true, () => false);
 expect(navigated).toBe(false);
 ```
 
-**3. Chờ phần tử tồn tại ở cả hai trạng thái.** Chờ một link hiển thị cả khi đã và chưa đăng nhập
-thì không xác nhận được gì. Phải chọn phần tử **chỉ** xuất hiện ở trạng thái mong muốn
-(nút "Thoát", tên người dùng), và đối chiếu nhánh `{user ? ... : ...}` trong mã nguồn.
+**3. Waiting on an element that exists in both states.** Waiting for a link that renders whether
+or not the user is signed in confirms nothing. Pick an element that appears **only** in the
+intended state (a "Sign out" button, the user's name), and check the `{user ? ... : ...}`
+branch in the source to confirm it.
 
-## Bước 6 — Cô lập dữ liệu giữa các test
+## Step 6 - Isolate data between tests
 
-Test dùng chung tài khoản hoặc dữ liệu tích lũy sẽ phụ thuộc thứ tự chạy và **fail sai lý do**,
-che mất bug thật.
+Tests sharing an account or accumulating data become order-dependent and **fail for the wrong
+reason**, masking the real bug.
 
-- `globalSetup` reset cơ sở dữ liệu về trạng thái seed trước mỗi lượt chạy.
-- Mỗi test tự tạo tài khoản riêng nếu feature có hạn mức tính theo người dùng.
-- Dữ liệu do test tạo thì gắn timestamp vào tên để không đụng nhau.
-- Đặt `retries: 0` — test fail vì bug thật là kết quả cần giữ nguyên, không được retry cho qua.
+- `globalSetup` resets the database to its seed state before every run.
+- Each test creates its own account when the feature has per-user quotas.
+- Data created by a test carries a timestamp in its name so runs never collide.
+- Set `retries: 0` - a test failing on a real bug is a result to keep, not to retry away.
 
-## Bước 7 — Chạy đa trình duyệt và lưu report
+## Step 7 - Run across browsers and keep every report
 
 ```ts
 // playwright.config.ts
 const RUN_AT = new Date().toISOString();
-const REPORT_DIR = `reports/${FEATURE}-${BROWSER}-${RUN_AT.replace(/[:.]/g, '-')}`;
+const REPORT_ROOT = process.env.REPORT_ROOT ?? 'reports';
+const REPORT_DIR = `${REPORT_ROOT}/${FEATURE}-${BROWSER}-${RUN_AT.replace(/[:.]/g, '-')}`;
 
 metadata: { 'Run by': STUDENT_ID, 'Run at (ISO)': RUN_AT },
 reporter: [['list'], ['html', { open: 'never', outputFolder: REPORT_DIR,
-             title: `Run by: ${STUDENT_ID} — ${FEATURE} — ${BROWSER} — ${RUN_AT}` }]],
+             title: `Run by: ${STUDENT_ID} - ${FEATURE} - ${BROWSER} - ${RUN_AT}` }]],
 ```
 
-Chạy **từng feature trên từng browser một lượt riêng**:
+Run **one feature on one browser per run**:
 
 ```bash
 for b in chromium firefox webkit; do FEATURE=$f BROWSER=$b npx playwright test --project=$b; done
 ```
 
-**Không bao giờ thêm cờ `--reporter` vào dòng lệnh** — nó đè toàn bộ danh sách reporter trong
-config, khiến lượt chạy không sinh report nào mà terminal vẫn báo thành công.
+**Never add a `--reporter` flag on the command line.** It replaces the entire reporter list from
+the config, so the run produces no report at all while the terminal still reports success.
+Listing `html` on the flag is not a fix either: the reporter then falls back to its default
+output folder and loses the custom title.
 
-Sau mỗi lượt: `ls reports/` để xác nhận thư mục mới thật sự xuất hiện. Lệnh `--list` cũng tạo
-thư mục report rỗng — nhớ xoá, kẻo đếm nhầm.
+After each run: `ls` the report root to confirm a new folder actually appeared. `--list` also
+creates an empty report folder - delete those, or the count will be wrong.
 
-## Bước 8 — Phân loại fail rồi mới báo bug
+Keep trial runs out of the submitted evidence with `REPORT_ROOT=demo-runs`.
 
-Với mỗi test fail, trả lời trước một câu hỏi: **bug thật hay script sai?**
+## Step 8 - Classify every failure before filing a bug
 
-| Dấu hiệu | Kết luận |
+For each failing test, answer one question first: **real bug, or broken script?**
+
+| Signal | Conclusion |
 |---|---|
-| Thông báo lỗi khớp đúng hệ quả nghiệp vụ đã dự đoán | Bug thật |
-| Fail vì "đã đạt giới hạn", "không tìm thấy phần tử" ở bước dựng bối cảnh | Script sai — sửa rồi chạy lại |
-| Fail chỉ ở một browser | Nghi lỗi tương thích hoặc timing — kiểm riêng |
-| Kết quả giống hệt trên cả 3 browser | Lỗi logic phía server |
+| The failure message matches the business consequence you predicted | Real bug |
+| Fails with "limit reached" or "element not found" during setup | Broken script - fix and rerun |
+| Fails on one browser only | Suspect compatibility or timing - investigate separately |
+| Identical result on all 3 browsers | Server-side logic defect |
 
-Chỉ khi đã chắc là bug thật mới ghi vào bug report và tạo issue.
+Only once it is confirmed a real bug does it go into the bug report and become an issue.
 
-### Chụp bằng chứng
+### Capturing evidence
 
-- Bug thấy được trên giao diện → chụp trực tiếp trong trình duyệt tại đúng khoảnh khắc lỗi hiện ra.
-- Bug chỉ ở tầng API → mở HTML report của lần chạy thật, click vào test fail, chụp phần Errors
-  (có `Expected` / `Received` và số dòng mã nguồn).
-- Đưa ảnh vào repo rồi nhúng vào issue bằng URL raw của GitHub — `gh` không upload ảnh trực tiếp được.
+- Bug visible in the UI -> screenshot the browser at the exact moment the defect appears.
+- API-only bug -> open the HTML report of the real run, click the failing test, screenshot the
+  Errors panel (it carries `Expected` / `Received` and the source line).
+- Commit the images, then embed them in the issue via GitHub raw URLs - `gh` cannot upload
+  images directly.
 
-## Bước 9 — Ghi lại mọi lần sửa script do AI sinh
+## Step 9 - Log every fix made to AI-generated script
 
-Mỗi lần sửa, ghi ngay một dòng: AI sinh gì · sai chỗ nào · sửa thành gì · **vì sao AI trượt**.
-Cột cuối không dựng lại được sau, và nó là phần phân tích có giá trị nhất.
+On each fix, immediately record one row: what the AI produced / what was wrong / what it became /
+**why the AI missed it**. That last column cannot be reconstructed later, and it is the most
+valuable analysis in the whole exercise.
 
-Phân loại nguyên nhân thành ba nhóm: `prompt` (thiếu ngữ cảnh) · `model` (giới hạn mô hình) ·
-`feature` (đặc thù hệ thống, chỉ biết khi đọc mã nguồn).
+Classify the cause into three groups: `prompt` (missing context) / `model` (model limitation) /
+`feature` (system-specific, knowable only by reading the source).
 
-## Checklist trước khi coi là xong
+## Checklist before calling it done
 
-- [ ] ≥ 12 test case, đủ cả positive / negative / edge
-- [ ] Không còn giá trị dữ liệu nào viết cứng trong file spec
-- [ ] ≥ 3 kiểu assertion khác nhau về bản chất
-- [ ] Chạy đủ 3 browser, mỗi lượt một thư mục report riêng
-- [ ] Report hiện đúng nhãn tác giả và ISO timestamp — mở ra xem tận mắt, không chỉ tin config
-- [ ] Mọi test fail đã được phân loại bug thật / script sai
-- [ ] Test pass đã bị chất vấn ngược: nó có còn pass không nếu hệ thống hỏng?
-- [ ] Nhật ký sửa script đã ghi đủ cột "vì sao AI trượt"
+- [ ] >= 12 test cases, covering positive / negative / edge
+- [ ] No literal data values left in any spec file
+- [ ] >= 3 assertion patterns that differ in kind
+- [ ] All 3 browsers run, each into its own report folder
+- [ ] Report shows the author stamp and ISO timestamp - open it and look, do not trust the config
+- [ ] Every failing test classified as real bug or broken script
+- [ ] Every passing test interrogated: would it still pass if the system were broken?
+- [ ] The fix log has the "why the AI missed it" column filled in
