@@ -1,10 +1,10 @@
-# Bug Report — EShop
+# Bug Report - EShop
 
-*(CLAUDE.md R6 · đề HW04 §6:85 — bug phải có mặt ở **cả** file này **và** GitHub Issues, mỗi issue kèm screenshot)*
+*(CLAUDE.md R6 / đề HW04 §6:85 - bug phải có mặt ở **cả** file này **và** GitHub Issues, mỗi issue kèm screenshot)*
 
-**18 bug** — số dòng trong bảng khớp đúng 18 issue trên https://github.com/dinosauce-285/HW04-Software-Testing/issues (kiểm 04/08/2026).
+**18 bug** - số dòng trong bảng khớp đúng 18 issue trên https://github.com/dinosauce-285/HW04-Software-Testing/issues (kiểm 04/08/2026).
 
-Mức nghiêm trọng: `Critical` · `Major` · `Minor` · `Trivial`
+Mức nghiêm trọng: `Critical` / `Major` / `Minor` / `Trivial`
 
 | ID | Feature | Tiêu đề | Mức | Test case phát hiện | Screenshot | GitHub Issue |
 |---|---|---|---|---|---|---|
@@ -31,17 +31,17 @@ Mức nghiêm trọng: `Critical` · `Major` · `Minor` · `Trivial`
 
 ## Phát hiện từ khảo sát nhưng CHƯA đưa vào bảng chính
 
-Ba mục dưới đây đã kiểm chứng thủ công qua `survey/survey.spec.ts` nhưng **chưa** có test case automation nào chỉ trực tiếp vào chúng, nên chưa tạo GitHub Issue — nguyên tắc: chỉ báo bug khi có assertion fail chứng minh.
+Ba mục dưới đây đã kiểm chứng thủ công qua `survey/survey.spec.ts` nhưng **chưa** có test case automation nào chỉ trực tiếp vào chúng, nên chưa tạo GitHub Issue - nguyên tắc: chỉ báo bug khi có assertion fail chứng minh.
 
 | Mã | Feature | Tóm tắt | Vì sao chưa đưa lên |
 |---|---|---|---|
-| A05 | FR-01 | Không có ô xác nhận mật khẩu | Đề bài mô tả FR-01 chỉ gồm họ tên, email, mật khẩu — không có cơ sở đặc tả để coi là lỗi |
+| A05 | FR-01 | Không có ô xác nhận mật khẩu | Đề bài mô tả FR-01 chỉ gồm họ tên, email, mật khẩu - không có cơ sở đặc tả để coi là lỗi |
 | B06 | FR-09 | Lượt dùng mã ghi bằng API call riêng sau checkout, chặn được | Đã phủ gián tiếp qua B04; tách riêng sẽ trùng lặp |
-| C07 | FR-14 | API có `PUT /api/categories/:id` nhưng UI không có nút Sửa | Là thiếu sót chức năng, không phải lỗi hành vi — đã nêu trong báo cáo chính |
+| C07 | FR-14 | API có `PUT /api/categories/:id` nhưng UI không có nút Sửa | Là thiếu sót chức năng, không phải lỗi hành vi - đã nêu trong báo cáo chính |
 
 ### Bảng ứng viên gốc
 
-Chi tiết và bằng chứng: `survey/Survey-Report.md §2–§4`.
+Chi tiết và bằng chứng: `survey/Survey-Report.md §2-§4`.
 
 | Mã | Feature | Tóm tắt | Mức đề xuất |
 |---|---|---|---|
@@ -51,7 +51,7 @@ Chi tiết và bằng chứng: `survey/Survey-Report.md §2–§4`.
 | A04 | FR-01 | Đăng ký trùng email được chấp nhận (`users.email` không UNIQUE) | Critical |
 | A05 | FR-01 | Không có ô xác nhận mật khẩu | Minor |
 | A06 | FR-01 | Mật khẩu lưu plaintext và trả về trong response đăng nhập | Critical |
-| B01 | FR-09 | Công thức giảm giá phần trăm sai — đơn 500.000₫ áp mã "giảm 10%" thành 5.000.000₫ | Critical |
+| B01 | FR-09 | Công thức giảm giá phần trăm sai - đơn 500.000 VND áp mã "giảm 10%" thành 5.000.000 VND | Critical |
 | B02 | FR-09 | Lỗi biên `>` thay vì `>=` ở `min_order_amount` | Major |
 | B03 | FR-09 | `POST /api/apply-coupon` không yêu cầu token | Major |
 | B04 | FR-09 | Gửi `user_id=null` là bỏ qua giới hạn lượt dùng | Critical |
@@ -62,9 +62,9 @@ Chi tiết và bằng chứng: `survey/Survey-Report.md §2–§4`.
 | C03 | FR-14 | Không lọc XSS, không giới hạn độ dài tên | Major |
 | C04 | FR-14 | Xóa không có hộp thoại xác nhận | Minor |
 | C05 | FR-14 | Xóa danh mục đang chứa sản phẩm, để lại sản phẩm mồ côi | Critical |
-| C06 | FR-14 | User thường tạo/xóa được danh mục — `authenticateToken` không kiểm role | Critical |
+| C06 | FR-14 | User thường tạo/xóa được danh mục - `authenticateToken` không kiểm role | Critical |
 | C07 | FR-14 | API có `PUT /api/categories/:id` nhưng UI không có nút Sửa | Minor |
-| C08 | FR-14 | Tên danh mục không được cắt khoảng trắng thừa hai đầu — lưu `'  Sách và Văn phòng phẩm  '` nguyên văn. *Phát hiện thêm khi viết TC08, không có trong khảo sát ban đầu* | Minor |
+| C08 | FR-14 | Tên danh mục không được cắt khoảng trắng thừa hai đầu - lưu `'  Sách và Văn phòng phẩm  '` nguyên văn. *Phát hiện thêm khi viết TC08, không có trong khảo sát ban đầu* | Minor |
 | C09 | FR-14 | `DELETE /api/categories/:id` với ID không tồn tại trả `200 Category deleted` thay vì `404`. *Phát hiện thêm khi viết TC13* | Minor |
 
 **Ngoài phạm vi 3 feature** (ghi nhận nhưng không đưa vào bug report chính): ô mật khẩu trang Login là `type="text"`; `setup_guide.md` ghi sai mật khẩu admin; doanh thu ở dashboard admin nhân đôi đơn `delivered`.

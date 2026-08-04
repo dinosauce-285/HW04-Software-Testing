@@ -1,6 +1,6 @@
-# Git Commit Log — HW04
+# Git Commit Log - HW04
 
-*(CLAUDE.md R2, R3 · đề HW04 §12 · Policies — "Version Control Requirements")*
+*(CLAUDE.md R2, R3 / đề HW04 §12 / Policies - "Version Control Requirements")*
 
 **Repo:** https://github.com/dinosauce-285/HW04-Software-Testing
 
@@ -12,12 +12,12 @@
 
 ## Bảng đếm
 
-⚠️ Cập nhật sau mỗi lần commit. Đếm bằng lệnh, không tin trí nhớ.
+[!] Cập nhật sau mỗi lần commit. Đếm bằng lệnh, không tin trí nhớ.
 
 | Chỉ số | Lệnh | Hiện tại | Cần đạt |
 |---|---|---|---|
-| Commit hợp lệ (đụng `.spec.*`) | `git log --oneline -- '*.spec.ts' '*.spec.js' \| wc -l` | 0 | ≥ 8 |
-| Số ngày riêng biệt | `git log --format=%ad --date=short -- '*.spec.ts' '*.spec.js' \| sort -u \| wc -l` | 0 | ≥ 4 |
+| Commit hợp lệ (đụng `.spec.*`) | `git log --oneline -- '*.spec.ts' '*.spec.js' \| wc -l` | 0 | >= 8 |
+| Số ngày riêng biệt | `git log --format=%ad --date=short -- '*.spec.ts' '*.spec.js' \| sort -u \| wc -l` | 0 | >= 4 |
 
 | Ngày | Số commit hợp lệ trong ngày | Nội dung |
 |---|---|---|
@@ -32,8 +32,8 @@ Conventional Commits, viết bằng tiếng Anh, **không** kèm trailer `Co-Aut
 <type>(<scope>): <mô tả ngắn, thức mệnh lệnh, không viết hoa đầu, không dấu chấm cuối>
 ```
 
-- `type` ∈ `feat` · `fix` · `docs` · `chore` · `refactor` · `test`
-- `scope` ∈ `featA` · `featB` · `featC` · `data` · `config` · `report` · `skill` · `appendix` · `repo`
+- `type`  thuoc:  `feat` / `fix` / `docs` / `chore` / `refactor` / `test`
+- `scope`  thuoc:  `featA` / `featB` / `featC` / `data` / `config` / `report` / `skill` / `appendix` / `repo`
 
 Ví dụ:
 ```
@@ -49,4 +49,4 @@ Xuất trước khi nộp:
 git log --pretty=format:'%h | %ad | %s' --date=iso > submission/appendix/git-log.txt
 ```
 
-✅ Đã xuất: `submission/appendix/git-log.txt`
+[x] Đã xuất: `submission/appendix/git-log.txt`

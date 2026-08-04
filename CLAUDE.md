@@ -100,7 +100,7 @@ Ghi tại thời điểm sửa, không gom cuối bài — cột "vì sao" khôn
 Playwright HTML reporter **ghi đè** `playwright-report/` mỗi lần chạy → chạy lượt sau là mất lượt trước. Vì vậy mọi lệnh chạy phải xuất ra thư mục riêng:
 
 ```
-submission/reports/<feature>-<browser>-<ISO-timestamp>/
+submission/html-reports/<feature>-<browser>-<ISO-timestamp>/
 ```
 
 Và mỗi report phải mang `Run by: 23127262` + ISO timestamp — nhúng qua metadata trong `playwright.config.ts`, không sửa tay file HTML.

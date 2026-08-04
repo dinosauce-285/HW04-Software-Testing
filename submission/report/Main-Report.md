@@ -1,8 +1,8 @@
-# Báo cáo chính — HW04 Automation Testing
+# Báo cáo chính - HW04 Automation Testing
 
-**Sinh viên:** Lý Quốc Thạnh — `23127262`
-**Môn:** Kiểm thử phần mềm 2026 · **Bài:** HW04 — Automation Testing
-**SUT:** EShop (https://github.com/ttbhanh/eshop-sut) · **Framework:** Playwright + Playwright HTML reporter
+**Sinh viên:** Lý Quốc Thạnh - `23127262`
+**Môn:** Kiểm thử phần mềm 2026 / **Bài:** HW04 - Automation Testing
+**SUT:** EShop (https://github.com/ttbhanh/eshop-sut) / **Framework:** Playwright + Playwright HTML reporter
 **Repo bài làm:** https://github.com/dinosauce-285/HW04-Software-Testing
 **Ngày thực hiện:** 04/08/2026
 
@@ -20,7 +20,7 @@ Ba feature kế thừa từ HW02, mỗi pool một feature theo yêu cầu §5 c
 
 ### Sai lệch giữa đề bài và hệ thống thực tế
 
-Đề gọi FR-14 là *"Category management (CRUD)"* (§4:59) nhưng giao diện Web Admin **chỉ có Thêm và Xóa, không có Sửa**. Backend vẫn có endpoint `PUT /api/categories/:id` (`server.js:257`) nhưng không màn hình nào gọi tới. Vì vậy bộ test của FR-14 không có nhóm Update; số lượng test case được bù bằng các trường hợp validate, phân quyền và ràng buộc dữ liệu — vẫn đạt 15 test case, vượt ngưỡng 12 của đề.
+Đề gọi FR-14 là *"Category management (CRUD)"* (§4:59) nhưng giao diện Web Admin **chỉ có Thêm và Xóa, không có Sửa**. Backend vẫn có endpoint `PUT /api/categories/:id` (`server.js:257`) nhưng không màn hình nào gọi tới. Vì vậy bộ test của FR-14 không có nhóm Update; số lượng test case được bù bằng các trường hợp validate, phân quyền và ràng buộc dữ liệu - vẫn đạt 15 test case, vượt ngưỡng 12 của đề.
 
 ---
 
@@ -34,9 +34,9 @@ cd sut/frontend-web   && npm install && npm run dev                          # W
 cd sut/frontend-admin && npm install && npm run dev                          # Admin :5174
 ```
 
-**Tài khoản:** admin `admin@eshop.com` / `Admin123!` · user `test@eshop.com` / `Test1234!`
+**Tài khoản:** admin `admin@eshop.com` / `Admin123!` / user `test@eshop.com` / `Test1234!`
 
-> `sut/setup_guide.md` ghi mật khẩu admin là `admin123` — **sai**, đăng nhập trả 401. Giá trị đúng nằm trong `sut/backend/database.js:92`.
+> `sut/setup_guide.md` ghi mật khẩu admin là `admin123` - **sai**, đăng nhập trả 401. Giá trị đúng nằm trong `sut/backend/database.js:92`.
 
 ### Chạy bộ test
 
@@ -50,11 +50,11 @@ for f in fr01-register fr09-coupon fr14-category; do
 done
 ```
 
-Tổng cộng **9 lượt chạy → 9 HTML report** trong `submission/reports/<feature>-<browser>-<ISO timestamp>/`.
+Tổng cộng **9 lượt chạy -> 9 HTML report** trong `submission/html-reports/<feature>-<browser>-<ISO timestamp>/`.
 
-> **Lưu ý quan trọng:** không được thêm cờ `--reporter` vào dòng lệnh — cờ này đè toàn bộ danh sách reporter khai báo trong `playwright.config.ts`, khiến lượt chạy **không sinh report nào** mà terminal vẫn báo thành công. Xem mục 7, lỗi #2.
+> **Lưu ý quan trọng:** không được thêm cờ `--reporter` vào dòng lệnh - cờ này đè toàn bộ danh sách reporter khai báo trong `playwright.config.ts`, khiến lượt chạy **không sinh report nào** mà terminal vẫn báo thành công. Xem mục 7, lỗi #2.
 
-Mỗi report mang nhãn `Run by: 23127262` kèm ISO timestamp ở tiêu đề và trong tab Metadata, nhúng qua trường `metadata` và `title` của config — **không sửa tay file HTML**.
+Mỗi report mang nhãn `Run by: 23127262` kèm ISO timestamp ở tiêu đề và trong tab Metadata, nhúng qua trường `metadata` và `title` của config - **không sửa tay file HTML**.
 
 `globalSetup` chạy `node sut/backend/database.js` trước mỗi lượt để đưa dữ liệu về trạng thái seed, đảm bảo 9 lượt chạy xuất phát từ cùng một điểm.
 
@@ -62,13 +62,13 @@ Mỗi report mang nhãn `Run by: 23127262` kèm ISO timestamp ở tiêu đề v�
 
 ## 3. Quy trình dùng AI theo từng bước
 
-Đề yêu cầu *"drive an AI tool — step by step, not with a single generic prompt"* (§6:81). Với **mỗi** feature, quy trình được chia thành 6 bước riêng biệt, mỗi bước là một lượt trao đổi độc lập với AI:
+Đề yêu cầu *"drive an AI tool - step by step, not with a single generic prompt"* (§6:81). Với **mỗi** feature, quy trình được chia thành 6 bước riêng biệt, mỗi bước là một lượt trao đổi độc lập với AI:
 
 | Bước | Nội dung | Sản phẩm |
 |---|---|---|
-| 1 | Từ đặc tả và hành vi quan sát được → liệt kê test case theo kỹ thuật phân vùng tương đương và giá trị biên | Danh sách test case |
-| 2 | Từ test case → rút ra bộ dữ liệu, tách thành cột | `data/*.csv` |
-| 3 | Từ **mã nguồn JSX thật** của màn hình → dựng page object, gom selector | `tests/pages/*.ts` |
+| 1 | Từ đặc tả và hành vi quan sát được -> liệt kê test case theo kỹ thuật phân vùng tương đương và giá trị biên | Danh sách test case |
+| 2 | Từ test case -> rút ra bộ dữ liệu, tách thành cột | `data/*.csv` |
+| 3 | Từ **mã nguồn JSX thật** của màn hình -> dựng page object, gom selector | `tests/pages/*.ts` |
 | 4 | Dựng khung spec chạy vòng qua dữ liệu CSV | `*.spec.ts` |
 | 5 | Thêm assertion cho từng nhóm test case | Assertion |
 | 6 | Chạy, đọc kết quả, phân loại fail, sửa script | Bộ test ổn định |
@@ -79,42 +79,42 @@ Toàn bộ prompt và output của các bước này được ghi trong `../appe
 
 Trước bước 1, hệ thống được khảo sát trực tiếp bằng một script Playwright riêng (`survey/survey.spec.ts`), kết quả ghi ở `survey/Survey-Report.md`. Việc này xuất phát từ một nhận định: AI không thể biết hành vi thật của hệ thống mà nó chưa từng thấy mã nguồn.
 
-Nhận định đó được kiểm chứng ngay trong lần khảo sát đầu tiên — 4 selector suy đoán từ tên chức năng đều sai:
+Nhận định đó được kiểm chứng ngay trong lần khảo sát đầu tiên - 4 selector suy đoán từ tên chức năng đều sai:
 
 | Suy đoán | Thực tế |
 |---|---|
 | Nút đăng nhập nhãn `Đăng nhập` | Web dùng `Sign In`, Admin dùng `Login` |
 | Ô mật khẩu trang Login khớp `input[type=password]` | Trang Login khai `type="text"` |
-| `.bg-gray-50` trỏ duy nhất tới khối mã giảm giá | Khớp 2 phần tử → strict mode violation |
+| `.bg-gray-50` trỏ duy nhất tới khối mã giảm giá | Khớp 2 phần tử -> strict mode violation |
 | Thêm giỏ xong `page.goto('/checkout')` giữ được giỏ | `CartContext` chỉ nằm trong bộ nhớ, reload là mất |
 
 Vì vậy **bước 3 luôn cung cấp mã JSX thật cho AI**, không mô tả chức năng bằng lời.
 
 ### Nguyên tắc viết assertion
 
-Assertion viết theo **đặc tả đúng**, không theo hành vi hiện tại của SUT. Ví dụ: đơn 500.000 ₫ áp mã giảm 10% thì test kỳ vọng 450.000 ₫, dù hệ thống đang trả 5.000.000 ₫. Test sẽ fail, và **chính cái fail đó là bằng chứng bug** — đúng tinh thần §6:85: *"wherever a failing assertion reveals a genuine defect, a bug report"*.
+Assertion viết theo **đặc tả đúng**, không theo hành vi hiện tại của SUT. Ví dụ: đơn 500.000  VND áp mã giảm 10% thì test kỳ vọng 450.000  VND, dù hệ thống đang trả 5.000.000  VND. Test sẽ fail, và **chính cái fail đó là bằng chứng bug** - đúng tinh thần §6:85: *"wherever a failing assertion reveals a genuine defect, a bug report"*.
 
 Hệ quả: mỗi test fail phải được phân loại rõ là **fail do bug thật** hay **fail do script sai**. Không được lặng lẽ sửa assertion cho pass.
 
 ---
 
-## 4. FR-01 — Đăng ký tài khoản
+## 4. FR-01 - Đăng ký tài khoản
 
-### 4.1 Test case — 16
+### 4.1 Test case - 16
 
 | Nhóm | Test case |
 |---|---|
-| Quy tắc mật khẩu (8) | TC01 đủ hoa-thường-số-ký tự đặc biệt · TC02 đúng 8 ký tự (biên dưới) · TC03 7 ký tự (dưới biên) · TC04 thiếu chữ hoa · TC05 thiếu chữ thường · TC06 thiếu số · TC07 thiếu ký tự đặc biệt · TC08 dùng dấu cách thay ký tự đặc biệt |
-| Email và trường bắt buộc (4) | TC09 email thiếu `@` · TC10 email thiếu tên miền · TC11 bỏ trống họ tên · TC12 bỏ trống email |
-| Trùng lặp và bảo mật (4) | TC13 đăng ký trùng email · TC14 API không validate · TC15 mật khẩu plaintext · TC16 trùng email qua giao diện |
+| Quy tắc mật khẩu (8) | TC01 đủ hoa-thường-số-ký tự đặc biệt / TC02 đúng 8 ký tự (biên dưới) / TC03 7 ký tự (dưới biên) / TC04 thiếu chữ hoa / TC05 thiếu chữ thường / TC06 thiếu số / TC07 thiếu ký tự đặc biệt / TC08 dùng dấu cách thay ký tự đặc biệt |
+| Email và trường bắt buộc (4) | TC09 email thiếu `@` / TC10 email thiếu tên miền / TC11 bỏ trống họ tên / TC12 bỏ trống email |
+| Trùng lặp và bảo mật (4) | TC13 đăng ký trùng email / TC14 API không validate / TC15 mật khẩu plaintext / TC16 trùng email qua giao diện |
 
-Phân bố: 3 positive · 8 negative · 5 edge.
+Phân bố: 3 positive / 8 negative / 5 edge.
 
-### 4.2 Dữ liệu — 3 file CSV
+### 4.2 Dữ liệu - 3 file CSV
 
-`data/fr01-password.csv` · `data/fr01-email.csv` · `data/fr01-account-api.csv`
+`data/fr01-password.csv` / `data/fr01-email.csv` / `data/fr01-account-api.csv`
 
-Cột `expect_accepted` và `expect_status` mã hóa kỳ vọng; cột `ref_bug` liên kết tới mã bug. Placeholder `__UNIQUE__` được giãn thành email duy nhất theo timestamp tại thời điểm chạy — nếu để email cố định trong CSV thì lần chạy thứ hai sẽ đụng dữ liệu của lần chạy trước.
+Cột `expect_accepted` và `expect_status` mã hóa kỳ vọng; cột `ref_bug` liên kết tới mã bug. Placeholder `__UNIQUE__` được giãn thành email duy nhất theo timestamp tại thời điểm chạy - nếu để email cố định trong CSV thì lần chạy thứ hai sẽ đụng dữ liệu của lần chạy trước.
 
 ### 4.3 Chuẩn dùng để viết assertion
 
@@ -124,9 +124,9 @@ Cột `expect_accepted` và `expect_status` mã hóa kỳ vọng; cột `ref_bug
 
 Test còn kiểm luôn sự tồn tại của dòng gợi ý này (`expect(passwordHint).toContainText('ký tự đặc biệt')`), để nếu SUT sửa đặc tả thì bộ test cũng biết.
 
-### 4.4 Assertion pattern — 5 loại
+### 4.4 Assertion pattern - 5 loại
 
-`toHaveURL` (điều hướng) · `toContainText` (nội dung) · `toBeVisible` / `not.toBeVisible` (hiển thị) · `res.status()` (mã HTTP) · `not.toHaveProperty` (cấu trúc dữ liệu response)
+`toHaveURL` (điều hướng) / `toContainText` (nội dung) / `toBeVisible` / `not.toBeVisible` (hiển thị) / `res.status()` (mã HTTP) / `not.toHaveProperty` (cấu trúc dữ liệu response)
 
 ### 4.5 Kết quả trên 3 browser
 
@@ -135,39 +135,39 @@ Test còn kiểm luôn sự tồn tại của dòng gợi ý này (`expect(passw
 | Passed | 7 | 7 | 7 |
 | Failed | 9 | 9 | 9 |
 
-Kết quả **giống hệt nhau** trên cả 3 browser → toàn bộ lỗi nằm ở logic ứng dụng, không có lỗi tương thích trình duyệt.
+Kết quả **giống hệt nhau** trên cả 3 browser -> toàn bộ lỗi nằm ở logic ứng dụng, không có lỗi tương thích trình duyệt.
 
-9 test fail tương ứng 5 bug: **A01** (regex mật khẩu mâu thuẫn — TC01, TC02, TC08), **A02** (email không validate — TC09, TC10), **A04** (trùng email — TC13, TC16), **A03** (API không validate — TC14), **A06** (mật khẩu plaintext — TC15).
+9 test fail tương ứng 5 bug: **A01** (regex mật khẩu mâu thuẫn - TC01, TC02, TC08), **A02** (email không validate - TC09, TC10), **A04** (trùng email - TC13, TC16), **A03** (API không validate - TC14), **A06** (mật khẩu plaintext - TC15).
 
 ---
 
-## 5. FR-09 — Mã giảm giá
+## 5. FR-09 - Mã giảm giá
 
-### 5.1 Test case — 19
+### 5.1 Test case - 19
 
 | Nhóm | Test case |
 |---|---|
-| Áp mã trên giao diện (13) | TC01 mã cố định 50k · TC02 mã cố định 100k · TC03 mã 10% cho đơn 500k · TC04 mã 10% tại đúng mức tối thiểu · TC05 đơn đúng mức tối thiểu 500k · TC06 dưới mức tối thiểu 1 đồng · TC07 mã hết hạn · TC08 mã không tồn tại · TC09 mã chỉ có khoảng trắng · TC10 mã nhập chữ thường · TC11 mã có khoảng trắng thừa · TC12 và TC12b đổi tổng tiền sau khi áp mã |
-| Phân quyền và giới hạn (6) | TC13 áp mã không cần đăng nhập · TC14 dùng quá số lần · TC15 né giới hạn bằng `user_id=null` · TC16 mã 2 lượt dùng lần thứ ba · TC17 tổng tiền do client gửi · TC18 tổng tiền âm |
+| Áp mã trên giao diện (13) | TC01 mã cố định 50k / TC02 mã cố định 100k / TC03 mã 10% cho đơn 500k / TC04 mã 10% tại đúng mức tối thiểu / TC05 đơn đúng mức tối thiểu 500k / TC06 dưới mức tối thiểu 1 đồng / TC07 mã hết hạn / TC08 mã không tồn tại / TC09 mã chỉ có khoảng trắng / TC10 mã nhập chữ thường / TC11 mã có khoảng trắng thừa / TC12 và TC12b đổi tổng tiền sau khi áp mã |
+| Phân quyền và giới hạn (6) | TC13 áp mã không cần đăng nhập / TC14 dùng quá số lần / TC15 né giới hạn bằng `user_id=null` / TC16 mã 2 lượt dùng lần thứ ba / TC17 tổng tiền do client gửi / TC18 tổng tiền âm |
 
-Phân bố: 3 positive · 8 negative · 8 edge.
+Phân bố: 3 positive / 8 negative / 8 edge.
 
-### 5.2 Dữ liệu — 2 file CSV
+### 5.2 Dữ liệu - 2 file CSV
 
-`data/fr09-coupon-ui.csv` chứa bộ **mã × tổng tiền × kết quả mong đợi** (`expect_discount` và `expect_final` tính sẵn theo công thức đúng). `data/fr09-coupon-api.csv` chứa các trường hợp tầng API.
+`data/fr09-coupon-ui.csv` chứa bộ **mã x tổng tiền x kết quả mong đợi** (`expect_discount` và `expect_final` tính sẵn theo công thức đúng). `data/fr09-coupon-api.csv` chứa các trường hợp tầng API.
 
 Dữ liệu mã giảm giá lấy từ seed `sut/backend/database.js:106-111`:
 
 | Mã | Loại | Giá trị | Đơn tối thiểu | Lượt/người | Hạn |
 |---|---|---|---|---|---|
-| `SAVE10` | percent | 10% | 300.000 ₫ | 1 | 2099 |
-| `BIGBUY` | fixed | 50.000 ₫ | 500.000 ₫ | 1 | 2099 |
-| `VIP100` | fixed | 100.000 ₫ | 300.000 ₫ | 2 | 2099 |
-| `EXPIRED` | percent | 20% | 100.000 ₫ | 1 | **2020** |
+| `SAVE10` | percent | 10% | 300.000  VND | 1 | 2099 |
+| `BIGBUY` | fixed | 50.000  VND | 500.000  VND | 1 | 2099 |
+| `VIP100` | fixed | 100.000  VND | 300.000  VND | 2 | 2099 |
+| `EXPIRED` | percent | 20% | 100.000  VND | 1 | **2020** |
 
-### 5.3 Assertion pattern — 5 loại
+### 5.3 Assertion pattern - 5 loại
 
-Giá trị số học (`toBe` trên số tiền giảm và thành tiền) · nội dung text · trạng thái (`toBeDisabled`, cờ áp mã) · mã HTTP · bất biến nghiệp vụ (`toBeGreaterThanOrEqual` — thành tiền không được âm)
+Giá trị số học (`toBe` trên số tiền giảm và thành tiền) / nội dung text / trạng thái (`toBeDisabled`, cờ áp mã) / mã HTTP / bất biến nghiệp vụ (`toBeGreaterThanOrEqual` - thành tiền không được âm)
 
 ### 5.4 Kết quả trên 3 browser
 
@@ -176,30 +176,30 @@ Giá trị số học (`toBe` trên số tiền giảm và thành tiền) · n�
 | Passed | 12 | 12 | 12 |
 | Failed | 7 | 7 | 7 |
 
-7 test fail tương ứng 5 bug: **B01** (công thức phần trăm sai — TC03, TC10), **B02** (lỗi biên — TC04, TC05), **B03** (endpoint công khai — TC13), **B04** (né giới hạn lượt dùng — TC15), **B05** (tổng tiền client tự đặt — TC17).
+7 test fail tương ứng 5 bug: **B01** (công thức phần trăm sai - TC03, TC10), **B02** (lỗi biên - TC04, TC05), **B03** (endpoint công khai - TC13), **B04** (né giới hạn lượt dùng - TC15), **B05** (tổng tiền client tự đặt - TC17).
 
-B01 là lỗi nghiêm trọng nhất trong toàn bộ bài: đơn hàng 500.000 ₫ áp mã "giảm 10%" ra **5.000.000 ₫**.
+B01 là lỗi nghiêm trọng nhất trong toàn bộ bài: đơn hàng 500.000  VND áp mã "giảm 10%" ra **5.000.000  VND**.
 
 ---
 
-## 6. FR-14 — Quản lý danh mục
+## 6. FR-14 - Quản lý danh mục
 
-### 6.1 Test case — 15
+### 6.1 Test case - 15
 
 | Nhóm | Test case |
 |---|---|
-| Thêm danh mục (10) | TC01 tên hợp lệ · TC02 tên tiếng Việt có dấu và ký tự `&` · TC03 tên rỗng · TC04 chỉ khoảng trắng · TC05 trùng tên · TC06 500 ký tự · TC07 payload XSS · TC08 khoảng trắng thừa hai đầu · TC09 và TC09b payload SQL injection |
-| Xóa và phân quyền (5) | TC10 xóa danh mục vừa tạo · TC11 xóa danh mục đang có sản phẩm · TC12 hộp thoại xác nhận · TC13 xóa ID không tồn tại · TC14 user thường tạo danh mục |
+| Thêm danh mục (10) | TC01 tên hợp lệ / TC02 tên tiếng Việt có dấu và ký tự `&` / TC03 tên rỗng / TC04 chỉ khoảng trắng / TC05 trùng tên / TC06 500 ký tự / TC07 payload XSS / TC08 khoảng trắng thừa hai đầu / TC09 và TC09b payload SQL injection |
+| Xóa và phân quyền (5) | TC10 xóa danh mục vừa tạo / TC11 xóa danh mục đang có sản phẩm / TC12 hộp thoại xác nhận / TC13 xóa ID không tồn tại / TC14 user thường tạo danh mục |
 
-Phân bố: 4 positive · 3 negative · 8 edge.
+Phân bố: 4 positive / 3 negative / 8 edge.
 
-### 6.2 Dữ liệu — 2 file CSV
+### 6.2 Dữ liệu - 2 file CSV
 
-`data/fr14-add-category.csv` · `data/fr14-delete-category.csv`. Placeholder `__LONG_500__` được giãn thành chuỗi 500 ký tự vì CSV không biểu diễn trực tiếp được.
+`data/fr14-add-category.csv` / `data/fr14-delete-category.csv`. Placeholder `__LONG_500__` được giãn thành chuỗi 500 ký tự vì CSV không biểu diễn trực tiếp được.
 
-### 6.3 Assertion pattern — 5 loại
+### 6.3 Assertion pattern - 5 loại
 
-`toHaveCount` (đếm dòng bảng) · nội dung text nguyên văn · `toHaveValue` / `toBeVisible` (trạng thái control) · mã HTTP · hộp thoại trình duyệt (`page.on('dialog')`)
+`toHaveCount` (đếm dòng bảng) / nội dung text nguyên văn / `toHaveValue` / `toBeVisible` (trạng thái control) / mã HTTP / hộp thoại trình duyệt (`page.on('dialog')`)
 
 ### 6.4 Kết quả trên 3 browser
 
@@ -214,7 +214,7 @@ Tỉ lệ fail của FR-14 cao nhất trong ba feature (11/15) vì màn hình n�
 
 ---
 
-## 7. Review script AI sinh — AI sai gì và vì sao
+## 7. Review script AI sinh - AI sai gì và vì sao
 
 Đây là phần trả lời trực tiếp yêu cầu §6:84. Chi tiết đầy đủ ở `AI-Review-Fix-Log.md`; dưới đây là tổng hợp và phân tích.
 
@@ -222,13 +222,13 @@ Tỉ lệ fail của FR-14 cao nhất trong ba feature (11/15) vì màn hình n�
 
 | # | Lỗi | Loại theo đề | Hậu quả |
 |---|---|---|---|
-| 1 | Kiểm việc cắt khoảng trắng bằng `getByRole('cell', { name })` | Assertion yếu | Test **pass** dù hệ thống không trim — chuẩn accessible name tự chuẩn hóa khoảng trắng |
+| 1 | Kiểm việc cắt khoảng trắng bằng `getByRole('cell', { name })` | Assertion yếu | Test **pass** dù hệ thống không trim - chuẩn accessible name tự chuẩn hóa khoảng trắng |
 | 2 | Chạy suite kèm cờ `--reporter=line` | Lỗi cấu hình | 3 lượt chạy **không sinh report nào** mà terminal vẫn báo thành công |
 | 3 | Kiểm "phải ở lại trang" bằng `expect(page).toHaveURL()` | Flaky wait | Toàn bộ nhóm negative **pass giả**; che mất 3 bug |
 | 4 | Mọi test dùng chung tài khoản seed | Phụ thuộc thứ tự | 3 test fail **sai lý do** (*"đã đạt giới hạn"*), che mất bug B01 |
 | 5 | Chờ link "Giỏ hàng" để xác nhận đã đăng nhập | Assertion yếu | Link hiển thị ở **cả hai** trạng thái; login hỏng thì lỗi nổ ở tận trang khác |
 
-Ba trong bốn loại lỗi mà đề nêu tên đều xuất hiện: **assertion yếu** (#1, #5), **flaky wait** (#3), **selector giòn** (4 lỗi ở mục 3). Loại còn lại — thiếu edge case — không xảy ra vì bước 1 của quy trình liệt kê test case trước khi sinh mã.
+Ba trong bốn loại lỗi mà đề nêu tên đều xuất hiện: **assertion yếu** (#1, #5), **flaky wait** (#3), **selector giòn** (4 lỗi ở mục 3). Loại còn lại - thiếu edge case - không xảy ra vì bước 1 của quy trình liệt kê test case trước khi sinh mã.
 
 ### 7.2 Vì sao AI không tự phát hiện
 
@@ -244,11 +244,11 @@ Phân theo ba nhóm nguyên nhân mà đề nêu:
 
 Bốn trong năm lỗi khiến test **xanh mà không kiểm chứng gì**. Chỉ có lỗi #2 fail lộ liễu, mà cũng phải chủ động chạy `ls reports/` mới thấy.
 
-Điều này đảo ngược trực giác thông thường về kiểm thử: với một bộ test do AI sinh, **kết quả pass mới là thứ cần nghi ngờ**, vì fail luôn tự báo còn pass thì im lặng. Cách phát hiện hiệu quả nhất trong bài này là **cố ý kiểm tra ngược**: với mỗi test pass, tự hỏi *"nó có còn pass không nếu hệ thống hỏng?"* — chính câu hỏi đó đã lôi ra lỗi #1 và #3.
+Điều này đảo ngược trực giác thông thường về kiểm thử: với một bộ test do AI sinh, **kết quả pass mới là thứ cần nghi ngờ**, vì fail luôn tự báo còn pass thì im lặng. Cách phát hiện hiệu quả nhất trong bài này là **cố ý kiểm tra ngược**: với mỗi test pass, tự hỏi *"nó có còn pass không nếu hệ thống hỏng?"* - chính câu hỏi đó đã lôi ra lỗi #1 và #3.
 
 ---
 
-## 8. Bug phát hiện — 18
+## 8. Bug phát hiện - 18
 
 Toàn bộ 18 bug đã được đăng lên GitHub Issues kèm ảnh chụp: https://github.com/dinosauce-285/HW04-Software-Testing/issues
 
@@ -263,15 +263,15 @@ Danh sách đầy đủ kèm mã bug, test case phát hiện, ảnh chụp và s
 
 ### Ba bug đáng chú ý nhất
 
-**B01 — mã giảm giá phần trăm làm đơn hàng đắt lên gấp 10 lần** (issue #6). Công thức `total × (1 − discount_value)` với `discount_value = 10` cho ra số tiền giảm **âm** 9 lần tổng đơn. Giao diện vẫn hiển thị *"Áp dụng thành công! Giảm 10%"* ngay bên trên dòng *"Tiết kiệm: -4,500,000 ₫"*. Đây là lỗi tính tiền, ảnh hưởng trực tiếp tới doanh thu và tới niềm tin của khách hàng.
+**B01 - mã giảm giá phần trăm làm đơn hàng đắt lên gấp 10 lần** (issue #6). Công thức `total x (1 - discount_value)` với `discount_value = 10` cho ra số tiền giảm **âm** 9 lần tổng đơn. Giao diện vẫn hiển thị *"Áp dụng thành công! Giảm 10%"* ngay bên trên dòng *"Tiết kiệm: -4,500,000  VND"*. Đây là lỗi tính tiền, ảnh hưởng trực tiếp tới doanh thu và tới niềm tin của khách hàng.
 
-**C06 — user thường quản lý được danh mục sản phẩm** (issue #16). Middleware `authenticateToken` chỉ xác minh chữ ký JWT mà không kiểm `role`. Toàn bộ nhóm endpoint quản trị đều thiếu bước này, nên phạm vi ảnh hưởng rộng hơn nhiều so với riêng FR-14.
+**C06 - user thường quản lý được danh mục sản phẩm** (issue #16). Middleware `authenticateToken` chỉ xác minh chữ ký JWT mà không kiểm `role`. Toàn bộ nhóm endpoint quản trị đều thiếu bước này, nên phạm vi ảnh hưởng rộng hơn nhiều so với riêng FR-14.
 
-**A01 — quy tắc mật khẩu mâu thuẫn với chính gợi ý của nó** (issue #1). Regex đòi **khoảng trắng** và **cấm** ký tự đặc biệt, trong khi dòng gợi ý ngay dưới ô nhập lại yêu cầu ký tự đặc biệt. Không mật khẩu nào thoả được cả hai. Hệ quả kép: người dùng làm đúng bị chặn, còn mật khẩu yếu `Test 1234` thì lọt.
+**A01 - quy tắc mật khẩu mâu thuẫn với chính gợi ý của nó** (issue #1). Regex đòi **khoảng trắng** và **cấm** ký tự đặc biệt, trong khi dòng gợi ý ngay dưới ô nhập lại yêu cầu ký tự đặc biệt. Không mật khẩu nào thoả được cả hai. Hệ quả kép: người dùng làm đúng bị chặn, còn mật khẩu yếu `Test 1234` thì lọt.
 
 ### Cách chụp bằng chứng
 
-Bug tái hiện được trên giao diện thì chụp trực tiếp bằng Playwright điều khiển trình duyệt thật. Bug chỉ tồn tại ở tầng API thì không có gì để chụp trên màn hình, nên script mở HTML report của lần chạy thật, click vào đúng test fail rồi chụp phần Errors — ảnh hiện `Expected` / `Received` kèm số dòng mã nguồn. Cách này gắn bằng chứng trực tiếp với lần chạy thật, không dựng lại bằng tay được.
+Bug tái hiện được trên giao diện thì chụp trực tiếp bằng Playwright điều khiển trình duyệt thật. Bug chỉ tồn tại ở tầng API thì không có gì để chụp trên màn hình, nên script mở HTML report của lần chạy thật, click vào đúng test fail rồi chụp phần Errors - ảnh hiện `Expected` / `Received` kèm số dòng mã nguồn. Cách này gắn bằng chứng trực tiếp với lần chạy thật, không dựng lại bằng tay được.
 
 Script chụp: `tests/tools/capture-bugs.spec.ts` và `tests/tools/capture-issues.spec.ts`.
 Ảnh: `../evidence/bugs/` (16 ảnh bug) và `../evidence/issues/` (4 ảnh trang GitHub Issues).
@@ -282,7 +282,7 @@ Script chụp: `tests/tools/capture-bugs.spec.ts` và `tests/tools/capture-issue
 
 **Không có.** Toàn bộ 50 test case đều automate được và đều chạy đủ trên 3 browser.
 
-Lý do đạt được điều này: cả ba feature đều thao tác trên dữ liệu mà bộ test tự tạo và tự kiểm soát được — tài khoản tạo qua API, danh mục tạo rồi xóa, mã giảm giá có sẵn trong seed. Không có trường hợp nào phụ thuộc email thật, cổng thanh toán thật, hay xác nhận của con người.
+Lý do đạt được điều này: cả ba feature đều thao tác trên dữ liệu mà bộ test tự tạo và tự kiểm soát được - tài khoản tạo qua API, danh mục tạo rồi xóa, mã giảm giá có sẵn trong seed. Không có trường hợp nào phụ thuộc email thật, cổng thanh toán thật, hay xác nhận của con người.
 
 Chi tiết: `Not-Automated.md`.
 
@@ -295,14 +295,14 @@ Chi tiết: `Not-Automated.md`.
 | Chỉ số | Giá trị |
 |---|---|
 | Feature | 3 |
-| Test case automate | 50 (FR-01: 16 · FR-09: 19 · FR-14: 15) |
+| Test case automate | 50 (FR-01: 16 / FR-09: 19 / FR-14: 15) |
 | File dữ liệu CSV | 7 |
 | Assertion pattern mỗi feature | 5 |
-| Lượt chạy browser | 9 (3 feature × 3 browser) |
+| Lượt chạy browser | 9 (3 feature x 3 browser) |
 | HTML report | 9 |
 | Lượt thực thi test case | 150 |
 | Pass / Fail mỗi browser | 23 / 27 |
-| Bug phát hiện | 18 (8 Critical · 6 Major · 4 Minor) |
+| Bug phát hiện | 18 (8 Critical / 6 Major / 4 Minor) |
 | GitHub Issue | 18 |
 | Test case không automate được | 0 |
 | Lỗi script tự phát hiện và sửa | 5 |
@@ -311,10 +311,10 @@ Chi tiết: `Not-Automated.md`.
 
 27 trên 50 test case fail. Con số này cao vì hệ thống được thiết kế có chủ đích để chứa lỗi (`sut/setup_guide.md` nói rõ điều này), nhưng phân bố của chúng vẫn cho thấy một quy luật rõ: **phần lớn lỗi nằm ở chỗ thiếu kiểm tra dữ liệu ở tầng server**. Chỗ nào frontend có validate thì server lại không, nên gọi thẳng API là bỏ qua được toàn bộ. Ba bug Critical nặng nhất (B01, B05, C06) đều thuộc tầng backend.
 
-Một quan sát khác: kết quả **giống hệt nhau trên cả 3 browser** ở cả ba feature. Với một ứng dụng React đơn giản như EShop, chạy đa trình duyệt không phát hiện thêm lỗi nào — nó xác nhận rằng lỗi nằm ở logic chứ không ở tầng render.
+Một quan sát khác: kết quả **giống hệt nhau trên cả 3 browser** ở cả ba feature. Với một ứng dụng React đơn giản như EShop, chạy đa trình duyệt không phát hiện thêm lỗi nào - nó xác nhận rằng lỗi nằm ở logic chứ không ở tầng render.
 
 ### Nhận xét về việc dùng AI
 
-Bộ script này gần như hoàn toàn do AI sinh, nhưng không dòng nào được giữ lại mà chưa qua kiểm chứng bằng cách chạy thật. Giá trị của AI thể hiện rõ nhất ở khối lượng — dựng 50 test case, 7 file dữ liệu và 3 page object trong một buổi làm việc. Giới hạn của nó thể hiện rõ nhất ở khâu **xác minh**: 4 trong 5 lỗi đã sửa đều là test pass mà không kiểm chứng gì, và không lỗi nào tự báo.
+Bộ script này gần như hoàn toàn do AI sinh, nhưng không dòng nào được giữ lại mà chưa qua kiểm chứng bằng cách chạy thật. Giá trị của AI thể hiện rõ nhất ở khối lượng - dựng 50 test case, 7 file dữ liệu và 3 page object trong một buổi làm việc. Giới hạn của nó thể hiện rõ nhất ở khâu **xác minh**: 4 trong 5 lỗi đã sửa đều là test pass mà không kiểm chứng gì, và không lỗi nào tự báo.
 
 Kết luận rút ra: trong kiểm thử tự động, khoảng cách giữa *"script chạy được"* và *"script kiểm được đúng thứ cần kiểm"* là rất lớn, và AI hiện chỉ đảm bảo được vế đầu. Phân tích đầy đủ ở `../appendix/AI-Critique.md`.

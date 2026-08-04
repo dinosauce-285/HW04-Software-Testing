@@ -14,8 +14,8 @@ const RUN_AT = new Date().toISOString();
 const FEATURE = process.env.FEATURE ?? 'all';
 const BROWSER = process.env.BROWSER ?? 'all';
 
-// submission/reports/<feature>-<browser>-<ISO timestamp>/  — dấu ':' trong ISO không hợp lệ trên một số FS
-const REPORT_DIR = `submission/reports/${FEATURE}-${BROWSER}-${RUN_AT.replace(/[:.]/g, '-')}`;
+// submission/html-reports/<feature>-<browser>-<ISO timestamp>/  — dấu ':' trong ISO không hợp lệ trên một số FS
+const REPORT_DIR = `submission/html-reports/${FEATURE}-${BROWSER}-${RUN_AT.replace(/[:.]/g, '-')}`;
 
 export default defineConfig({
   testDir: './submission/tests',

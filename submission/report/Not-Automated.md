@@ -1,6 +1,6 @@
 # Test case không automate được
 
-*(CLAUDE.md R7 · đề HW04 §6:85 — "Document any test cases you could not automate and explain why")*
+*(CLAUDE.md R7 / đề HW04 §6:85 - "Document any test cases you could not automate and explain why")*
 
 Ghi ngay khi quyết định bỏ qua / `test.skip` / không viết được. Lý do phải là lý do **kỹ thuật cụ thể**, không phải "không kịp thời gian".
 
@@ -8,7 +8,7 @@ Ghi ngay khi quyết định bỏ qua / `test.skip` / không viết được. L�
 
 | # | Feature | Test case | Lý do không automate được | Đã kiểm thủ công? |
 |---|---|---|---|---|
-| — | — | *(không có)* | — | — |
+| - | - | *(không có)* | - | - |
 
 ## Vì sao đạt được 100%
 
@@ -20,7 +20,7 @@ Cả ba feature đều thao tác trên dữ liệu mà bộ test tự tạo và 
 | FR-09 Mã giảm giá | Tài khoản + giỏ hàng + mã | Tài khoản mới mỗi test (`tests/fixtures/account.ts`); mã lấy từ seed; giỏ hàng thêm bằng click |
 | FR-14 Danh mục | Danh mục | Tự thêm rồi tự xóa trong cùng một test |
 
-Không trường hợp nào phụ thuộc email thật, cổng thanh toán thật, CAPTCHA, hay xác nhận của con người — đó mới là những thứ thường buộc phải kiểm thủ công.
+Không trường hợp nào phụ thuộc email thật, cổng thanh toán thật, CAPTCHA, hay xác nhận của con người - đó mới là những thứ thường buộc phải kiểm thủ công.
 
 ## Hai hạn chế đã lường trước và xử lý được
 
