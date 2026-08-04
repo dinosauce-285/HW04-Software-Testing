@@ -14,7 +14,7 @@
 
 ## Test Summary
 
-Cập nhật lần cuối: 04/08/2026 — **xong Task 1 phần script cho cả 3 feature**.
+Cập nhật lần cuối: 04/08/2026 — **Task 1 hoàn tất**.
 
 | Chỉ số | Giá trị |
 |---|---|
@@ -40,9 +40,9 @@ Cập nhật lần cuối: 04/08/2026 — **xong Task 1 phần script cho cả 3
 | 5 | FR-14 — ≥12 TC + data file | Task 1 | ✅ 15 TC · 2 CSV · 5 assertion pattern · 3 browser |
 | 6 | 9 HTML report (3 feature × 3 browser) | §6:83 | ✅ 9/9 |
 | 7 | Nhật ký review & fix AI | R4 | ✅ 5 mục + 4 mục khảo sát |
-| 8 | Bug report + GitHub Issues | R6 | ✅ 18 bug · 18 issue · 16 ảnh |
+| 8 | Bug report + GitHub Issues | R6 | ✅ 18 bug · 18 issue · 16 ảnh bug + 4 ảnh trang Issues |
 | 9 | Test case không automate được | R7 | ✅ 0 — automate được toàn bộ 50 TC |
-| 10 | Báo cáo chính | §14:149 | ☐ |
+| 10 | Báo cáo chính | §14:149 | ✅ 10 mục, ~3.600 từ |
 | 11 | AI Audit Report | §9 | ☐ |
 | 12 | AI Critique (200–300 chữ) | §10 | ☐ |
 | 13 | Git commit log (text file) | §14:154 | ☐ |
