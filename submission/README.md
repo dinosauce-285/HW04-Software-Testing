@@ -14,7 +14,7 @@
 
 ## Test Summary
 
-Cập nhật lần cuối: 04/08/2026 - **Task 1 hoàn tất**.
+Cập nhật lần cuối: 04/08/2026 - **Task 1 và Task 2 hoàn tất**.
 
 | Chỉ số | Giá trị |
 |---|---|
@@ -26,8 +26,8 @@ Cập nhật lần cuối: 04/08/2026 - **Task 1 hoàn tất**.
 | Test case không automate được | 0 |
 | Số lượt chạy browser | **9 / 9** [x] |
 | Số bug báo cáo | **18** - đã tạo đủ 18 GitHub Issue kèm ảnh |
-| Video demo Task 2 | [ ] chờ quay - xem [CHECKLIST.md](CHECKLIST.md) mục D |
-| Video demo Agent Skill | [ ] chờ quay |
+| Video demo Task 2 | [x] https://youtu.be/Vh_Qu7MG8tc |
+| Video demo Agent Skill | [x] https://youtu.be/GsoKs7q_q4M |
 
 ## Trạng thái hạng mục
 
@@ -42,12 +42,12 @@ Cập nhật lần cuối: 04/08/2026 - **Task 1 hoàn tất**.
 | 7 | Nhật ký review & fix AI | R4 | [x] 5 mục + 4 mục khảo sát |
 | 8 | Bug report + GitHub Issues | R6 | [x] 18 bug / 18 issue / 16 ảnh bug + 4 ảnh trang Issues |
 | 9 | Test case không automate được | R7 | [x] 0 - automate được toàn bộ 50 TC |
-| 10 | Báo cáo chính | §14:149 | [x] 10 mục, ~3.600 từ |
+| 10 | Báo cáo chính | §14:149 | [x] 12 mục, ~4.000 từ |
 | 11 | AI Audit Report | §9 | [x] 21 lượt / sinh tự động từ transcript |
 | 12 | AI Critique (200-300 chữ) | §10 | [x] 299 chữ |
 | 13 | Git commit log (text file) | §14:154 | [x] `git-log.txt` |
-| 14 | Video demo Task 2 (>=5 phút) | Task 2 | [ ] |
-| 15 | Agent Skill + video demo | §7 | [~] skill xong / video chờ quay |
+| 14 | Video demo Task 2 (>=5 phút) | Task 2 | [x] https://youtu.be/Vh_Qu7MG8tc |
+| 15 | Agent Skill + video demo | §7 | [x] skill + https://youtu.be/GsoKs7q_q4M |
 | 16 | Xuất PDF toàn bộ `.md` | Policies | [ ] *(người dùng tự làm)* |
 | 17 | Đóng gói `23127262_HW04_AI_Automation_<grade>.zip` | §14:145 | [ ] *(người dùng tự làm)* |
 

@@ -48,17 +48,17 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 
 | Mã | Điều khoản | File / bằng chứng | TT |
 |---|---|---|---|
-| A6.10 | §6:89 - YouTube **unlisted**, **>= 5 phút**, thuyết minh **tiếng Việt** | link ở mục D | [ ] |
-| A6.11 | §6:89 - chạy **một** script end-to-end, gồm cả đa browser và HTML report | kịch bản: `../artifacts/task2-video-script.html` cảnh 4-5 | [ ] |
-| A6.12 | §6:90 - kể **>= 1 lỗi đã sửa** trong script AI sinh | nguồn: [`report/AI-Review-Fix-Log.md`](report/AI-Review-Fix-Log.md) mục #2 | [ ] |
-| A6.13 | §6:91 - face-cam **hoặc** terminal chạy `whoami` + `hostname` | kịch bản cảnh 1 | [ ] |
+| A6.10 | §6:89 - YouTube **unlisted**, **>= 5 phút**, thuyết minh **tiếng Việt** | link ở mục D | [x] |
+| A6.11 | §6:89 - chạy **một** script end-to-end, gồm cả đa browser và HTML report | FR-09 trên 3 browser + mở HTML report | [x] |
+| A6.12 | §6:90 - kể **>= 1 lỗi đã sửa** trong script AI sinh | lỗi #2 - cờ `--reporter` đè config, xem [`report/AI-Review-Fix-Log.md`](report/AI-Review-Fix-Log.md) | [x] |
+| A6.13 | §6:91 - face-cam **hoặc** terminal chạy `whoami` + `hostname` | mở đầu video Task 2 | [x] |
 
 ### §7 Agent Skill
 
 | Mã | Điều khoản | File / bằng chứng | TT |
 |---|---|---|---|
 | A7.1 | §7:95 - xây skill áp dụng được quy trình này cho feature khác | `../.claude/skills/playwright-feature-suite/` - SKILL.md + 4 template | [x] |
-| A7.2 | §7:96 - nộp skill **kèm video demo** dùng skill trên một feature hoàn chỉnh | link ở mục D | [ ] |
+| A7.2 | §7:96 - nộp skill **kèm video demo** dùng skill trên một feature hoàn chỉnh | link ở mục D - demo trên FR-05, feature chưa nộp | [x] |
 
 ### §8 Công cụ
 
@@ -88,7 +88,7 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | Mã | Điều khoản | File / bằng chứng | TT |
 |---|---|---|---|
 | A11.1 | §11:131 - HTML report chứa `Run by: {ID}` **kèm ISO timestamp** | 9 report - `Run at (ISO)` trong tab Metadata, không sửa tay HTML | [x] |
-| A11.2 | §11:132 - video có giọng của chính mình + face-cam hoặc `whoami`/`hostname` | trùng A6.13 - cùng một điều kiện, hai chỗ nhắc | [ ] |
+| A11.2 | §11:132 - video có giọng của chính mình + face-cam hoặc `whoami`/`hostname` | trùng A6.13 - cùng một điều kiện, hai chỗ nhắc | [x] |
 
 ### §12 Git
 
@@ -103,15 +103,15 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | Mã | Điều khoản | File / bằng chứng | TT |
 |---|---|---|---|
 | A14.1 | §14:145 - tên file `<MSSV>_HW04_AI_Automation_<grade>.zip` | `23127262_HW04_AI_Automation_100.zip` | [ ] khi đóng gói |
-| A14.2 | §14:149 - báo cáo chính (**md + PDF**), gồm cả automation report và phần review/gap analysis | [`report/Main-Report.md`](report/Main-Report.md) - 10 mục, §7 là gap analysis | [x] md / [ ] pdf |
+| A14.2 | §14:149 - báo cáo chính (**md + PDF**), gồm cả automation report và phần review/gap analysis | [`report/Main-Report.md`](report/Main-Report.md) - 12 mục, §7 là gap analysis, §11-12 là Task 2 và Agent Skill | [x] md / [ ] pdf |
 | A14.3 | §14:150 - link repo công khai (script, data file, HTML report) | mục D + [`README.md`](README.md) | [x] |
 | A14.4 | §14:151 - HTML report đa browser | [`html-reports/`](html-reports/) | [x] |
-| A14.5 | §14:152 - link video YouTube unlisted | mục D | [ ] |
+| A14.5 | §14:152 - link video YouTube unlisted | mục D + [`report/Main-Report.md`](report/Main-Report.md) §11-12 | [x] |
 | A14.6 | §14:153 - AI Critique (**md + PDF**) | [`appendix/AI-Critique.md`](appendix/AI-Critique.md) | [x] md / [ ] pdf |
 | A14.7 | §14:153 - AI Audit Report (**md + PDF**) | [`appendix/AI-Audit-Report.md`](appendix/AI-Audit-Report.md) | [~] md / [ ] pdf |
 | A14.8 | §14:154 - git commit log (file **text**) | [`appendix/git-log.txt`](appendix/git-log.txt) - file `.txt` riêng, **không** gộp vào `.md` | [~] |
 | A14.9 | §14:155 - bug report + ảnh trang GitHub Issues | [`report/Bug-Report.md`](report/Bug-Report.md) + [`evidence/issues/`](evidence/issues/) | [x] |
-| A14.10 | §14:156 - `README.md` có bảng tự đánh giá **và** test summary (số feature / TC automate/chạy/pass/fail / số lượt browser / số bug / link video) | [`README.md`](README.md) | [~] thiếu link video |
+| A14.10 | §14:156 - `README.md` có bảng tự đánh giá **và** test summary (số feature / TC automate/chạy/pass/fail / số lượt browser / số bug / link video) | [`README.md`](README.md) | [x] |
 | A14.11 | §14:157 - tài liệu hỗ trợ khác | [`report/AI-Review-Fix-Log.md`](report/AI-Review-Fix-Log.md) / [`report/Not-Automated.md`](report/Not-Automated.md) / [`appendix/Git-Commit-Log.md`](appendix/Git-Commit-Log.md) / file này | [x] |
 
 ### §17 Quy định khác
@@ -172,8 +172,8 @@ File này (`CHECKLIST.md`) là công cụ đối chiếu nội bộ, không nằ
 | Link | Giá trị |
 |---|---|
 | Repo bài làm (public) | https://github.com/dinosauce-285/HW04-Software-Testing |
-| Video Task 2 (unlisted, >= 5 phút) | `<điền>` |
-| Video Agent Skill (unlisted) | `<điền>` |
+| Video Task 2 (unlisted, >= 5 phút) | https://youtu.be/Vh_Qu7MG8tc |
+| Video Agent Skill (unlisted) | https://youtu.be/GsoKs7q_q4M |
 
 Có link -> điền vào **4 chỗ**: file này / [`README.md`](README.md) / `../CLAUDE.md` §1 / mục Task 2 của [`report/Main-Report.md`](report/Main-Report.md).
 
@@ -205,16 +205,16 @@ Không đưa vào zip: `sut/` (mã nguồn SUT, không phải sản phẩm của
 
 ## F. Kết luận - còn thiếu thật sự
 
-**Sáu việc chưa xong, theo thứ tự phụ thuộc:**
+**Bốn việc chưa xong, theo thứ tự phụ thuộc:**
 
 | # | Việc | Điều khoản | Chặn bởi |
 |---|---|---|---|
-| 1 | Quay 2 video | A6.10-A6.13 / A7.2 | - |
-| 2 | Thêm 1 dòng khẳng định không trùng feature với thành viên nhóm vào Main-Report §1 | A5.3 / P9 | - |
-| 3 | Viết mục Task 2 + Agent Skill vào Main-Report; điền 2 link vào 4 chỗ | A14.5 / A14.10 | có video |
-| 4 | Sinh lại AI Audit Report sau phiên AI cuối | A2.3 / A9.2 / A14.7 | mọi việc dùng AI đã xong |
-| 5 | Xuất lại `git-log.txt` sau commit cuối | A12.3 / A14.8 / P8 | mọi commit đã xong |
-| 6 | Xuất 8 PDF, rồi zip và chia 3 phần <= 20 MB | P4 / P12 / A14.1 | mọi `.md` đã chốt |
+| 1 | Thêm 1 dòng khẳng định không trùng feature với thành viên nhóm vào Main-Report §1 | A5.3 / P9 | - |
+| 2 | Sinh lại AI Prompt Log sau phiên AI cuối | A2.3 / A9.2 | mọi việc dùng AI đã xong |
+| 3 | Xuất lại `git-log.txt` sau commit cuối | A12.3 / A14.8 / P8 | mọi commit đã xong |
+| 4 | Xuất 9 PDF, rồi zip và chia 3 phần <= 20 MB | P4 / P12 / A14.1 | mọi `.md` đã chốt |
+
+Hai video đã xong: Task 2 và Agent Skill. Link ở mục D.
 
 **Một điều khoản không thể đạt:**
 

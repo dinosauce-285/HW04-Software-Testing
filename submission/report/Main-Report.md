@@ -318,3 +318,59 @@ Một quan sát khác: kết quả **giống hệt nhau trên cả 3 browser** �
 Bộ script này gần như hoàn toàn do AI sinh, nhưng không dòng nào được giữ lại mà chưa qua kiểm chứng bằng cách chạy thật. Giá trị của AI thể hiện rõ nhất ở khối lượng - dựng 50 test case, 7 file dữ liệu và 3 page object trong một buổi làm việc. Giới hạn của nó thể hiện rõ nhất ở khâu **xác minh**: 4 trong 5 lỗi đã sửa đều là test pass mà không kiểm chứng gì, và không lỗi nào tự báo.
 
 Kết luận rút ra: trong kiểm thử tự động, khoảng cách giữa *"script chạy được"* và *"script kiểm được đúng thứ cần kiểm"* là rất lớn, và AI hiện chỉ đảm bảo được vế đầu. Phân tích đầy đủ ở `../appendix/AI-Critique.md`.
+
+---
+
+## 11. Task 2 - Video demo
+
+**Link (unlisted):** https://youtu.be/Vh_Qu7MG8tc
+
+Video chạy end-to-end feature **FR-09 Mã giảm giá** trên cả ba trình duyệt và mở bản HTML report sinh ra, theo đúng yêu cầu §6:89-91.
+
+| Yêu cầu | Đáp ứng ở đâu trong video |
+|---|---|
+| Chứng minh tác giả (§6:91, §11:132) | Mở đầu: terminal chạy `whoami`, `hostname`, `date -Iseconds`, `git log`; thuyết minh bằng giọng của chính sinh viên, tiếng Việt |
+| Chạy một script end-to-end, đa trình duyệt (§6:89) | Ba lượt `FEATURE=fr09-coupon BROWSER=<b> npx playwright test --project=<b>` chạy tuần tự trên chromium, firefox, webkit |
+| HTML report (§6:89) | Mở report vừa sinh bằng `npx playwright show-report`, chỉ vào tiêu đề `Run by: 23127262` và tab Metadata |
+| Kể >= 1 lỗi đã sửa (§6:90) | Lỗi #2 trong `AI-Review-Fix-Log.md` - xem dưới |
+
+### Lỗi được kể trong video
+
+AI đưa lệnh chạy `npx playwright test --project=chromium --reporter=line`. Cờ `--reporter` ở dòng lệnh **thay thế toàn bộ** mảng `reporter` khai trong `playwright.config.ts`, giết luôn reporter HTML - ba lượt chạy đầu báo "4 passed" bình thường nhưng không sinh report nào.
+
+Chọn kể lỗi này vì nó cho thấy được bằng hình ngay trên màn hình, và vì nó là loại thất bại nguy hiểm nhất: **hoàn toàn im lặng**. Lệnh đúng cú pháp, chạy thành công, không có cảnh báo. Nếu không chủ động kiểm thư mục report thì tới lúc đóng gói mới phát hiện đã mất sạch bằng chứng mà §6:83 bắt buộc phải có.
+
+Cách sửa: bỏ cờ `--reporter`, để config tự quyết định. Không sửa file nào - config vốn đã đúng, sai là ở cách gọi.
+
+Trong quá trình chuẩn bị video còn xác minh thêm một điều chưa biết trước đó: liệt kê `html` ngay trên dòng lệnh (`--reporter=line,html`) cũng **không** cứu được. Report có sinh ra, nhưng rơi về thư mục mặc định `playwright-report/` và mất tiêu đề tuỳ chỉnh, vì các tuỳ chọn `outputFolder` và `title` nằm trong config chứ không đi theo cờ. Phát hiện này đã được bổ sung vào Agent Skill.
+
+---
+
+## 12. Agent Skill
+
+**Link video demo (unlisted):** https://youtu.be/GsoKs7q_q4M
+
+**Skill:** `.claude/skills/playwright-feature-suite/` - `SKILL.md` (202 dòng) + 4 template chạy được (`playwright.config.ts`, `csv.ts`, `global-setup.ts`, `extract-ai-audit.mjs`).
+
+Skill đóng gói đúng quy trình đã dùng cho cả ba feature của bài này, chia thành 10 bước:
+
+| Bước | Nội dung |
+|---|---|
+| 0 | Khảo sát hệ thống trước, cấm đoán selector |
+| 1 | Liệt kê test case trước khi viết mã |
+| 2 | Tách dữ liệu ra CSV |
+| 3 | Page Object dựng từ mã nguồn thật |
+| 4 | Spec chạy vòng qua dữ liệu |
+| 5 | Assertion theo đặc tả đúng - kèm ba cái bẫy khiến assertion pass mà không kiểm gì |
+| 6 | Cô lập dữ liệu giữa các test |
+| 7 | Chạy đa trình duyệt và lưu report |
+| 8 | Phân loại fail rồi mới báo bug |
+| 9 | Ghi lại mọi lần sửa script do AI sinh |
+
+Phần có giá trị nhất là mục **"Three traps that make an assertion pass while checking nothing"** ở bước 5. Cả ba đều là lỗi có thật đã gặp trong bài (accessible name tự chuẩn hoá khoảng trắng, matcher polling pass ở lần thử đầu, chờ phần tử tồn tại ở cả hai trạng thái) chứ không phải lời khuyên chung chung.
+
+### Cách demo trong video
+
+Video quay việc dùng skill trên **FR-05 Product listing and search** - một feature **chưa** nằm trong bài nộp. Chọn feature mới vì §7:95 nói mục đích của skill là *"so that it can be reused on additional features"*; dựng lại một feature đã làm thì không chứng minh được điều đó.
+
+Video cho thấy skill tự dẫn qua từng bước, và đặc biệt là bước 0 buộc đọc mã nguồn thật trước khi viết selector - đúng cơ chế ngăn AI bịa selector, vốn là nguyên nhân của cả 4 lỗi khảo sát ghi trong `AI-Review-Fix-Log.md`.
