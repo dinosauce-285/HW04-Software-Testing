@@ -10,7 +10,7 @@
 
 ## 1. Feature đã chọn
 
-Ba feature kế thừa từ HW02, mỗi pool một feature theo yêu cầu §5 của đề. Feature Pool D (FR-07 Giỏ hàng Mobile) không dùng vì HW04 chỉ automate web frontend.
+Ba feature kế thừa từ HW02, mỗi pool một feature theo yêu cầu mục 5 của đề. Feature Pool D (FR-07 Giỏ hàng Mobile) không dùng vì HW04 chỉ automate web frontend.
 
 | Pool | FR | Tên | Màn hình | Vì sao đủ độ khó |
 |---|---|---|---|---|
@@ -20,7 +20,7 @@ Ba feature kế thừa từ HW02, mỗi pool một feature theo yêu cầu §5 c
 
 ### Sai lệch giữa đề bài và hệ thống thực tế
 
-Đề gọi FR-14 là *"Category management (CRUD)"* (§4:59) nhưng giao diện Web Admin **chỉ có Thêm và Xóa, không có Sửa**. Backend vẫn có endpoint `PUT /api/categories/:id` (`server.js:257`) nhưng không màn hình nào gọi tới. Vì vậy bộ test của FR-14 không có nhóm Update; số lượng test case được bù bằng các trường hợp validate, phân quyền và ràng buộc dữ liệu - vẫn đạt 15 test case, vượt ngưỡng 12 của đề.
+Đề gọi FR-14 là *"Category management (CRUD)"* (mục 4:59) nhưng giao diện Web Admin **chỉ có Thêm và Xóa, không có Sửa**. Backend vẫn có endpoint `PUT /api/categories/:id` (`server.js:257`) nhưng không màn hình nào gọi tới. Vì vậy bộ test của FR-14 không có nhóm Update; số lượng test case được bù bằng các trường hợp validate, phân quyền và ràng buộc dữ liệu - vẫn đạt 15 test case, vượt ngưỡng 12 của đề.
 
 ---
 
@@ -62,7 +62,7 @@ Mỗi report mang nhãn `Run by: 23127262` kèm ISO timestamp ở tiêu đề v�
 
 ## 3. Quy trình dùng AI theo từng bước
 
-Đề yêu cầu *"drive an AI tool - step by step, not with a single generic prompt"* (§6:81). Với **mỗi** feature, quy trình được chia thành 6 bước riêng biệt, mỗi bước là một lượt trao đổi độc lập với AI:
+Đề yêu cầu *"drive an AI tool - step by step, not with a single generic prompt"* (mục 6:81). Với **mỗi** feature, quy trình được chia thành 6 bước riêng biệt, mỗi bước là một lượt trao đổi độc lập với AI:
 
 | Bước | Nội dung | Sản phẩm |
 |---|---|---|
@@ -92,7 +92,7 @@ Vì vậy **bước 3 luôn cung cấp mã JSX thật cho AI**, không mô tả 
 
 ### Nguyên tắc viết assertion
 
-Assertion viết theo **đặc tả đúng**, không theo hành vi hiện tại của SUT. Ví dụ: đơn 500.000  VND áp mã giảm 10% thì test kỳ vọng 450.000  VND, dù hệ thống đang trả 5.000.000  VND. Test sẽ fail, và **chính cái fail đó là bằng chứng bug** - đúng tinh thần §6:85: *"wherever a failing assertion reveals a genuine defect, a bug report"*.
+Assertion viết theo **đặc tả đúng**, không theo hành vi hiện tại của SUT. Ví dụ: đơn 500.000  VND áp mã giảm 10% thì test kỳ vọng 450.000  VND, dù hệ thống đang trả 5.000.000  VND. Test sẽ fail, và **chính cái fail đó là bằng chứng bug** - đúng tinh thần mục 6:85: *"wherever a failing assertion reveals a genuine defect, a bug report"*.
 
 Hệ quả: mỗi test fail phải được phân loại rõ là **fail do bug thật** hay **fail do script sai**. Không được lặng lẽ sửa assertion cho pass.
 
@@ -216,7 +216,7 @@ Tỉ lệ fail của FR-14 cao nhất trong ba feature (11/15) vì màn hình n�
 
 ## 7. Review script AI sinh - AI sai gì và vì sao
 
-Đây là phần trả lời trực tiếp yêu cầu §6:84. Chi tiết đầy đủ ở `AI-Review-Fix-Log.md`; dưới đây là tổng hợp và phân tích.
+Đây là phần trả lời trực tiếp yêu cầu mục 6:84. Chi tiết đầy đủ ở `AI-Review-Fix-Log.md`; dưới đây là tổng hợp và phân tích.
 
 ### 7.1 Năm lỗi đã phát hiện và sửa
 
@@ -325,20 +325,20 @@ Kết luận rút ra: trong kiểm thử tự động, khoảng cách giữa *"s
 
 **Link (unlisted):** https://youtu.be/Vh_Qu7MG8tc
 
-Video chạy end-to-end feature **FR-09 Mã giảm giá** trên cả ba trình duyệt và mở bản HTML report sinh ra, theo đúng yêu cầu §6:89-91.
+Video chạy end-to-end feature **FR-09 Mã giảm giá** trên cả ba trình duyệt và mở bản HTML report sinh ra, theo đúng yêu cầu mục 6:89-91.
 
 | Yêu cầu | Đáp ứng ở đâu trong video |
 |---|---|
-| Chứng minh tác giả (§6:91, §11:132) | Mở đầu: terminal chạy `whoami`, `hostname`, `date -Iseconds`, `git log`; thuyết minh bằng giọng của chính sinh viên, tiếng Việt |
-| Chạy một script end-to-end, đa trình duyệt (§6:89) | Ba lượt `FEATURE=fr09-coupon BROWSER=<b> npx playwright test --project=<b>` chạy tuần tự trên chromium, firefox, webkit |
-| HTML report (§6:89) | Mở report vừa sinh bằng `npx playwright show-report`, chỉ vào tiêu đề `Run by: 23127262` và tab Metadata |
-| Kể >= 1 lỗi đã sửa (§6:90) | Lỗi #2 trong `AI-Review-Fix-Log.md` - xem dưới |
+| Chứng minh tác giả (mục 6:91, mục 11:132) | Mở đầu: terminal chạy `whoami`, `hostname`, `date -Iseconds`, `git log`; thuyết minh bằng giọng của chính sinh viên, tiếng Việt |
+| Chạy một script end-to-end, đa trình duyệt (mục 6:89) | Ba lượt `FEATURE=fr09-coupon BROWSER=<b> npx playwright test --project=<b>` chạy tuần tự trên chromium, firefox, webkit |
+| HTML report (mục 6:89) | Mở report vừa sinh bằng `npx playwright show-report`, chỉ vào tiêu đề `Run by: 23127262` và tab Metadata |
+| Kể >= 1 lỗi đã sửa (mục 6:90) | Lỗi #2 trong `AI-Review-Fix-Log.md` - xem dưới |
 
 ### Lỗi được kể trong video
 
 AI đưa lệnh chạy `npx playwright test --project=chromium --reporter=line`. Cờ `--reporter` ở dòng lệnh **thay thế toàn bộ** mảng `reporter` khai trong `playwright.config.ts`, giết luôn reporter HTML - ba lượt chạy đầu báo "4 passed" bình thường nhưng không sinh report nào.
 
-Chọn kể lỗi này vì nó cho thấy được bằng hình ngay trên màn hình, và vì nó là loại thất bại nguy hiểm nhất: **hoàn toàn im lặng**. Lệnh đúng cú pháp, chạy thành công, không có cảnh báo. Nếu không chủ động kiểm thư mục report thì tới lúc đóng gói mới phát hiện đã mất sạch bằng chứng mà §6:83 bắt buộc phải có.
+Chọn kể lỗi này vì nó cho thấy được bằng hình ngay trên màn hình, và vì nó là loại thất bại nguy hiểm nhất: **hoàn toàn im lặng**. Lệnh đúng cú pháp, chạy thành công, không có cảnh báo. Nếu không chủ động kiểm thư mục report thì tới lúc đóng gói mới phát hiện đã mất sạch bằng chứng mà mục 6:83 bắt buộc phải có.
 
 Cách sửa: bỏ cờ `--reporter`, để config tự quyết định. Không sửa file nào - config vốn đã đúng, sai là ở cách gọi.
 
@@ -371,6 +371,6 @@ Phần có giá trị nhất là mục **"Three traps that make an assertion pas
 
 ### Cách demo trong video
 
-Video quay việc dùng skill trên **FR-05 Product listing and search** - một feature **chưa** nằm trong bài nộp. Chọn feature mới vì §7:95 nói mục đích của skill là *"so that it can be reused on additional features"*; dựng lại một feature đã làm thì không chứng minh được điều đó.
+Video quay việc dùng skill trên **FR-05 Product listing and search** - một feature **chưa** nằm trong bài nộp. Chọn feature mới vì mục 7:95 nói mục đích của skill là *"so that it can be reused on additional features"*; dựng lại một feature đã làm thì không chứng minh được điều đó.
 
 Video cho thấy skill tự dẫn qua từng bước, và đặc biệt là bước 0 buộc đọc mã nguồn thật trước khi viết selector - đúng cơ chế ngăn AI bịa selector, vốn là nguyên nhân của cả 4 lỗi khảo sát ghi trong `AI-Review-Fix-Log.md`.

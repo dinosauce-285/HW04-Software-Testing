@@ -1,11 +1,11 @@
 import { Page, Locator, expect } from '@playwright/test';
 
 /**
- * Page Object — trang Đăng ký của Frontend Web (FR-01).
+ * Page Object - trang Đăng ký của Frontend Web (FR-01).
  *
  * Selector đọc từ sut/frontend-web/src/pages/Register.jsx.
- * Bẫy đã ghi nhận (survey/Survey-Report.md §5):
- *   - Ô Email là type="text", KHÔNG phải type="email" → không định vị bằng input[type=email] được.
+ * Bẫy đã ghi nhận (survey/Survey-Report.md mục 5):
+ *   - Ô Email là type="text", KHÔNG phải type="email" -> không định vị bằng input[type=email] được.
  *   - Form không có label liên kết với input (chỉ có <label> rời), nên getByLabel không dùng được;
  *     phải định vị theo thứ tự input trong form.
  *   - Đăng ký thành công thì điều hướng sang /login, không hiện thông báo thành công.

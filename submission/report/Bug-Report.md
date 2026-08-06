@@ -1,6 +1,6 @@
 # Bug Report - EShop
 
-*(CLAUDE.md R6 / đề HW04 §6:85 - bug phải có mặt ở **cả** file này **và** GitHub Issues, mỗi issue kèm screenshot)*
+*(CLAUDE.md R6 / đề HW04 mục 6:85 - bug phải có mặt ở **cả** file này **và** GitHub Issues, mỗi issue kèm screenshot)*
 
 **18 bug** - số dòng trong bảng khớp đúng 18 issue trên https://github.com/dinosauce-285/HW04-Software-Testing/issues (kiểm 04/08/2026).
 
@@ -41,7 +41,7 @@ Ba mục dưới đây đã kiểm chứng thủ công qua `survey/survey.spec.t
 
 ### Bảng ứng viên gốc
 
-Chi tiết và bằng chứng: `survey/Survey-Report.md §2-§4`.
+Chi tiết và bằng chứng: `survey/Survey-Report.md mục 2-mục 4`.
 
 | Mã | Feature | Tóm tắt | Mức đề xuất |
 |---|---|---|---|

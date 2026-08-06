@@ -3,11 +3,11 @@ import { RegisterPage } from '../pages/RegisterPage';
 import { readCsv, expand } from '../fixtures/csv';
 
 /**
- * FR-01 — Đăng ký tài khoản · trùng lặp và bảo mật (TC13–TC16)
+ * FR-01 - Đăng ký tài khoản / trùng lặp và bảo mật (TC13-TC16)
  *
  * Assertion pattern bổ sung:
- *   P4 — mã trạng thái HTTP  expect(res.status()).toBe()
- *   P5 — cấu trúc dữ liệu    expect(object).not.toHaveProperty()
+ *   P4 - mã trạng thái HTTP  expect(res.status()).toBe()
+ *   P5 - cấu trúc dữ liệu    expect(object).not.toHaveProperty()
  */
 
 const API = 'http://localhost:3000/api';
@@ -32,7 +32,7 @@ test.describe('FR-01 Đăng ký — Trùng lặp và bảo mật', () => {
       data: { name: c.ho_ten, email, password: c.mat_khau },
     });
 
-    // P4 — email đã tồn tại thì phải bị từ chối
+    // P4 - email đã tồn tại thì phải bị từ chối
     expect(second.status(),
       `TC13: đăng ký lại cùng email "${email}" vẫn thành công — bug ${c.ref_bug}`,
     ).toBe(Number(c.expect_status));
@@ -46,7 +46,7 @@ test.describe('FR-01 Đăng ký — Trùng lặp và bảo mật', () => {
       data: { name: c.ho_ten, email: c.email, password: c.mat_khau },
     });
 
-    // P4 — backend phải tự validate, không phó mặc cho frontend
+    // P4 - backend phải tự validate, không phó mặc cho frontend
     expect(res.status(),
       `TC14: API nhận email "${c.email}" và mật khẩu "${c.mat_khau}" — bug ${c.ref_bug}`,
     ).toBe(Number(c.expect_status));
@@ -61,7 +61,7 @@ test.describe('FR-01 Đăng ký — Trùng lặp và bảo mật', () => {
     const login = await api.post(`${API}/login`, { data: { email, password: c.mat_khau } });
     const body = await login.json();
 
-    // P5 — response không được chứa mật khẩu dưới bất kỳ dạng nào
+    // P5 - response không được chứa mật khẩu dưới bất kỳ dạng nào
     expect(body.user,
       `TC15: response đăng nhập trả về mật khẩu plaintext — bug ${c.ref_bug}`,
     ).not.toHaveProperty('password');
@@ -80,14 +80,14 @@ test.describe('FR-01 Đăng ký — Trùng lặp và bảo mật', () => {
     await reg.fill(c.ho_ten, email, c.mat_khau);
     await reg.submit();
 
-    // Chờ trạng thái ổn định trước khi khẳng định — xem ghi chú ở register-validation.spec.ts
+    // Chờ trạng thái ổn định trước khi khẳng định - xem ghi chú ở register-validation.spec.ts
     const registered = await reg.isRegistered();
 
     expect(registered,
       `TC16: giao diện cho đăng ký trùng email "${email}" — bug ${c.ref_bug}`,
     ).toBe(false);
 
-    // P1 + P3 — ở lại trang đăng ký và hiện thông báo lỗi cho người dùng
+    // P1 + P3 - ở lại trang đăng ký và hiện thông báo lỗi cho người dùng
     await expect(page).toHaveURL(/\/register$/);
     await expect(reg.errorBox).toBeVisible();
   });

@@ -3,11 +3,11 @@ import { AdminCategoryPage } from '../pages/AdminCategoryPage';
 import { readCsv } from '../fixtures/csv';
 
 /**
- * FR-14 — Quản lý danh mục · phần XÓA và PHÂN QUYỀN (TC10–TC14)
+ * FR-14 - Quản lý danh mục / phần XÓA và PHÂN QUYỀN (TC10-TC14)
  *
  * Assertion pattern bổ sung ở file này:
- *   P4 — mã trạng thái HTTP   expect(response.status()).toBe()
- *   P5 — hộp thoại trình duyệt  page.on('dialog')
+ *   P4 - mã trạng thái HTTP   expect(response.status()).toBe()
+ *   P5 - hộp thoại trình duyệt  page.on('dialog')
  */
 
 const API = 'http://localhost:3000/api';
@@ -35,7 +35,7 @@ test.describe('FR-14 Quản lý danh mục — Xóa và phân quyền', () => {
     page.once('dialog', d => d.accept());
     await admin.deleteRowNamed(name);
 
-    // P1 — dòng phải biến mất khỏi bảng
+    // P1 - dòng phải biến mất khỏi bảng
     await expect(admin.rowsNamed(name)).toHaveCount(0);
   });
 
@@ -51,12 +51,12 @@ test.describe('FR-14 Quản lý danh mục — Xóa và phân quyền', () => {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    // P4 — phải bị từ chối vì ràng buộc toàn vẹn dữ liệu
+    // P4 - phải bị từ chối vì ràng buộc toàn vẹn dữ liệu
     expect(res.status(),
       `TC11: xóa danh mục #${inUse} đang có sản phẩm vẫn thành công — bug ${tc('TC11').ref_bug}`,
     ).toBe(Number(tc('TC11').expect_status));
 
-    // P1 — sản phẩm không được trở thành mồ côi
+    // P1 - sản phẩm không được trở thành mồ côi
     const after = await (await api.get(`${API}/products`)).json();
     const orphan = after.filter((p: any) => p.category_id === inUse);
     expect(orphan.length).toBeGreaterThan(0);
@@ -71,7 +71,7 @@ test.describe('FR-14 Quản lý danh mục — Xóa và phân quyền', () => {
     await admin.addCategory(name);
     await expect(admin.rowsNamed(name)).toHaveCount(1);
 
-    // P5 — bấm Xóa phải bật hộp thoại xác nhận; ở đây bấm Hủy
+    // P5 - bấm Xóa phải bật hộp thoại xác nhận; ở đây bấm Hủy
     let dialogShown = false;
     page.on('dialog', async d => { dialogShown = true; await d.dismiss(); });
 
@@ -82,7 +82,7 @@ test.describe('FR-14 Quản lý danh mục — Xóa và phân quyền', () => {
       `TC12: xóa ngay lập tức, không có bước xác nhận — bug ${tc('TC12').ref_bug}`,
     ).toBe(true);
 
-    // P1 — vì đã Hủy nên danh mục phải còn nguyên
+    // P1 - vì đã Hủy nên danh mục phải còn nguyên
     await expect(admin.rowsNamed(name)).toHaveCount(1);
   });
 
@@ -94,7 +94,7 @@ test.describe('FR-14 Quản lý danh mục — Xóa và phân quyền', () => {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    // P4 — ID không tồn tại phải trả 404, không phải 200
+    // P4 - ID không tồn tại phải trả 404, không phải 200
     expect(res.status()).toBe(Number(tc('TC13').expect_status));
   });
 
@@ -107,7 +107,7 @@ test.describe('FR-14 Quản lý danh mục — Xóa và phân quyền', () => {
       headers: { Authorization: `Bearer ${userToken}` },
     });
 
-    // P4 — chỉ admin mới được quản lý danh mục
+    // P4 - chỉ admin mới được quản lý danh mục
     expect(created.status(),
       `TC14: user thường tạo được danh mục — bug ${tc('TC14').ref_bug}`,
     ).toBe(Number(tc('TC14').expect_status));

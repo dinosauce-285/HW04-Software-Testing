@@ -1,12 +1,12 @@
 import { defineConfig, devices } from '@playwright/test';
 
 /**
- * HW04 — Automation Testing (EShop)
- * SV: Lý Quốc Thạnh — 23127262
+ * HW04 - Automation Testing (EShop)
+ * SV: Lý Quốc Thạnh - 23127262
  *
  * Chạy MỘT feature trên MỘT browser cho mỗi lượt, xuất ra thư mục report riêng (CLAUDE.md R5):
  *   FEATURE=fr14-category npm run test:chromium
- * Playwright HTML reporter ghi đè outputFolder mỗi lần chạy → không tách thư mục là mất report cũ.
+ * Playwright HTML reporter ghi đè outputFolder mỗi lần chạy -> không tách thư mục là mất report cũ.
  */
 
 const STUDENT_ID = '23127262';
@@ -14,7 +14,7 @@ const RUN_AT = new Date().toISOString();
 const FEATURE = process.env.FEATURE ?? 'all';
 const BROWSER = process.env.BROWSER ?? 'all';
 
-// <root>/<feature>-<browser>-<ISO timestamp>/  — dấu ':' trong ISO không hợp lệ trên một số FS
+// <root>/<feature>-<browser>-<ISO timestamp>/  - dấu ':' trong ISO không hợp lệ trên một số FS
 // Mặc định ghi vào bộ 9 report nộp bài. Chạy thử / quay video thì đặt REPORT_ROOT=demo-runs
 // để không lẫn vào bằng chứng đã chốt.
 const REPORT_ROOT = process.env.REPORT_ROOT ?? 'submission/html-reports';
@@ -31,7 +31,7 @@ export default defineConfig({
   retries: 0,             // KHÔNG retry: test fail vì bug thật là kết quả cần giữ nguyên (R8)
   timeout: 30_000,
 
-  // Hiện ở tab "Metadata" của HTML report — bằng chứng tác giả theo §6:83 và §11:131
+  // Hiện ở tab "Metadata" của HTML report - bằng chứng tác giả theo mục 6:83 và mục 11:131
   metadata: {
     'Run by': STUDENT_ID,
     'Student': 'Ly Quoc Thanh',

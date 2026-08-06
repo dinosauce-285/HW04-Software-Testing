@@ -2,8 +2,8 @@
 /**
  * Trích AI Audit Report tự động từ transcript phiên làm việc của Claude Code.
  *
- * Đề HW04 §9:113-119 yêu cầu mỗi tương tác AI phải ghi: tên công cụ · ngày giờ ·
- * prompt nguyên văn · output. §9:119 khuyến khích tự động hoá đúng việc này:
+ * Đề HW04 mục 9:113-119 yêu cầu mỗi tương tác AI phải ghi: tên công cụ / ngày giờ /
+ * prompt nguyên văn / output. mục 9:119 khuyến khích tự động hoá đúng việc này:
  *   "you are encouraged to create a skill or rule that extracts the information
  *    above automatically after an AI session"
  *
@@ -106,7 +106,7 @@ const toolCount = allTools.reduce((a, n) => ((a[n] = (a[n] ?? 0) + 1), a), {});
 
 let md = `# Nhật ký prompt - HW04
 
-*(Bằng chứng cho đề HW04 §9:114-117 - mỗi lượt tương tác phải có: tên công cụ, ngày giờ,
+*(Bằng chứng cho đề HW04 mục 9:114-117 - mỗi lượt tương tác phải có: tên công cụ, ngày giờ,
 prompt nguyên văn, output của AI. Bảng audit theo mẫu 5 mục của Khoa nằm ở [\`AI-Audit-Report.md\`](AI-Audit-Report.md).)*
 
 **Sinh viên:** Lý Quốc Thạnh - \`23127262\`

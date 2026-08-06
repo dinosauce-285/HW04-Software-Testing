@@ -1,6 +1,6 @@
 # AI Critique
 
-*(Bắt buộc / đề HW04 §10 - 200-300 chữ)*
+*(Bắt buộc / đề HW04 mục 10 - 200-300 chữ)*
 
 **Sinh viên:** Lý Quốc Thạnh - `23127262`
 

@@ -1,12 +1,12 @@
 # Git Commit Log - HW04
 
-*(CLAUDE.md R2, R3 / đề HW04 §12 / Policies - "Version Control Requirements")*
+*(CLAUDE.md R2, R3 / đề HW04 mục 12 / Policies - "Version Control Requirements")*
 
 **Repo:** https://github.com/dinosauce-285/HW04-Software-Testing
 
 ## Ràng buộc của đề
 
-> *"at least **8 commits** over at least **4 days**. Only commits that change test-script files (`.spec.js`, `.spec.ts`, or equivalent) count toward the 8-commit minimum; commits touching only the README, PDF, or other non-test documents do not count."* (§12:136)
+> *"at least **8 commits** over at least **4 days**. Only commits that change test-script files (`.spec.js`, `.spec.ts`, or equivalent) count toward the 8-commit minimum; commits touching only the README, PDF, or other non-test documents do not count."* (mục 12:136)
 
 **Ràng buộc thời gian, không phải khối lượng.** Dồn hết vào một ngày là hỏng dù code đủ.
 

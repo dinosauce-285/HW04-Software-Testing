@@ -7,11 +7,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 /**
- * Công cụ chụp bằng chứng cho GitHub Issues — KHÔNG phải test case của bài làm.
+ * Công cụ chụp bằng chứng cho GitHub Issues - KHÔNG phải test case của bài làm.
  * Chạy: FEATURE=tools npx playwright test --project=chromium
  *
- * Bug tái hiện được trên giao diện → chụp trực tiếp trên trình duyệt.
- * Bug chỉ ở tầng API → chụp phần test fail tương ứng trong HTML report.
+ * Bug tái hiện được trên giao diện -> chụp trực tiếp trên trình duyệt.
+ * Bug chỉ ở tầng API -> chụp phần test fail tương ứng trong HTML report.
  */
 
 const OUT = 'submission/evidence/bugs';
@@ -19,7 +19,7 @@ const API = 'http://localhost:3000/api';
 
 test.beforeAll(() => fs.mkdirSync(OUT, { recursive: true }));
 
-// ══════════════════════════════ FR-01 Đăng ký ══════════════════════════════
+// ============================== FR-01 Đăng ký ==============================
 
 test('A01 — regex mật khẩu mâu thuẫn với chính gợi ý hiển thị', async ({ page }) => {
   const reg = new RegisterPage(page);
@@ -52,7 +52,7 @@ test('A04 — đăng ký trùng email vẫn thành công', async ({ page }) => {
   await expect(page).toHaveURL(/\/login$/); // lẽ ra phải bị từ chối
 });
 
-// ══════════════════════════════ FR-09 Mã giảm giá ══════════════════════════════
+// ============================== FR-09 Mã giảm giá ==============================
 
 test('B01 — mã giảm 10% làm đơn hàng đắt lên gấp 10 lần', async ({ page }) => {
   const acc = await createAccount();
@@ -85,7 +85,7 @@ test('B05 — tổng tiền thanh toán là ô nhập sửa được tự do', a
   await page.screenshot({ path: `${OUT}/B05-tong-tien-sua-duoc.png`, fullPage: true });
 });
 
-// ══════════════════════════════ FR-14 Quản lý danh mục ══════════════════════════════
+// ============================== FR-14 Quản lý danh mục ==============================
 
 test('C01 C02 C03 C08 — danh mục rỗng, trùng tên, XSS, tên dài, không trim', async ({ page }) => {
   const admin = new AdminCategoryPage(page);
@@ -116,7 +116,7 @@ test('C04 — xóa danh mục không có hộp thoại xác nhận', async ({ pa
   await page.screenshot({ path: `${OUT}/C04-xoa-khong-xac-nhan.png`, fullPage: true });
 });
 
-// ══════════ Bug tầng API — chụp phần test fail trong HTML report ══════════
+// ========== Bug tầng API - chụp phần test fail trong HTML report ==========
 
 const apiBugs = [
   { id: 'A03', tc: 'TC14', feature: 'fr01-register' },

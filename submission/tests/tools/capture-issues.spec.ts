@@ -3,7 +3,7 @@ import fs from 'node:fs';
 
 /**
  * Chụp lại trang GitHub Issues và một số issue tiêu biểu.
- * Phục vụ đề §14:155 — "Bug report, with screenshots of the bugs on the GitHub Issues page".
+ * Phục vụ đề mục 14:155 - "Bug report, with screenshots of the bugs on the GitHub Issues page".
  * Chạy: FEATURE=tools npx playwright test --project=chromium -g "issues"
  */
 
@@ -15,7 +15,7 @@ test.use({ viewport: { width: 1440, height: 1000 } });
 
 test('issues — danh sách toàn bộ 18 bug', async ({ page }) => {
   await page.goto(`${REPO}/issues`, { waitUntil: 'domcontentloaded' });
-  // Chờ đủ 18 dòng issue hiện ra thay vì bám vào nhãn "18 Open" — GitHub đổi giao diện thường xuyên
+  // Chờ đủ 18 dòng issue hiện ra thay vì bám vào nhãn "18 Open" - GitHub đổi giao diện thường xuyên
   await expect(page.locator('a[href*="/issues/"]').filter({ hasText: /\[FR-\d+\]/ }))
     .toHaveCount(18, { timeout: 20000 });
   await page.screenshot({ path: `${OUT}/00-danh-sach-issues.png`, fullPage: true });

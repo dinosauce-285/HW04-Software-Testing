@@ -1,15 +1,15 @@
 import { Page, Locator, expect } from '@playwright/test';
 
 /**
- * Page Object — trang Xác Nhận Đơn Hàng / áp mã giảm giá (FR-09).
+ * Page Object - trang Xác Nhận Đơn Hàng / áp mã giảm giá (FR-09).
  *
  * Selector đọc từ sut/frontend-web/src/pages/{Login,Cart,Checkout}.jsx.
- * Bẫy đã ghi nhận (survey/Survey-Report.md §5):
+ * Bẫy đã ghi nhận (survey/Survey-Report.md mục 5):
  *   - Nút đăng nhập có nhãn "Sign In", và ô mật khẩu trang Login là type="text"
- *     → KHÔNG định vị được bằng input[type=password].
+ *     -> KHÔNG định vị được bằng input[type=password].
  *   - Giỏ hàng nằm trong CartContext (chỉ ở bộ nhớ), reload là mất
- *     → phải đi từ trang chủ sang checkout bằng CLICK, không được page.goto('/checkout').
- *   - Trang checkout có 2 phần tử khớp '.bg-gray-50' → phải dùng 'div.p-4.bg-gray-50'.
+ *     -> phải đi từ trang chủ sang checkout bằng CLICK, không được page.goto('/checkout').
+ *   - Trang checkout có 2 phần tử khớp '.bg-gray-50' -> phải dùng 'div.p-4.bg-gray-50'.
  */
 export class CheckoutPage {
   readonly page: Page;
@@ -40,7 +40,7 @@ export class CheckoutPage {
     await expect(this.page.getByRole('button', { name: 'Thoát' })).toBeVisible();
   }
 
-  /** Đi từ trang chủ tới checkout hoàn toàn bằng click — giỏ hàng không sống qua reload. */
+  /** Đi từ trang chủ tới checkout hoàn toàn bằng click - giỏ hàng không sống qua reload. */
   async goToCheckoutWithOneProduct() {
     await this.page.goto('http://localhost:5173/');
     await this.page.getByRole('button', { name: 'Thêm vào giỏ' }).first().click();
@@ -55,7 +55,7 @@ export class CheckoutPage {
 
   async applyCoupon(code: string) {
     await this.couponInput.fill(code);
-    if (await this.applyButton.isDisabled()) return;      // mã rỗng → nút bị khoá
+    if (await this.applyButton.isDisabled()) return;      // mã rỗng -> nút bị khoá
     await this.applyButton.click();
     // Chờ phản hồi hiện ra (thành công hoặc lỗi) thay vì chờ thời gian cố định
     await this.couponPanel
@@ -88,7 +88,7 @@ export class CheckoutPage {
     return (await this.couponPanel.locator('.text-green-700').count()) > 0;
   }
 
-  /** "Tiết kiệm: -4,500,000 ₫" → -4500000. Giữ nguyên dấu âm để lộ được bug B01. */
+  /** "Tiết kiệm: -4,500,000  VND" -> -4500000. Giữ nguyên dấu âm để lộ được bug B01. */
   private parseMoney(text: string): number {
     const m = text.match(/-?[\d.,]+/g)?.pop() ?? '0';
     const sign = /-\s*[\d.,]+\s*₫/.test(text) || text.includes('-') ? -1 : 1;

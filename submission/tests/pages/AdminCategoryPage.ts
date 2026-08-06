@@ -1,13 +1,13 @@
 import { Page, Locator, expect } from '@playwright/test';
 
 /**
- * Page Object — màn hình "Quản lý Danh mục" của Web Admin (FR-14).
+ * Page Object - màn hình "Quản lý Danh mục" của Web Admin (FR-14).
  *
  * Mọi selector ở đây được đọc trực tiếp từ sut/frontend-admin/src/App.jsx, KHÔNG suy đoán
- * từ tên chức năng. Ba cái bẫy đã ghi nhận trong survey/Survey-Report.md §5:
+ * từ tên chức năng. Ba cái bẫy đã ghi nhận trong survey/Survey-Report.md mục 5:
  *   - Nút đăng nhập admin có nhãn "Login" (tiếng Anh), không phải "Đăng nhập".
  *   - Ô email của form đăng nhập không có type, chỉ có placeholder "Email".
- *   - Bảng danh mục không có nút Sửa — UI chỉ có Thêm và Xóa (App.jsx:294-335).
+ *   - Bảng danh mục không có nút Sửa - UI chỉ có Thêm và Xóa (App.jsx:294-335).
  */
 export class AdminCategoryPage {
   readonly page: Page;
@@ -35,7 +35,7 @@ export class AdminCategoryPage {
     await expect(this.page.getByRole('heading', { name: 'Quản lý Danh mục' })).toBeVisible();
   }
 
-  /** Điền tên rồi bấm "Thêm mới". Không assert — để test tự quyết định kỳ vọng. */
+  /** Điền tên rồi bấm "Thêm mới". Không assert - để test tự quyết định kỳ vọng. */
   async addCategory(name: string) {
     await this.nameInput.fill(name);
     await this.addButton.click();
@@ -59,7 +59,7 @@ export class AdminCategoryPage {
     await this.rowsNamed(name).first().getByRole('button', { name: 'Xóa' }).click();
   }
 
-  /** Danh sách tên danh mục đang hiển thị, đã cắt khoảng trắng — dùng để kiểm tra sự tồn tại. */
+  /** Danh sách tên danh mục đang hiển thị, đã cắt khoảng trắng - dùng để kiểm tra sự tồn tại. */
   async listNames(): Promise<string[]> {
     return (await this.rawNames()).map(t => t.trim());
   }
@@ -67,7 +67,7 @@ export class AdminCategoryPage {
   /**
    * Danh sách tên NGUYÊN VĂN, không cắt khoảng trắng.
    * Bắt buộc dùng khi kiểm tra việc trim: getByRole('cell', {name}) chuẩn hóa khoảng trắng
-   * theo chuẩn accessible name nên sẽ khớp cả khi hệ thống KHÔNG trim → assertion pass sai lý do.
+   * theo chuẩn accessible name nên sẽ khớp cả khi hệ thống KHÔNG trim -> assertion pass sai lý do.
    */
   async rawNames(): Promise<string[]> {
     return this.rows.locator('td:nth-child(2)').allTextContents();
