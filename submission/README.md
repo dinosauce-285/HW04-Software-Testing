@@ -40,7 +40,7 @@ Cập nhật lần cuối: 04/08/2026 - **Task 1 và Task 2 hoàn tất**.
 | 5 | FR-14 - >=12 TC + data file | Task 1 | [x] 15 TC / 2 CSV / 5 assertion pattern / 3 browser |
 | 6 | 9 HTML report (3 feature x 3 browser) | mục 6:83 | [x] 9/9 |
 | 7 | Nhật ký review & fix AI | R4 | [x] 5 mục + 4 mục khảo sát |
-| 8 | Bug report + GitHub Issues | R6 | [x] 18 bug / 18 issue / 16 ảnh bug + 4 ảnh trang Issues |
+| 8 | Bug report + GitHub Issues | R6 | [x] 18 bug / 18 issue / 16 ảnh bug + 19 ảnh trang Issues |
 | 9 | Test case không automate được | R7 | [x] 0 - automate được toàn bộ 50 TC |
 | 10 | Báo cáo chính | mục 14:149 | [x] 12 mục, ~4.000 từ |
 | 11 | AI Audit Report | mục 9 | [x] 95 lượt / sinh tự động từ transcript |
@@ -77,7 +77,7 @@ hw04/
 |   |   \-- git-log.txt            commit log dạng text (mục 14:154)
 |   |-- evidence/
 |   |   |-- bugs/                  16 ảnh đính vào GitHub Issue
-|   |   |-- issues/                4 ảnh trang GitHub Issues (mục 14:155)
+|   |   |-- issues/                19 ảnh trang GitHub Issues (mục 14:155)
 |   |   \-- runs/                  ảnh chụp lần chạy
 |   |
 |   |-- tests/                 * script automation (mục 14:150)

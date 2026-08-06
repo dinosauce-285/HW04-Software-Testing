@@ -21,20 +21,35 @@ test('issues — danh sách toàn bộ 18 bug', async ({ page }) => {
   await page.screenshot({ path: `${OUT}/00-danh-sach-issues.png`, fullPage: true });
 });
 
-// Ba bug nghiêm trọng nhất, mỗi feature một cái
-const featured = [
-  { n: 6, slug: 'B01-ma-giam-gia-sai-cong-thuc' },
-  { n: 16, slug: 'C06-user-thuong-quan-ly-danh-muc' },
-  { n: 1, slug: 'A01-regex-mat-khau-mau-thuan' },
+// Toàn bộ 18 issue - đề mục 14:155 đòi ảnh của các bug trên trang GitHub Issues
+const issues: Array<[number, string]> = [
+  [1, 'A01'],
+  [2, 'A02'],
+  [3, 'A03'],
+  [4, 'A04'],
+  [5, 'A06'],
+  [6, 'B01'],
+  [7, 'B02'],
+  [8, 'B03'],
+  [9, 'B04'],
+  [10, 'B05'],
+  [11, 'C01'],
+  [12, 'C02'],
+  [13, 'C03'],
+  [14, 'C04'],
+  [15, 'C05'],
+  [16, 'C06'],
+  [17, 'C08'],
+  [18, 'C09'],
 ];
 
-for (const f of featured) {
-  test(`issues — chi tiết issue #${f.n}`, async ({ page }) => {
-    await page.goto(`${REPO}/issues/${f.n}`, { waitUntil: 'domcontentloaded' });
+for (const [n, bug] of issues) {
+  test(`issues - chi tiet issue #${n} (${bug})`, async ({ page }) => {
+    await page.goto(`${REPO}/issues/${n}`, { waitUntil: 'domcontentloaded' });
     // Chờ ảnh bằng chứng trong issue tải xong, để ảnh chụp có cả screenshot bug
     const img = page.locator('img[src*="raw.githubusercontent.com"]').first();
     await img.waitFor({ state: 'visible', timeout: 20000 });
     await expect(img).toHaveJSProperty('complete', true);
-    await page.screenshot({ path: `${OUT}/${f.n}-${f.slug}.png`, fullPage: true });
+    await page.screenshot({ path: `${OUT}/${String(n).padStart(2, '0')}-${bug}.png`, fullPage: true });
   });
 }

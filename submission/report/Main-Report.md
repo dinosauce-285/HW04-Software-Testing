@@ -274,7 +274,7 @@ Danh sách đầy đủ kèm mã bug, test case phát hiện, ảnh chụp và s
 Bug tái hiện được trên giao diện thì chụp trực tiếp bằng Playwright điều khiển trình duyệt thật. Bug chỉ tồn tại ở tầng API thì không có gì để chụp trên màn hình, nên script mở HTML report của lần chạy thật, click vào đúng test fail rồi chụp phần Errors - ảnh hiện `Expected` / `Received` kèm số dòng mã nguồn. Cách này gắn bằng chứng trực tiếp với lần chạy thật, không dựng lại bằng tay được.
 
 Script chụp: `tests/tools/capture-bugs.spec.ts` và `tests/tools/capture-issues.spec.ts`.
-Ảnh: `../evidence/bugs/` (16 ảnh bug) và `../evidence/issues/` (4 ảnh trang GitHub Issues).
+Ảnh: `../evidence/bugs/` (16 ảnh bug) và `../evidence/issues/` (19 ảnh: 1 ảnh danh sách toàn bộ 18 issue + 18 ảnh chi tiết, mỗi issue một ảnh, chụp sau khi ảnh bằng chứng nhúng trong issue đã tải xong).
 
 ---
 

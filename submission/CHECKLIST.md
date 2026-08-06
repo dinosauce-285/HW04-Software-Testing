@@ -41,7 +41,7 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | A6.5 | mục 6:83 - report hiển thị **`Run by: {StudentID}`** | tiêu đề + tab Metadata mỗi report, nhúng qua `playwright.config.ts:32-47` | [x] |
 | A6.6 | mục 6:84 - nêu AI sai gì **và vì sao trượt** (prompt / model / đặc thù feature) | [`report/AI-Review-Fix-Log.md`](report/AI-Review-Fix-Log.md) - cột "Vì sao AI trượt" + cột phân loại | [x] |
 | A6.7 | mục 6:85 - bug ghi ở **cả** Markdown **và** GitHub Issues | [`report/Bug-Report.md`](report/Bug-Report.md) - 18 bug <-> 18 issue | [x] |
-| A6.8 | mục 6:85 - **đính ảnh** vào mỗi issue | [`evidence/bugs/`](evidence/bugs/) 16 ảnh / [`evidence/issues/`](evidence/issues/) 4 ảnh trang Issues | [x] |
+| A6.8 | mục 6:85 - **đính ảnh** vào mỗi issue | [`evidence/bugs/`](evidence/bugs/) 16 ảnh phủ 18 bug / [`evidence/issues/`](evidence/issues/) 19 ảnh: 1 danh sách + **18 ảnh chi tiết, mỗi issue một ảnh** | [x] |
 | A6.9 | mục 6:85 - ghi lại test case **không automate được** + lý do | [`report/Not-Automated.md`](report/Not-Automated.md) - kết luận 0 case phải bỏ, kèm lý do vì sao đạt 100% | [x] |
 
 ### Mục 6 Task 2 - video demo
@@ -110,7 +110,7 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | A14.6 | mục 14:153 - AI Critique (**md + PDF**) | [`appendix/AI-Critique.md`](appendix/AI-Critique.md) | [x] md / [ ] pdf |
 | A14.7 | mục 14:153 - AI Audit Report (**md + PDF**) | [`appendix/AI-Audit-Report.md`](appendix/AI-Audit-Report.md) | [~] md / [ ] pdf |
 | A14.8 | mục 14:154 - git commit log (file **text**) | [`appendix/git-log.txt`](appendix/git-log.txt) - file `.txt` riêng, **không** gộp vào `.md` | [~] |
-| A14.9 | mục 14:155 - bug report + ảnh trang GitHub Issues | [`report/Bug-Report.md`](report/Bug-Report.md) + [`evidence/issues/`](evidence/issues/) | [x] |
+| A14.9 | mục 14:155 - bug report + ảnh trang GitHub Issues | [`report/Bug-Report.md`](report/Bug-Report.md) + [`evidence/issues/`](evidence/issues/) - đủ 18/18 issue | [x] |
 | A14.10 | mục 14:156 - `README.md` có bảng tự đánh giá **và** test summary (số feature / TC automate/chạy/pass/fail / số lượt browser / số bug / link video) | [`README.md`](README.md) | [x] |
 | A14.11 | mục 14:157 - tài liệu hỗ trợ khác | [`report/AI-Review-Fix-Log.md`](report/AI-Review-Fix-Log.md) / [`report/Not-Automated.md`](report/Not-Automated.md) / [`appendix/Git-Commit-Log.md`](appendix/Git-Commit-Log.md) / file này | [x] |
 
