@@ -1,3 +1,5 @@
+8108485 | 2026-08-06 08:47:04 +0700 | docs(appendix): fill class and lecturer fields in the audit report form
+ceceba5 | 2026-08-06 08:42:55 +0700 | docs(appendix): refresh exported git commit log
 b757623 | 2026-08-06 08:42:55 +0700 | docs(report): correct where the run-by stamp lives and drop the internal checklist
 1b7182d | 2026-08-06 08:37:24 +0700 | docs(appendix): refresh exported git commit log
 c7d6357 | 2026-08-06 08:37:24 +0700 | chore(appendix): drop the commit log markdown, the required text file is enough
