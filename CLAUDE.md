@@ -204,6 +204,5 @@ Không làm hộ, không tự nhắc mỗi phiên. Chỉ trả lời khi đượ
 | Cấu trúc thư mục, trạng thái, self-assessment | `submission/README.md` |
 | Đối chiếu điều khoản đề + policy -> file | `submission/CHECKLIST.md` |
 | Hành vi thật của SUT, bẫy selector | `survey/Survey-Report.md` |
-| Quy ước commit + bảng đếm | `submission/appendix/Git-Commit-Log.md` |
 
 **Repo bài làm:** `https://github.com/dinosauce-285/HW04-Software-Testing` (public, remote `origin`, branch `main`)

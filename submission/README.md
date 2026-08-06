@@ -73,7 +73,6 @@ hw04/
 |   |   |-- AI-Audit-Report.md     bảng audit theo mẫu của Khoa (mục 9)
 |   |   |-- AI-Prompt-Log.md       21 lượt prompt nguyên văn (mục 9:114-117)
 |   |   |-- AI-Critique.md         200-300 chữ (mục 10)
-|   |   |-- Git-Commit-Log.md      quy ước commit + bảng đếm
 |   |   \-- git-log.txt            commit log dạng text (mục 14:154)
 |   |-- evidence/
 |   |   |-- bugs/                  16 ảnh đính vào GitHub Issue

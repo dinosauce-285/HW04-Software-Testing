@@ -95,7 +95,7 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | Mã | Điều khoản | File / bằng chứng | TT |
 |---|---|---|---|
 | A12.1 | mục 12:136 - repo GitHub **công khai** | https://github.com/dinosauce-285/HW04-Software-Testing | [x] |
-| A12.2 | mục 12:136 - **>= 8 commit** chạm file test, trải **>= 4 ngày** | thực tế: **8 commit** chạm `.spec.ts` (đạt), trải **2 ngày** 04/08 và 06/08 (không đạt). Bảng đếm ở [`appendix/Git-Commit-Log.md`](appendix/Git-Commit-Log.md) | [!] **đạt số commit, không đạt số ngày** |
+| A12.2 | mục 12:136 - **>= 8 commit** chạm file test, trải **>= 4 ngày** | thực tế: **8 commit** chạm `.spec.ts` (đạt), trải **2 ngày** 04/08 và 06/08 (không đạt) | [!] **đạt số commit, không đạt số ngày** |
 | A12.3 | mục 12:137 - commit log ở file text | [`appendix/git-log.txt`](appendix/git-log.txt) | [~] xuất lại trước khi zip |
 
 ### Mục 14 Nội dung bắt buộc trong zip
@@ -112,7 +112,7 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | A14.8 | mục 14:154 - git commit log (file **text**) | [`appendix/git-log.txt`](appendix/git-log.txt) - file `.txt` riêng, **không** gộp vào `.md` | [~] |
 | A14.9 | mục 14:155 - bug report + ảnh trang GitHub Issues | [`report/Bug-Report.md`](report/Bug-Report.md) + [`evidence/issues/`](evidence/issues/) - đủ 18/18 issue | [x] |
 | A14.10 | mục 14:156 - `README.md` có bảng tự đánh giá **và** test summary (số feature / TC automate/chạy/pass/fail / số lượt browser / số bug / link video) | [`README.md`](README.md) | [x] |
-| A14.11 | mục 14:157 - tài liệu hỗ trợ khác | [`report/AI-Review-Fix-Log.md`](report/AI-Review-Fix-Log.md) / [`report/Not-Automated.md`](report/Not-Automated.md) / [`appendix/Git-Commit-Log.md`](appendix/Git-Commit-Log.md) / file này | [x] |
+| A14.11 | mục 14:157 - tài liệu hỗ trợ khác | [`report/AI-Review-Fix-Log.md`](report/AI-Review-Fix-Log.md) / [`report/Not-Automated.md`](report/Not-Automated.md) / file này | [x] |
 
 ### Mục 17 Quy định khác
 
@@ -134,7 +134,7 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | P4 | **PDF Copies** - nộp kèm bản "Save-As-PDF" của **những file đó** | 8 file, xem mục C | [ ] |
 | P5 | Submission file name - `StudentID_ExerciseID_SelfAssessedGrade.zip` | đề mục 14:145 nói cụ thể hơn -> theo đề: `23127262_HW04_AI_Automation_100.zip` | [ ] khi đóng gói |
 | P6 | Git Usage - quản lý lịch sử bằng Git | 18 commit | [x] |
-| P7 | Commit Messages - **mỗi bước trong mỗi yêu cầu** một commit rõ ràng | Conventional Commits, quy ước ở [`appendix/Git-Commit-Log.md`](appendix/Git-Commit-Log.md) | [x] |
+| P7 | Commit Messages - **mỗi bước trong mỗi yêu cầu** một commit rõ ràng | Conventional Commits (`<type>(<scope>): <mô tả>`), thấy rõ trong [`appendix/git-log.txt`](appendix/git-log.txt) | [x] |
 | P8 | Submit the git commit logs | [`appendix/git-log.txt`](appendix/git-log.txt) | [~] |
 | P9 | Work Allocation / Task Complexity - không trùng việc trong nhóm, không chọn việc quá dễ | trùng A5.3 - dành cho bài project theo nhóm | - |
 | P10 | Peer Reviews - cross-review trong nhóm | dành cho bài project; HW04 là bài cá nhân | - |
@@ -145,9 +145,9 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 
 ---
 
-## C. Chín file cần xuất PDF
+## C. Tám file cần xuất PDF
 
-Đề (mục 14:149, mục 14:153) gọi tên ba file đầu. Sáu file còn lại theo Policies P4 - *"those files"* = mọi file Markdown nộp kèm. Xuất thiếu là rủi ro mục 17:182.
+Đề (mục 14:149, mục 14:153) gọi tên ba file đầu. Năm file còn lại theo Policies P4 - *"those files"* = mọi file Markdown nộp kèm. Xuất thiếu là rủi ro mục 17:182.
 
 | # | File | Bắt buộc bởi |
 |---|---|---|
@@ -157,9 +157,8 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | 4 | `report/Bug-Report.md` | P4 |
 | 5 | `report/AI-Review-Fix-Log.md` | P4 |
 | 6 | `report/Not-Automated.md` | P4 |
-| 7 | `appendix/Git-Commit-Log.md` | P4 |
-| 8 | `appendix/AI-Prompt-Log.md` | P4 |
-| 9 | `README.md` | P4 |
+| 7 | `appendix/AI-Prompt-Log.md` | P4 |
+| 8 | `README.md` | P4 |
 
 File này (`CHECKLIST.md`) là công cụ đối chiếu nội bộ, không nằm trong danh sách bắt buộc - xuất PDF cũng được, không xuất cũng không sao.
 
@@ -183,7 +182,7 @@ Có link -> điền vào **4 chỗ**: file này / [`README.md`](README.md) / `..
 
 ```
 23127262_HW04_AI_Automation_100/
-|-- submission/           nguyên thư mục này, kèm 9 file .pdf
+|-- submission/           nguyên thư mục này, kèm 8 file .pdf
 |-- .claude/skills/       Agent Skill - mục 7:96 bắt nộp, 10 điểm
 |-- tools/                extract-ai-audit.mjs - mục 9:119
 |-- playwright.config.ts  cấu hình 3 browser + stamp "Run by"
@@ -211,7 +210,7 @@ Không đưa vào zip: `sut/` (mã nguồn SUT, không phải sản phẩm của
 |---|---|---|---|
 | 1 | Sinh lại AI Prompt Log sau phiên AI cuối | A2.3 / A9.2 | mọi việc dùng AI đã xong |
 | 2 | Xuất lại `git-log.txt` sau commit cuối | A12.3 / A14.8 / P8 | mọi commit đã xong |
-| 3 | Xuất 9 PDF, rồi zip và chia 3 phần <= 20 MB | P4 / P12 / A14.1 | mọi `.md` đã chốt |
+| 3 | Xuất 8 PDF, rồi zip và chia 3 phần <= 20 MB | P4 / P12 / A14.1 | mọi `.md` đã chốt |
 
 Hai video đã xong: Task 2 và Agent Skill. Link ở mục D.
 
