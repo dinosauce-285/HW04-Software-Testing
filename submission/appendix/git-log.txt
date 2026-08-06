@@ -1,3 +1,5 @@
+b757623 | 2026-08-06 08:42:55 +0700 | docs(report): correct where the run-by stamp lives and drop the internal checklist
+1b7182d | 2026-08-06 08:37:24 +0700 | docs(appendix): refresh exported git commit log
 c7d6357 | 2026-08-06 08:37:24 +0700 | chore(appendix): drop the commit log markdown, the required text file is enough
 d98ef26 | 2026-08-06 08:34:49 +0700 | chore(report): capture every github issue page, not just three samples
 c8075f1 | 2026-08-06 08:32:20 +0700 | chore(report): drop the three report folders produced while recording the demo
