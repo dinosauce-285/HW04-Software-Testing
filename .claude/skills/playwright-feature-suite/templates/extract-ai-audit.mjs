@@ -104,35 +104,32 @@ const models = [...new Set(turns.map(t => t.model).filter(Boolean))];
 const allTools = turns.flatMap(t => t.tools);
 const toolCount = allTools.reduce((a, n) => ((a[n] = (a[n] ?? 0) + 1), a), {});
 
-let md = `# AI Audit Report — HW04
+let md = `# Nhật ký prompt - HW04
 
-*(Phụ lục bắt buộc · đề HW04 §9 · Policies — "AI Disclosure". Thiếu file này → 0 điểm.)*
+*(Bằng chứng cho đề HW04 §9:114-117 - mỗi lượt tương tác phải có: tên công cụ, ngày giờ,
+prompt nguyên văn, output của AI. Bảng audit theo mẫu 5 mục của Khoa nằm ở [\`AI-Audit-Report.md\`](AI-Audit-Report.md).)*
 
-**Sinh viên:** Lý Quốc Thạnh — \`23127262\`
+**Sinh viên:** Lý Quốc Thạnh - \`23127262\`
 
-## Khai báo
-
-**Tôi có sử dụng công cụ AI cho các công việc sau** *(I use AI tools for the following tasks)*:
-khảo sát hệ thống cần kiểm thử, sinh và sửa script automation Playwright, tạo bug report,
-và soạn tài liệu bài làm.
+## Tổng quan phiên làm việc
 
 | Mục | Giá trị |
 |---|---|
 | Tên công cụ | Claude Code (Anthropic) |
 | Mô hình | ${models.join(', ') || 'claude-opus-5'} |
 | Số lượt trao đổi | ${turns.length} |
-| Khoảng thời gian | ${turns.length ? fmt(turns[0].at) + ' — ' + fmt(turns[turns.length - 1].at) : '—'} |
+| Khoảng thời gian | ${turns.length ? fmt(turns[0].at) + ' - ' + fmt(turns[turns.length - 1].at) : '-'} |
 | Số lượt gọi công cụ | ${allTools.length} |
 
 ### Công cụ AI đã sử dụng trong phiên
 
-${Object.entries(toolCount).sort((a, b) => b[1] - a[1]).map(([n, c]) => `- \`${n}\` — ${c} lượt`).join('\n')}
+${Object.entries(toolCount).sort((a, b) => b[1] - a[1]).map(([n, c]) => `- \`${n}\` - ${c} lượt`).join('\n')}
 
 ## Cách thu thập log
 
 File này được sinh **tự động** bằng \`tools/extract-ai-audit.mjs\`, đọc trực tiếp transcript
 phiên làm việc tại \`~/.claude/projects/${SLUG}/*.jsonl\`. Không chép tay, không tóm tắt lại
-bằng lời — prompt và output dưới đây là **nguyên văn**.
+bằng lời - prompt và output dưới đây là **nguyên văn**.
 
 Điều này thực hiện đúng gợi ý của đề (§9:119): *"you are encouraged to create a skill or rule
 that extracts the information above automatically after an AI session."*
@@ -147,12 +144,12 @@ Các khối do hệ thống tự chèn vào lượt của người dùng (\`<sys
 `;
 
 turns.forEach((t, i) => {
-  md += `### Lượt ${i + 1} — ${fmt(t.at)}\n\n`;
+  md += `### Lượt ${i + 1} - ${fmt(t.at)}\n\n`;
   md += `**Công cụ:** Claude Code${t.model ? ` (${t.model})` : ''}\n\n`;
   md += `**Prompt (nguyên văn):**\n\n\`\`\`\n${t.prompt}\n\`\`\`\n\n`;
   if (t.tools.length) {
     const c = t.tools.reduce((a, n) => ((a[n] = (a[n] ?? 0) + 1), a), {});
-    md += `**Hành động của AI:** ${Object.entries(c).map(([n, k]) => `${n}×${k}`).join(' · ')}\n\n`;
+    md += `**Hành động của AI:** ${Object.entries(c).map(([n, k]) => `${n} x${k}`).join(' · ')}\n\n`;
   }
   md += `**Output:**\n\n${t.reply.join('\n\n') || '*(chỉ thao tác công cụ, không có phần trả lời dạng văn bản)*'}\n\n---\n\n`;
 });
@@ -160,4 +157,4 @@ turns.forEach((t, i) => {
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, md);
 console.log(`Đã ghi ${OUT}`);
-console.log(`  ${turns.length} lượt trao đổi · ${allTools.length} lượt gọi công cụ · ${(md.length / 1024).toFixed(0)} KB`);
+console.log(`  ${turns.length} lượt trao đổi, ${allTools.length} lượt gọi công cụ, ${(md.length / 1024).toFixed(0)} KB`);

@@ -36,7 +36,7 @@
 
 ## 3. Bảng Audit - 1 hàng / artifact
 
-**Prompt nguyên văn và output nguyên văn của cả 21 lượt trao đổi nằm ở [`AI-Prompt-Log.md`](AI-Prompt-Log.md).** Cột (1) dưới đây trích prompt của lượt đã sinh ra artifact tương ứng và ghi số lượt để tra ngược; cột (2) tóm tắt output vì output đầy đủ dài hơn giới hạn một ô bảng.
+**Prompt nguyên văn và output nguyên văn của cả 95 lượt trao đổi nằm ở [`AI-Prompt-Log.md`](AI-Prompt-Log.md).** Cột (1) dưới đây trích prompt của lượt đã sinh ra artifact tương ứng và ghi số lượt để tra ngược; cột (2) tóm tắt output vì output đầy đủ dài hơn giới hạn một ô bảng.
 
 Cột (4) dẫn ISTQB Foundation Level v4.0 theo **tên khái niệm**, kèm số chương ở chỗ đại cương đánh số.
 
@@ -106,4 +106,4 @@ Khuyến nghị: dùng AI cho phần khung và dữ liệu, nhưng mọi asserti
 
 Đề HW04 §9:114-117 đòi mỗi lượt tương tác phải có tên công cụ, ngày giờ, prompt nguyên văn và output của AI. Mẫu 5 mục ở trên tổ chức theo **artifact**, không theo **lượt**, nên phần nhật ký được tách sang file riêng:
 
-**[`AI-Prompt-Log.md`](AI-Prompt-Log.md)** - 21 lượt, sinh tự động từ transcript phiên làm việc bằng `tools/extract-ai-audit.mjs`, không chép tay.
+**[`AI-Prompt-Log.md`](AI-Prompt-Log.md)** - 95 lượt, sinh tự động từ transcript phiên làm việc bằng `tools/extract-ai-audit.mjs`, không chép tay.

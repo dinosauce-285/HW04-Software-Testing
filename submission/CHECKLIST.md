@@ -16,7 +16,7 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 
 | Mã | Điều khoản | File / bằng chứng | TT |
 |---|---|---|---|
-| A2.1 | §2:20 - AI-first, dẫn AI **từng bước**, cấm một prompt kiểu *"write all the automation scripts"* | [`appendix/AI-Audit-Report.md`](appendix/AI-Audit-Report.md) - 21 lượt riêng biệt / quy trình 6 bước/feature mô tả ở [`report/Main-Report.md`](report/Main-Report.md) §3 | [x] |
+| A2.1 | §2:20 - AI-first, dẫn AI **từng bước**, cấm một prompt kiểu *"write all the automation scripts"* | [`appendix/AI-Audit-Report.md`](appendix/AI-Audit-Report.md) - 95 lượt riêng biệt / quy trình 6 bước/feature mô tả ở [`report/Main-Report.md`](report/Main-Report.md) §3 | [x] |
 | A2.2 | §2:21 - mọi kết quả AI phải được người review và sửa | [`report/AI-Review-Fix-Log.md`](report/AI-Review-Fix-Log.md) - 5 lỗi đã sửa + 4 lỗi đối chứng từ khảo sát | [x] |
 | A2.3 | §2:22 - toàn bộ quá trình dùng AI ghi thành log đầy đủ | [`appendix/AI-Audit-Report.md`](appendix/AI-Audit-Report.md) | [~] cần sinh lại sau phiên AI cuối |
 | A2.4 | §2:23 - tài liệu ở định dạng text (Markdown) | mọi file `.md` trong thư mục này | [x] |
@@ -28,7 +28,7 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 |---|---|---|---|
 | A5.1 | §5:69 - 3 feature web, mỗi pool A/B/C một cái, **giống HW02** | [`report/Main-Report.md`](report/Main-Report.md) §1 - nêu rõ "kế thừa từ HW02" và lý do bỏ Pool D | [x] |
 | A5.2 | §5:70 - nếu không có HW02 thì tự khai + nêu lý do | - có HW02, không áp dụng | - |
-| A5.3 | §5:71 - không trùng với thành viên khác trong nhóm | **chưa có câu khẳng định nào trong báo cáo** | [ ] thiếu 1 dòng |
+| A5.3 | §5:71 - không trùng với thành viên khác trong nhóm | - §5:71 mở đầu bằng *"Within each group"*; HW04 là bài cá nhân (§1 Form: Individual Assignment) nên không có nhóm để đối chiếu | - |
 
 ### §6 Task 1 - script automation
 
@@ -73,7 +73,7 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | Mã | Điều khoản | File / bằng chứng | TT |
 |---|---|---|---|
 | A9.1 | §9:113 - khai báo có dùng AI | [`appendix/AI-Audit-Report.md`](appendix/AI-Audit-Report.md) mục 1 (checkbox Có) + mục 6 Mandatory Disclosure dán nguyên văn theo mẫu của Khoa | [x] |
-| A9.2 | §9:114-117 - mỗi lượt: **tên công cụ / ngày giờ / prompt nguyên văn / output** | [`appendix/AI-Prompt-Log.md`](appendix/AI-Prompt-Log.md) - 21 lượt, đủ 4 trường. Tách khỏi AI-Audit-Report vì mẫu của Khoa tổ chức theo artifact, không theo lượt | [~] chưa gồm phiên hiện tại |
+| A9.2 | §9:114-117 - mỗi lượt: **tên công cụ / ngày giờ / prompt nguyên văn / output** | [`appendix/AI-Prompt-Log.md`](appendix/AI-Prompt-Log.md) - 95 lượt, đủ 4 trường. Tách khỏi AI-Audit-Report vì mẫu của Khoa tổ chức theo artifact, không theo lượt | [~] chưa gồm phiên hiện tại |
 | A9.3 | §9:119 - *(khuyến khích)* skill/rule tự trích xuất sau phiên | `../tools/extract-ai-audit.mjs` | [x] |
 
 ### §10 AI Critique
@@ -136,7 +136,7 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | P6 | Git Usage - quản lý lịch sử bằng Git | 18 commit | [x] |
 | P7 | Commit Messages - **mỗi bước trong mỗi yêu cầu** một commit rõ ràng | Conventional Commits, quy ước ở [`appendix/Git-Commit-Log.md`](appendix/Git-Commit-Log.md) | [x] |
 | P8 | Submit the git commit logs | [`appendix/git-log.txt`](appendix/git-log.txt) | [~] |
-| P9 | Work Allocation / Task Complexity - không trùng việc trong nhóm, không chọn việc quá dễ | trùng A5.3 - **chưa có câu khẳng định** | [ ] |
+| P9 | Work Allocation / Task Complexity - không trùng việc trong nhóm, không chọn việc quá dễ | trùng A5.3 - dành cho bài project theo nhóm | - |
 | P10 | Peer Reviews - cross-review trong nhóm | dành cho bài project; HW04 là bài cá nhân | - |
 | P11 | Self-Assessment - tự chấm theo rubric | [`README.md`](README.md) mục Self-Assessment - 100/100 kèm căn cứ | [x] |
 | P12 | File Restrictions - Moodle tối đa **20 file**, mỗi file **<= 20 MB**, dùng split-and-zip | zip ~45 MB -> chia 3 phần ~15 MB | [ ] khi đóng gói |
@@ -205,14 +205,13 @@ Không đưa vào zip: `sut/` (mã nguồn SUT, không phải sản phẩm của
 
 ## F. Kết luận - còn thiếu thật sự
 
-**Bốn việc chưa xong, theo thứ tự phụ thuộc:**
+**Ba việc chưa xong, theo thứ tự phụ thuộc:**
 
 | # | Việc | Điều khoản | Chặn bởi |
 |---|---|---|---|
-| 1 | Thêm 1 dòng khẳng định không trùng feature với thành viên nhóm vào Main-Report §1 | A5.3 / P9 | - |
-| 2 | Sinh lại AI Prompt Log sau phiên AI cuối | A2.3 / A9.2 | mọi việc dùng AI đã xong |
-| 3 | Xuất lại `git-log.txt` sau commit cuối | A12.3 / A14.8 / P8 | mọi commit đã xong |
-| 4 | Xuất 9 PDF, rồi zip và chia 3 phần <= 20 MB | P4 / P12 / A14.1 | mọi `.md` đã chốt |
+| 1 | Sinh lại AI Prompt Log sau phiên AI cuối | A2.3 / A9.2 | mọi việc dùng AI đã xong |
+| 2 | Xuất lại `git-log.txt` sau commit cuối | A12.3 / A14.8 / P8 | mọi commit đã xong |
+| 3 | Xuất 9 PDF, rồi zip và chia 3 phần <= 20 MB | P4 / P12 / A14.1 | mọi `.md` đã chốt |
 
 Hai video đã xong: Task 2 và Agent Skill. Link ở mục D.
 

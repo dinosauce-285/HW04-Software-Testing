@@ -43,7 +43,7 @@ Cập nhật lần cuối: 04/08/2026 - **Task 1 và Task 2 hoàn tất**.
 | 8 | Bug report + GitHub Issues | R6 | [x] 18 bug / 18 issue / 16 ảnh bug + 4 ảnh trang Issues |
 | 9 | Test case không automate được | R7 | [x] 0 - automate được toàn bộ 50 TC |
 | 10 | Báo cáo chính | §14:149 | [x] 12 mục, ~4.000 từ |
-| 11 | AI Audit Report | §9 | [x] 21 lượt / sinh tự động từ transcript |
+| 11 | AI Audit Report | §9 | [x] 95 lượt / sinh tự động từ transcript |
 | 12 | AI Critique (200-300 chữ) | §10 | [x] 299 chữ |
 | 13 | Git commit log (text file) | §14:154 | [x] `git-log.txt` |
 | 14 | Video demo Task 2 (>=5 phút) | Task 2 | [x] https://youtu.be/Vh_Qu7MG8tc |
