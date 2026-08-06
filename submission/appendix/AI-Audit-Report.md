@@ -18,7 +18,7 @@
 | :---- | :---- |
 | **Họ tên sinh viên (in hoa):** | LÝ QUỐC THẠNH |
 | **MSSV:** | 23127262 |
-| **Lớp / Khoá:** | `<điền>` |
+| **Lớp / Khoá:** | 23KTPM2 / Khoá 23 |
 | **Mã bài tập (ví dụ HW#00, HW#02):** | HW#04 - AI Automation Testing |
 | **Ngày làm bài:** | 04/08/2026 |
 | **Công cụ AI đã dùng:** | Claude Code (Anthropic), mô hình `claude-opus-5` |
@@ -84,9 +84,9 @@ Khuyến nghị: dùng AI cho phần khung và dữ liệu, nhưng mọi asserti
 | Họ tên sinh viên (in hoa): | LÝ QUỐC THẠNH |
 | :---- | :---- |
 | **MSSV:** | 23127262 |
-| **Lớp / Khoá:** | `<điền>` |
+| **Lớp / Khoá:** | 23KTPM2 / Khoá 23 |
 | **Môn học:** | CS423 / CSC13003 - Kiểm chứng Phần mềm |
-| **Giảng viên:** | `<điền>` |
+| **Giảng viên:** | Trần Duy Hoàng / Trương Phước Lộc / Hồ Tuấn Thanh / Lâm Quang Vũ |
 | **Ngày:** | 04/08/2026 |
 | **Chữ ký:** |  |
 
