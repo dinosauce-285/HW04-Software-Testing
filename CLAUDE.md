@@ -202,7 +202,6 @@ Không làm hộ, không tự nhắc mỗi phiên. Chỉ trả lời khi đượ
 | Chính sách môn học | `docs/___2026.Homework.Policies.md` |
 | SUT (source, cách chạy) | `https://github.com/ttbhanh/eshop-sut` |
 | Cấu trúc thư mục, trạng thái, self-assessment | `submission/README.md` |
-| Đối chiếu điều khoản đề + policy -> file | `submission/CHECKLIST.md` |
 | Hành vi thật của SUT, bẫy selector | `survey/Survey-Report.md` |
 
 **Repo bài làm:** `https://github.com/dinosauce-285/HW04-Software-Testing` (public, remote `origin`, branch `main`)

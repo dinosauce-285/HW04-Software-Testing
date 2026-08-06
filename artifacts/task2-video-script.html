@@ -354,7 +354,7 @@
               <p><code>npx playwright show-report submission/html-reports/&lt;tên-thư-mục-vừa-sinh&gt;</code></p>
               <p><strong>Phải chỉ tận nơi hai thứ:</strong></p>
               <ul class="checks">
-                <li class="todo"><span class="box">[ ]</span><span class="txt">Tiêu đề report: <code>Run by: 23127262 - fr09-coupon - webkit - &lt;ISO&gt;</code></span></li>
+                <li class="todo"><span class="box">[ ]</span><span class="txt">Tab <strong>Metadata</strong> - nhãn nằm ở đây, KHÔNG ở tiêu đề trang</span></li>
                 <li class="todo"><span class="box">[ ]</span><span class="txt">Tab <strong>Metadata</strong>: các trường <code>Run by</code>, <code>Student</code>, <code>Run at (ISO)</code></span></li>
               </ul>
               <p><strong>Nói:</strong> hai nhãn này nhúng qua trường <code>metadata</code> và <code>title</code> trong <code>playwright.config.ts</code>, <strong>không sửa tay file HTML</strong> - đề coi sửa tay là gian lận. Mở luôn một test fail để thấy trace và ảnh chụp tự đính kèm.</p>

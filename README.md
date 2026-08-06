@@ -7,7 +7,6 @@ Toàn bộ bài nộp nằm trong một thư mục duy nhất: **[`submission/`]
 | Cần gì | Vào đây |
 |---|---|
 | Test summary, self-assessment, cây thư mục | [`submission/README.md`](submission/README.md) |
-| Đối chiếu từng điều khoản đề + policy -> file nào | [`submission/CHECKLIST.md`](submission/CHECKLIST.md) |
 | Báo cáo chính | [`submission/report/Main-Report.md`](submission/report/Main-Report.md) |
 | Script automation / dữ liệu CSV / HTML report | [`submission/tests/`](submission/tests/) / [`submission/data/`](submission/data/) / [`submission/html-reports/`](submission/html-reports/) |
 

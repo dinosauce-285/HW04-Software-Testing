@@ -54,7 +54,9 @@ Tổng cộng **9 lượt chạy -> 9 HTML report** trong `submission/html-repor
 
 > **Lưu ý quan trọng:** không được thêm cờ `--reporter` vào dòng lệnh - cờ này đè toàn bộ danh sách reporter khai báo trong `playwright.config.ts`, khiến lượt chạy **không sinh report nào** mà terminal vẫn báo thành công. Xem mục 7, lỗi #2.
 
-Mỗi report mang nhãn `Run by: 23127262` kèm ISO timestamp ở tiêu đề và trong tab Metadata, nhúng qua trường `metadata` và `title` của config - **không sửa tay file HTML**.
+Mỗi report mang nhãn `Run by: 23127262` kèm ISO timestamp trong **tab Metadata**, nhúng qua trường `metadata` của config - **không sửa tay file HTML**. Mục 6:83 chấp nhận nhãn nằm ở *"the title, header, footer, or report metadata"*; ở đây là metadata.
+
+Một ghi chú kỹ thuật đã kiểm chứng bằng cách giải mã khối dữ liệu nhúng trong `index.html` của cả 9 report: tuỳ chọn `title` khai trong `reporter: [['html', {...}]]` **không** được Playwright 1.62 ghi vào report (`title` trả về `null` ở cả 9 file), trong khi `metadata` thì được ghi đầy đủ. Vì vậy nhãn tác giả chỉ tra được ở tab Metadata, không phải ở tiêu đề trang.
 
 `globalSetup` chạy `node sut/backend/database.js` trước mỗi lượt để đưa dữ liệu về trạng thái seed, đảm bảo 9 lượt chạy xuất phát từ cùng một điểm.
 
@@ -331,7 +333,7 @@ Video chạy end-to-end feature **FR-09 Mã giảm giá** trên cả ba trình d
 |---|---|
 | Chứng minh tác giả (mục 6:91, mục 11:132) | Mở đầu: terminal chạy `whoami`, `hostname`, `date -Iseconds`, `git log`; thuyết minh bằng giọng của chính sinh viên, tiếng Việt |
 | Chạy một script end-to-end, đa trình duyệt (mục 6:89) | Ba lượt `FEATURE=fr09-coupon BROWSER=<b> npx playwright test --project=<b>` chạy tuần tự trên chromium, firefox, webkit |
-| HTML report (mục 6:89) | Mở report vừa sinh bằng `npx playwright show-report`, chỉ vào tiêu đề `Run by: 23127262` và tab Metadata |
+| HTML report (mục 6:89) | Mở report vừa sinh bằng `npx playwright show-report`, chỉ vào tab Metadata: `Run by: 23127262`, `Run at (ISO)` |
 | Kể >= 1 lỗi đã sửa (mục 6:90) | Lỗi #2 trong `AI-Review-Fix-Log.md` - xem dưới |
 
 ### Lỗi được kể trong video

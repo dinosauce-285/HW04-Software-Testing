@@ -34,7 +34,7 @@ Cập nhật lần cuối: 04/08/2026 - **Task 1 và Task 2 hoàn tất**.
 | # | Hạng mục | Nguồn | Trạng thái |
 |---|---|---|---|
 | 1 | Khảo sát SUT | `survey/Survey-Report.md` | [x] 04/08/2026 |
-| 2 | `playwright.config.ts` + stamp `Run by: 23127262` | R5 | [x] đã kiểm bằng ảnh chụp report |
+| 2 | `playwright.config.ts` + stamp `Run by: 23127262` | mục 6:83 | [x] đủ 9/9 report, nhãn ở tab Metadata kèm `Run at (ISO)` |
 | 3 | FR-01 - >=12 TC + data file | Task 1 | [x] 16 TC / 3 CSV / 5 assertion pattern / 3 browser |
 | 4 | FR-09 - >=12 TC + data file | Task 1 | [x] 19 TC / 2 CSV / 5 assertion pattern / 3 browser |
 | 5 | FR-14 - >=12 TC + data file | Task 1 | [x] 15 TC / 2 CSV / 5 assertion pattern / 3 browser |
@@ -62,7 +62,6 @@ hw04/
 |
 |-- submission/                * TOÀN BỘ BÀI NỘP - nén thư mục này là đủ
 |   |-- README.md              file này - test summary + self-assessment (mục 14:156)
-|   |-- CHECKLIST.md           đối chiếu từng điều khoản đề + policy -> file (mục 14:148)
 |   |
 |   |-- report/
 |   |   |-- Main-Report.md         báo cáo chính (mục 14:149)
@@ -97,7 +96,9 @@ hw04/
 ```
 
 
-**Khi đóng gói nộp bài:** nén nguyên thư mục `submission/`, thêm 4 thứ ở gốc - `.claude/skills/` (Agent Skill, mục 7:96), `tools/`, `playwright.config.ts`, `package.json`. Bốn thứ này phải ở gốc mới chạy được, xem lý do ở [CHECKLIST.md](CHECKLIST.md) mục E.
+**Khi đóng gói nộp bài:** nén nguyên thư mục `submission/`, thêm 4 thứ ở gốc - `.claude/skills/` (Agent Skill, mục 7:96), `tools/` (script sinh nhật ký prompt), `playwright.config.ts` và `package.json` (Playwright phân giải `testDir` theo vị trí config, npm cần `package.json` ở gốc).
+
+**Tám file cần xuất kèm bản PDF:** `report/Main-Report.md`, `report/Bug-Report.md`, `report/AI-Review-Fix-Log.md`, `report/Not-Automated.md`, `appendix/AI-Audit-Report.md`, `appendix/AI-Critique.md`, `appendix/AI-Prompt-Log.md`, `README.md`.
 
 ## Self-Assessment
 
