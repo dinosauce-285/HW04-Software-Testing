@@ -95,7 +95,7 @@ Nguồn: `docs/2026.HW04.Automation Testing_En.md` / `docs/___2026.Homework.Poli
 | Mã | Điều khoản | File / bằng chứng | TT |
 |---|---|---|---|
 | A12.1 | mục 12:136 - repo GitHub **công khai** | https://github.com/dinosauce-285/HW04-Software-Testing | [x] |
-| A12.2 | mục 12:136 - **>= 8 commit** chạm file test, trải **>= 4 ngày** | thực tế: **7 commit** chạm `.spec.ts`, tất cả trong ngày 04/08/2026; toàn repo có 26 commit trải 2 ngày (04/08 và 06/08) | [!] **không đạt** |
+| A12.2 | mục 12:136 - **>= 8 commit** chạm file test, trải **>= 4 ngày** | thực tế: **8 commit** chạm `.spec.ts` (đạt), trải **2 ngày** 04/08 và 06/08 (không đạt). Bảng đếm ở [`appendix/Git-Commit-Log.md`](appendix/Git-Commit-Log.md) | [!] **đạt số commit, không đạt số ngày** |
 | A12.3 | mục 12:137 - commit log ở file text | [`appendix/git-log.txt`](appendix/git-log.txt) | [~] xuất lại trước khi zip |
 
 ### Mục 14 Nội dung bắt buộc trong zip
@@ -217,7 +217,7 @@ Hai video đã xong: Task 2 và Agent Skill. Link ở mục D.
 
 **Một điều khoản không thể đạt:**
 
-**A12.2** - đề đòi >= 8 commit chạm file test, trải >= 4 ngày. Thực tế 7 commit chạm `.spec.ts`, tất cả trong ngày 04/08/2026; toàn repo 26 commit trải 2 ngày. Không sửa được bằng cách nào hợp lệ: đổi ngày commit là làm giả bằng chứng, và mục 11 nói rõ TA kiểm tra trực tiếp phần bằng chứng thực thi. Ghi nhận đúng thực trạng thay vì che.
+**A12.2** - đề đòi >= 8 commit chạm file test, trải >= 4 ngày. Số commit **đạt** (8), số ngày **không đạt** (2: 04/08 và 06/08). Không sửa được bằng cách nào hợp lệ: đổi ngày commit là làm giả bằng chứng, và mục 11 nói rõ TA kiểm tra trực tiếp phần bằng chứng thực thi. Ghi nhận đúng thực trạng thay vì che.
 
 **Một điều khoản sát ngưỡng:**
 
