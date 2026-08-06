@@ -1,3 +1,7 @@
+c7d6357 | 2026-08-06 08:37:24 +0700 | chore(appendix): drop the commit log markdown, the required text file is enough
+d98ef26 | 2026-08-06 08:34:49 +0700 | chore(report): capture every github issue page, not just three samples
+c8075f1 | 2026-08-06 08:32:20 +0700 | chore(report): drop the three report folders produced while recording the demo
+eee3fc4 | 2026-08-06 08:30:37 +0700 | docs(appendix): refresh exported git commit log
 9b01d39 | 2026-08-06 08:30:37 +0700 | docs(appendix): fill the commit log tables with the real counts
 7f8b305 | 2026-08-06 08:25:08 +0700 | docs(repo): replace non-ascii symbols with plain keyboard characters
 5243eed | 2026-08-06 08:09:57 +0700 | docs(appendix): refresh exported git commit log
